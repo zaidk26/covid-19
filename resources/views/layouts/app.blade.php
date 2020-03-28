@@ -93,12 +93,12 @@
         </div>
         <div class="col-auto">
           <h5 class="m-0 p-0">COVID 19</h5>
-          <small class="text-muted m-0">Corona Virus Information</small>
+          <small class="text-muted m-0">Corona Virus Stats & News</small>
         </div>
       </div>
     </div>
   </header>
-  <ul class="nav nav-pills nav-justified border-bottom font-weight-bold bg-white" style="font-size:13px;">
+  <ul class="nav nav-pills nav-justified border-bottom font-weight-bold bg-light" style="font-size:13px;">
     <li class="nav-item">
       <a class="nav-link @if (\Request::is('/')) active @endif " href="/"  >STATS</a>
     </li>

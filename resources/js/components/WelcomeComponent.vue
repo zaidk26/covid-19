@@ -1,13 +1,15 @@
 <template>
   <div>
-    <div class="container mt-4 text-center">
+
+    <!-- Updated -->
+    <div class="container mt-4 text-center">     
       <div class="row">
         <div class="col">
-          <div class="card" style="background:transparent;">
-            <div class="card-body">
+          <div class="border p-1">
+            
               <small class="text-black-50 font-percent">UPDATED AT</small>
               <p class="m-0"><strong> {{ updatedAt }}</strong></p>
-            </div>
+           
           </div>           
         </div>
       </div>
@@ -49,10 +51,10 @@
                     <div class="stat-row">
                       <div class="row">
                         <div class="col-auto">
-                          <p class="text-secodary font-weight-bold">Cases</p>
+                          <span class="text-secodary font-weight-bold">Cases</span>
                         </div>
                         <div class="col text-right">
-                          <h5>
+                          <h5 class="m-0">
                             {{
                               new Intl.NumberFormat().format(countryCasesToday)
                             }}
@@ -64,10 +66,10 @@
                     <div class="stat-row">
                       <div class="row">
                         <div class="col-auto">
-                          <p class="text-danger font-weight-bold">Deaths</p>
+                          <span class="text-danger font-weight-bold">Deaths</span>
                         </div>
                         <div class="col text-right">
-                          <h5 class="text-danger">
+                          <h5 class="text-danger m-0">
                             <small
                               class="text-black-50 font-percent"
                               v-show="countryCasesToday > 0"
@@ -90,10 +92,10 @@
                     <div class="stat-row">
                       <div class="row">
                         <div class="col-auto">
-                          <p class="text-secodary font-weight-bold">Cases</p>
+                          <span class="text-secodary font-weight-bold">Cases</span>
                         </div>
                         <div class="col text-right">
-                          <h5>
+                          <h5 class="m-0">
                             {{ new Intl.NumberFormat().format(countryCases) }}
                           </h5>
                         </div>
@@ -103,10 +105,10 @@
                     <div class="stat-row">
                       <div class="row">
                         <div class="col-auto">
-                          <p class="text-danger font-weight-bold">Deaths</p>
+                          <span class="text-danger font-weight-bold">Deaths</span>
                         </div>
                         <div class="col text-right">
-                          <h5 class="text-danger">
+                          <h5 class="text-danger m-0">
                             <small class="text-black-50 font-percent"
                               >({{
                                 ((countryDeaths / countryCases) * 100).toFixed(
@@ -123,9 +125,9 @@
                     <div class="stat-row">
                         <div class="row">
                           <div class="col-auto my-auto">
-                            <p class="text-success font-weight-bold">
+                            <span class="text-success font-weight-bold">
                               Recovered
-                            </p>
+                            </span>
                           </div>
                           <div class="col text-right">
                             <h5 class="m-0 text-success">
@@ -160,12 +162,12 @@
                       <div class="stat-row">
                         <div class="row">
                           <div class="col-auto">
-                            <p class="text-secondary font-weight-bold">
+                            <span class="text-secondary font-weight-bold">
                               Active Cases
-                            </p>
+                            </span>
                           </div>
                           <div class="col text-right">
-                            <h5>
+                            <h5 class="m-0">
                               {{
                                 new Intl.NumberFormat().format(countryActive)
                               }}
@@ -177,12 +179,12 @@
                       <div class="stat-row">
                         <div class="row">
                           <div class="col-auto">
-                            <p class="text-secondary font-weight-bold">
+                            <span class="text-secondary font-weight-bold">
                               Critical Cases
-                            </p>
+                            </span>
                           </div>
                           <div class="col text-right">
-                            <h5>
+                            <h5 class="m-0">
                               {{
                                 new Intl.NumberFormat().format(countryCritical)
                               }}
@@ -194,12 +196,12 @@
                       <div class="stat-row">
                         <div class="row">
                           <div class="col-auto">
-                            <p class="text-secondary font-weight-bold">
+                            <span class="text-secondary font-weight-bold">
                               Cases Per Million
-                            </p>
+                            </span>
                           </div>
                           <div class="col text-right">
-                            <h5>
+                            <h5 class="m-0">
                               {{
                                 new Intl.NumberFormat().format(
                                   countryCasesPerMil
@@ -213,12 +215,12 @@
                       <div class="stat-row">
                         <div class="row">
                           <div class="col-auto">
-                            <p class="text-secondary font-weight-bold">
+                            <span class="text-secondary font-weight-bold">
                               Deaths Per Million
-                            </p>
+                            </span>
                           </div>
                           <div class="col text-right">
-                            <h5>
+                            <h5 class="m-0">
                               {{
                                 new Intl.NumberFormat().format(
                                   countryDeathsPerMil
@@ -309,10 +311,10 @@
                     <div class="stat-row">
                       <div class="row">
                         <div class="col-auto">
-                          <p class="text-secondary font-weight-bold">Cases</p>
+                          <span class="text-secondary font-weight-bold">Cases</span>
                         </div>
                         <div class="col text-right">
-                          <h5>
+                          <h5 class="m-0">
                             {{
                               new Intl.NumberFormat().format(worldCasesToday)
                             }}
@@ -324,10 +326,10 @@
                     <div class="stat-row">
                       <div class="row">
                         <div class="col-auto">
-                          <p class="text-danger font-weight-bold">Deaths</p>
+                          <span class="text-danger font-weight-bold">Deaths</span>
                         </div>
                         <div class="col text-right">
-                          <h5 class="text-danger">
+                          <h5 class="text-danger m-0">
                             <small
                               class="text-black-50 font-percent"
                               v-show="worldCasesToday > 0"
@@ -351,10 +353,10 @@
                     <div class="stat-row">
                       <div class="row">
                         <div class="col-auto">
-                          <p class="text-secondary font-weight-bold">Cases</p>
+                          <span class="text-secondary font-weight-bold">Cases</span>
                         </div>
                         <div class="col text-right">
-                          <h5>
+                          <h5 class="m-0">
                             {{ new Intl.NumberFormat().format(worldCases) }}
                           </h5>
                         </div>
@@ -364,10 +366,10 @@
                     <div class="stat-row">
                       <div class="row">
                         <div class="col-auto">
-                          <p class="text-danger font-weight-bold">Deaths</p>
+                          <span class="text-danger font-weight-bold">Deaths</span>
                         </div>
                         <div class="col text-right">
-                          <h5 class="text-danger">
+                          <h5 class="text-danger m-0">
                             <small class="text-black-50 font-percent"
                               >({{
                                 ((worldDeaths / worldCases) * 100).toFixed(2)
@@ -382,9 +384,9 @@
                     <div class="stat-row">
                         <div class="row">
                           <div class="col-auto my-auto">
-                            <p class="text-success font-weight-bold">
+                            <span class="text-success font-weight-bold">
                               Recovered
-                            </p>
+                            </span>
                           </div>
                           <div class="col text-right">
                             <h5 class="m-0 text-success">
@@ -418,12 +420,12 @@
                       <div class="stat-row">
                         <div class="row">
                           <div class="col-auto">
-                            <p class="text-secondary font-weight-bold">
+                            <span class="text-secondary font-weight-bold">
                               Active Cases
-                            </p>
+                            </span>
                           </div>
                           <div class="col text-right">
-                            <h5>
+                            <h5 class="m-0">
                               {{ new Intl.NumberFormat().format(worldActive) }}
                             </h5>
                           </div>
@@ -433,12 +435,12 @@
                       <div class="stat-row">
                         <div class="row">
                           <div class="col-auto">
-                            <p class="text-secondary font-weight-bold">
+                            <span class="text-secondary font-weight-bold">
                               Critical Cases
-                            </p>
+                            </span>
                           </div>
                           <div class="col text-right">
-                            <h5>
+                            <h5 class="m-0">
                               {{
                                 new Intl.NumberFormat().format(worldCritical)
                               }}
@@ -450,12 +452,12 @@
                       <div class="stat-row">
                         <div class="row">
                           <div class="col-auto">
-                            <p class="text-secondary font-weight-bold">
+                            <span class="text-secondary font-weight-bold">
                               Cases Per Million
-                            </p>
+                            </span>
                           </div>
                           <div class="col text-right">
-                            <h5>
+                            <h5 class="m-0">
                               {{
                                 new Intl.NumberFormat().format(worldCasesPerMil)
                               }}
@@ -467,12 +469,12 @@
                       <div class="stat-row">
                         <div class="row">
                           <div class="col-auto">
-                            <p class="text-secondary font-weight-bold">
+                            <span class="text-secondary font-weight-bold">
                               Deaths Per Million
-                            </p>
+                            </span>
                           </div>
                           <div class="col text-right">
-                            <h5>
+                            <h5 class="m-0">
                               {{
                                 new Intl.NumberFormat().format(
                                   worldDeathsPerMil
@@ -499,7 +501,7 @@
                 <small class="text-black-50 m-0">Global Headlines</small>
               </div>
               <div class="card-body">
-                <div class="stat-row" v-for="article in newsArticlesWorld.slice(0,3)" :key="article.id">
+                <div class="stat-row" v-for="article in newsArticlesWorld.slice(0,5)" :key="article.id">
                   <a :href="article.url">{{ article.title }}</a><br>
                   <small class="text-black-50 font-percentage">- {{ article.source.name }}</small>
                 </div>
@@ -513,7 +515,7 @@
                   >
                 </div>
                 <div v-if="newsWorldToggle">
-                  <div class="stat-row" v-for="article in newsArticlesWorld.slice(3,100)" :key="article.id" >
+                  <div class="stat-row" v-for="article in newsArticlesWorld.slice(5,100)" :key="article.id" >
                     <a :href="article.url">{{ article.title }}</a><br>
                     <small class="text-black-50 font-percentage">- {{ article.source.name }}</small>
                   </div>
@@ -530,7 +532,15 @@
 
             <div class="card">
               <div class="card-header">
-                 <h4>TOP 10 COUNTRIES</h4>
+                 <h4>TOP <select v-model="topDropDownInt" @change="getData(sortBy)">
+                          <option>{{ topDropDownInt }}</option>
+                          <option>5</option>
+                          <option>10</option>
+                          <option>25</option>
+                          <option>50</option>
+                        </select>
+                   
+                    COUNTRIES</h4>
                 <div class="row">
                   <div class="col-auto">
                     Sort By
@@ -548,8 +558,17 @@
               </div>
             </div>
 
+            <div class="card p-1">
+               <radar-chart
+                  :chart-data="topChartData"
+                  :options="topChartOptions"/>
+                
+            </div>
 
-            <div class="card mb-2" v-for="country in countriesData.slice(0,10)" :key="country.country">
+           
+
+
+            <div class="card mb-0" v-for="country in countriesData.slice(0,topDropDownInt)" :key="country.country">
               <div class="card-header">
                <div class="row">
                     <div class="col-3">
@@ -566,14 +585,78 @@
 
                   <div class="row">
                   <div class="col my-auto">
-                    <div class="border-bottom my-2">TODAY'S STATS</div>
+                    
+
                     <div class="stat-row">
                       <div class="row">
                         <div class="col-auto">
-                          <p class="text-secondary font-weight-bold">Cases</p>
+                          <span class="text-secondary font-weight-bold">Cases</span>
                         </div>
                         <div class="col text-right">
-                          <h5>
+                          <h5 class="m-0">
+                            {{ new Intl.NumberFormat().format(country.cases) }}
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="stat-row">
+                      <div class="row">
+                        <div class="col-auto">
+                          <span class="text-danger font-weight-bold">Deaths</span>
+                        </div>
+                        <div class="col text-right">
+                          <h5 class="text-danger m-0">
+                            <small class="text-black-50 font-percent"
+                              >({{
+                                ((country.deaths / country.cases) * 100).toFixed(2)
+                              }}%)</small
+                            >
+                            {{ new Intl.NumberFormat().format(country.deaths) }}
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+
+                      <div class="stat-row">
+                        <div class="row">
+                          <div class="col-auto my-auto">
+                            <span class="text-success font-weight-bold">
+                              Recovered
+                            </span>
+                          </div>
+                          <div class="col text-right">
+                            <h5 class="m-0 text-success">
+                              <small class="text-black-50 font-percent m-0"
+                                >({{
+                                  ((country.recovered / country.cases) * 100).toFixed(2)}}%)</small>
+                              {{
+                                new Intl.NumberFormat().format(country.recovered)
+                              }}
+                            </h5>
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="mt-3">
+                      <a
+                        v-show="!topInfoToggle"
+                        v-on:click="toggleTopInfo"
+                        class="btn btn-sm btn-success text-white"
+                        >+more info</a
+                      >
+                    </div>
+
+                    <div v-show="topInfoToggle">
+
+                      <div class="border-bottom my-2">TODAY'S STATS</div>
+                    <div class="stat-row">
+                      <div class="row">
+                        <div class="col-auto">
+                          <span class="text-secondary font-weight-bold">Cases</span>
+                        </div>
+                        <div class="col text-right">
+                          <h5 class="m-0">
                             {{
                               new Intl.NumberFormat().format(country.todayCases)
                             }}
@@ -585,10 +668,10 @@
                     <div class="stat-row">
                       <div class="row">
                         <div class="col-auto">
-                          <p class="text-danger font-weight-bold">Deaths</p>
+                          <span class="text-danger font-weight-bold">Deaths</span>
                         </div>
                         <div class="col text-right">
-                          <h5 class="text-danger">
+                          <h5 class="text-danger m-0">
                             <small
                               class="text-black-50 font-percent"
                               v-show="country.todayCases > 0"
@@ -608,79 +691,17 @@
                     </div>
 
                     <div class="border-bottom mb-2 mt-4">ALL TIME STATS</div>
-
-                    <div class="stat-row">
-                      <div class="row">
-                        <div class="col-auto">
-                          <p class="text-secondary font-weight-bold">Cases</p>
-                        </div>
-                        <div class="col text-right">
-                          <h5>
-                            {{ new Intl.NumberFormat().format(country.cases) }}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="stat-row">
-                      <div class="row">
-                        <div class="col-auto">
-                          <p class="text-danger font-weight-bold">Deaths</p>
-                        </div>
-                        <div class="col text-right">
-                          <h5 class="text-danger">
-                            <small class="text-black-50 font-percent"
-                              >({{
-                                ((country.deaths / country.cases) * 100).toFixed(2)
-                              }}%)</small
-                            >
-                            {{ new Intl.NumberFormat().format(country.deaths) }}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-
-                      <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto my-auto">
-                            <p class="text-success font-weight-bold">
-                              Recovered
-                            </p>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0 text-success">
-                              <small class="text-black-50 font-percent m-0"
-                                >({{
-                                  ((country.recovered / country.cases) * 100).toFixed(2)}}%)</small>
-                              {{
-                                new Intl.NumberFormat().format(country.recovered)
-                              }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-
-                    <div class="mt-3">
-                      <a
-                        v-show="!worldInfoToggle"
-                        v-on:click="toggleWorldInfo"
-                        class="btn btn-sm btn-success text-white"
-                        >+more info</a
-                      >
-                    </div>
-
-                    <div v-show="worldInfoToggle">
                     
 
                       <div class="stat-row">
                         <div class="row">
                           <div class="col-auto">
-                            <p class="text-secondary font-weight-bold">
+                            <span class="text-secondary font-weight-bold">
                               Active Cases
-                            </p>
+                            </span>
                           </div>
                           <div class="col text-right">
-                            <h5>
+                            <h5 class="m-0">
                               {{ new Intl.NumberFormat().format(country.active) }}
                             </h5>
                           </div>
@@ -690,12 +711,12 @@
                       <div class="stat-row">
                         <div class="row">
                           <div class="col-auto">
-                            <p class="text-secondary font-weight-bold">
+                            <span class="text-secondary font-weight-bold">
                               Critical Cases
-                            </p>
+                            </span>
                           </div>
                           <div class="col text-right">
-                            <h5>
+                            <h5 class="m-0">
                               {{
                                 new Intl.NumberFormat().format(country.critical)
                               }}
@@ -707,12 +728,12 @@
                       <div class="stat-row">
                         <div class="row">
                           <div class="col-auto">
-                            <p class="text-secondary font-weight-bold">
+                            <span class="text-secondary font-weight-bold">
                               Cases Per Million
-                            </p>
+                            </span>
                           </div>
                           <div class="col text-right">
-                            <h5>
+                            <h5 class="m-0">
                               {{
                                 new Intl.NumberFormat().format(country.casesPerOneMillion)
                               }}
@@ -724,12 +745,12 @@
                       <div class="stat-row">
                         <div class="row">
                           <div class="col-auto">
-                            <p class="text-secondary font-weight-bold">
+                            <span class="text-secondary font-weight-bold">
                               Deaths Per Million
-                            </p>
+                            </span>
                           </div>
                           <div class="col text-right">
-                            <h5>
+                            <h5 class="m-0">
                               {{
                                 new Intl.NumberFormat().format(
                                   country.deathsPerOneMillion
@@ -762,9 +783,10 @@
 <script>
 const covid = require("novelcovid");
 import LineChart from './LineChartComponent'
+import RadarChart from './RadarChartComponent'
 
 export default {
-  components: { LineChart },
+  components: { LineChart,RadarChart },
   props:['newsSa','newsWorld','historicalData'],
 
   data: function() {
@@ -804,6 +826,19 @@ export default {
 				}
 			},
 
+      topChartData: null,
+			topChartOptions: {
+				responsive: true,
+				legend: {
+					position: 'top',
+				},				
+				scale: {
+					ticks: {
+						beginAtZero: true
+					}
+				}
+			},
+
       
 
       countriesData: [],
@@ -837,13 +872,18 @@ export default {
 
       worldInfoToggle: false,
       countryInfoToggle: false,
+      topInfoToggle: false,
       newsSaToggle: false,
-      newsWorldToggle: false
+      newsWorldToggle: false,
+
+      topDropDownInt:5,
+
+      sortBy:'deaths'
     };
   },
 
   mounted() {
-    this.getData('deaths')
+    this.getData(this.sortBy)
     // this.saHistoricalChartData = this.historicalDataSa.timeline.cases  
     // console.log(this.newsSa);
     //  console.log(this.newsWorld);
@@ -884,6 +924,33 @@ export default {
           this.newsArticlesWorld.push(article)
         })
 
+        //set top countries radar chart
+        this.topChartData = {
+            labels: this.getTopLabels(),
+            datasets: [{
+              label: 'Deaths',
+              backgroundColor:  "#F00",
+              borderColor: "#F00",
+              data: this.getTopDeaths(),
+              fill: false,
+            }, 
+            {
+              label: 'Cases',
+              fill: false,
+              backgroundColor: "#333",
+              borderColor: "#333",
+              data: this.getTopCases(),
+            },
+            {
+              label: 'Recovered',
+              fill: false,
+              backgroundColor: "#38c172",
+              borderColor: "#38c172",
+              data: this.getTopRecovered(),
+            }
+            ]
+          }
+
         let c = this.$cookie.get('country');
         if(c != undefined && c != null){
           
@@ -910,6 +977,9 @@ export default {
     toggleCountryInfo() {
       this.countryInfoToggle = !this.countryInfoToggle;
     },
+    toggleTopInfo() {
+      this.topInfoToggle = !this.topInfoToggle;
+    },
     toggleNewsSa() {
       this.newsSaToggle = !this.newsSaToggle;
     },
@@ -918,6 +988,7 @@ export default {
     },
     onChangeSort(event){
       this.getData(event.target.value)
+      this.sortBy = event.target.value;
     },
     getCountryStats(country) {     
 
@@ -1001,6 +1072,34 @@ export default {
       })
       return arr;
     },  
+    getTopLabels(){
+      let arr = [];
+      for (let i = 0; i < this.topDropDownInt; i++) {
+        arr.push(this.countriesData[i].country);
+      }
+      return arr;
+    },  
+     getTopDeaths(){
+      let arr = [];
+      for (let i = 0; i < this.topDropDownInt; i++) {
+        arr.push(this.countriesData[i].deaths);
+      }
+      return arr;
+    },  
+     getTopCases(){
+      let arr = [];
+      for (let i = 0; i < this.topDropDownInt; i++) {
+        arr.push(this.countriesData[i].cases);
+      }
+      return arr;
+    }, 
+     getTopRecovered(){
+      let arr = [];
+      for (let i = 0; i < this.topDropDownInt; i++) {
+        arr.push(this.countriesData[i].recovered);
+      }
+      return arr;
+    },  
     compare(a, b) {
       // Use toUpperCase() to ignore character casing
       const countryA = a.name.toUpperCase();
@@ -1025,6 +1124,6 @@ export default {
   border-bottom: solid 1px #eee;
 }
 .font-percent {
-  font-size: 12px;
+  font-size: 10px;
 }
 </style>

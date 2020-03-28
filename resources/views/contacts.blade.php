@@ -1,20 +1,47 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container mt-5">
+    <div class="container">
           <div class="row">
                 <div class="col-12">
-                      <h1>South Africa</h1>
-                      <hr>
-                      <h5>24-HOUR HOTLINE NUMBER:</h5>
-                       <a href="0800 029 999">0800 029 999</a> 
+                      <div class="card my-3">
+                        <div class="card-header">
+                              <h5 class="m-0">South Africa Contacts</h5>
+                        </div>                             
+                      </div>
+                      
+                     
+                      <h5>24-HOUR Hotline Number:</h5>
+                       <a href="tel:0800 029 999"><strong> 0800 029 999</strong> </a> 
                         
                 </div>
                 <hr>
-                <div class="col-12 mt-5">
-                  <h5>WHATSAPP INFO GROUP</h5>
+                <div class="col-12 mt-2">
+                  <h5>Whatsapp Info Group</h5>
                   <p>
-                        For the latest information on Covid-19 you can join the official South African government Covid-19 WhatsApp group. Save the number,<strong><a href="https://wa.me/27600123456"> 060 012 3456</a> </strong> on your WhatsApp contact list and then say 'Hi' to be added to the group. You will receive a welcome notification and can then select from the menu what type of information you would like.
+                        Join the official South African government Covid-19 WhatsApp group. Save the number,<strong><a href="https://wa.me/27600123456"> 060 012 3456</a> </strong> on your WhatsApp contact list and then say 'Hi' to be added to the group.
                   </p>
+
+                  <h5>South African Police Service (SAPS)</h5>
+
+                  <a href="tel:0860010111"><strong> 08600 10111</strong> </a>
+
+                  <br> <br>
+
+                  <h5>National Institute for Communicable Diseases (NICD)</h5>
+
+                  <a href="tel:0800029999"><strong> 0800 029 999</strong> </a>
+
+                  <br> <br>
+
+                  <h5>Report illegal price increases</h5>
+
+                  <a href="tel:0800141800"><strong> 0800 141 800</strong> </a>
+
+                  <br> <br>
+
+                  <h5>Assistance for small businesses</h5>
+
+                  <a href="tel:08606637867"><strong> 0860 663 7867</strong> </a>
 
                 </div>
           </div>
