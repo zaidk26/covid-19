@@ -1,0 +1,19 @@
+version: '3.1'
+services:
+
+  #Node Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: covid-19-app
+    container_name: covid-19-app
+    restart: unless-stopped
+    tty: true
+    working_dir: /app
+    ports: 
+      - 9088:9088
+    volumes:
+      - ./:/app
+      - /app/node_modules 
+    command: npm run serve -- --port 9088 --fix

@@ -1,0 +1,60 @@
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  background-color: #F9F9F9;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  font-family: 'Quantico', sans-serif;
+}
+
+.container {
+  max-width: 500px;
+}
+
+.card {
+  border-radius: 0;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.badge {
+  border-radius: 0;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+header {
+  line-height: 1;
+  height: 70px;
+  padding-top: 15px;
+  border-bottom: solid 1px #eee;
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:20px;
+	right:20px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}

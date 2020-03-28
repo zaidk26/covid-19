@@ -1,0 +1,23 @@
+body{
+  background-color: #F9F9F9;
+  font-family: 'Montserrat', sans-serif;
+}
+h1,h2,h3,h4,h5,h6{
+  font-weight: bold;
+  font-family: 'Quantico', sans-serif;
+}
+.container{
+  max-width: 500px;
+}
+.card{
+  border-radius: 0;
+}
+.pointer{
+  cursor: pointer;
+}
+.badge{
+  border-radius: 0;
+}
+.btn{
+  border-radius: 0;
+}
