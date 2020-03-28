@@ -20,7 +20,7 @@
         <div class="row mt-3">
           <div class="col">
             <div class="card">
-              <div class="card-header bg-white">
+              <div class="card-header">
                 <div class="row no-gutters">
                   <div class="col-auto">
                     <img :src="selectedCountry.flag" height="26" class="mr-1" :alt="selectedCountry.name" />
@@ -236,15 +236,30 @@
           </div>
         </div>
 
+        <!-- History Graph -->
+        <div class="row mt-0">
+          <div class="col">
+            <div class="card p-2">
+                  <line-chart
+                  :chart-data="historicalChartData"
+                  :options="historicalChartOptions"/>
+                </div>
+            </div>       
+        </div>
+
+
+
+
+        <!-- sa News -->
         <div class="row mt-5" v-if="selectedCountry.name == 'South Africa'">
           <div class="col">
             <div class="card">
-              <div class="card-header bg-white">
+              <div class="card-header">
                 <h4 class="m-0">News Headlines</h4>
                 <small class="text-black-50 m-0">South African Headlines</small>
               </div>
               <div class="card-body">
-                <div class="stat-row" v-for="article in newsArticlesSa.slice(0,3)" :key="article.id">
+                <div class="stat-row" v-for="article in newsArticlesSa.slice(0,5)" :key="article.id">
                   <a :href="article.url">{{ article.title }}</a><br>
                   <small class="text-black-50 font-percentage">- {{ article.source.name }}</small>
                 </div>
@@ -258,7 +273,7 @@
                   >
                 </div>
                 <div v-if="newsSaToggle">
-                  <div class="stat-row" v-for="article in newsArticlesSa.slice(3,100)" :key="article.id" >
+                  <div class="stat-row" v-for="article in newsArticlesSa.slice(5,100)" :key="article.id" >
                     <a :href="article.url">{{ article.title }}</a><br>
                     <small class="text-black-50 font-percentage">- {{ article.source.name }}</small>
                   </div>
@@ -273,7 +288,7 @@
         <div class="row mt-5">
           <div class="col">
             <div class="card">
-              <div class="card-header bg-white">
+              <div class="card-header">
                 <div class="row">
                   <div class="col-auto">
                     <img src="/img/world.png" alt="world" />
@@ -479,7 +494,7 @@
          <div class="row mt-5">
           <div class="col">
             <div class="card">
-              <div class="card-header bg-white">
+              <div class="card-header">
                 <h4 class="m-0">World News Headlines</h4>
                 <small class="text-black-50 m-0">Global Headlines</small>
               </div>
@@ -514,7 +529,7 @@
           <div class="col">
 
             <div class="card">
-              <div class="card-header bg-white">
+              <div class="card-header">
                  <h4>TOP 10 COUNTRIES</h4>
                 <div class="row">
                   <div class="col-auto">
@@ -534,14 +549,14 @@
             </div>
 
 
-            <div class="card mt-3" v-for="country in countriesData.slice(0,10)" :key="country.country">
-              <div class="card-header bg-white">
+            <div class="card mb-2" v-for="country in countriesData.slice(0,10)" :key="country.country">
+              <div class="card-header">
                <div class="row">
                     <div class="col-3">
                        <img :src="country.countryInfo.flag" height="26" :alt="country.country">
                     </div>
                     <div class="col my-auto">
-                      <h5>{{ country.country }}</h5>
+                      <h4>{{ country.country }}</h4>
                     </div>
                   </div>
                 
@@ -738,20 +753,58 @@
       </div>
     </main>
 
+   
+
     
   </div>
 </template>
 
 <script>
 const covid = require("novelcovid");
+import LineChart from './LineChartComponent'
 
 export default {
-
-  props:['newsSa','newsWorld'],
+  components: { LineChart },
+  props:['newsSa','newsWorld','historicalData'],
 
   data: function() {
     return {
       updatedAt: '',
+
+      historicalChartData: null,
+			historicalChartOptions: {
+				responsive: true,
+				title: {
+					display: true,
+					text: '2020 Data'
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Day'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Value'
+						}
+					}]
+				}
+			},
+
+      
 
       countriesData: [],
       countriesAffected: 0,
@@ -791,6 +844,7 @@ export default {
 
   mounted() {
     this.getData('deaths')
+    // this.saHistoricalChartData = this.historicalDataSa.timeline.cases  
     // console.log(this.newsSa);
     //  console.log(this.newsWorld);
 
@@ -882,6 +936,25 @@ export default {
           this.countryRecovered = element.recovered;
           this.countryCasesPerMil = element.casesPerOneMillion;
           this.countryDeathsPerMil = element.deathsPerOneMillion;
+
+          this.historicalChartOptions.title.text = "Historical Data"
+
+          this.historicalChartData = {
+            labels: this.getLabels(country),
+            datasets: [{
+              label: 'Deaths',
+              backgroundColor:  "#F00",
+              borderColor: "#F00",
+              data: this.getHistoricalDeaths(country),
+              fill: false,
+            }, {
+              label: 'Cases',
+              fill: false,
+              backgroundColor: "#333",
+              borderColor: "#333",
+              data: this.getHistoricalCases(country),
+            }]
+          }
         }
       });
       this.getCountryNews();
@@ -895,6 +968,39 @@ export default {
         this.newsArticlesSa.push(article)
       })
     },
+    getLabels(country){
+      let arr = [];
+      this.historicalData.forEach( elem => {
+        if(elem.country == country.toLowerCase()){
+          for (let key in elem.timeline.cases) {
+            arr.push(key)
+          }         
+        }
+      })
+      return arr;
+    },  
+     getHistoricalDeaths(country){
+      let arr = [];
+      this.historicalData.forEach( elem => {
+        if(elem.country == country.toLowerCase()){
+          for (let key in elem.timeline.deaths) {
+            arr.push(elem.timeline.deaths[key])
+          }         
+        }
+      })
+      return arr;
+    },  
+     getHistoricalCases(country){
+      let arr = [];
+      this.historicalData.forEach( elem => {
+        if(elem.country == country.toLowerCase()){
+          for (let key in elem.timeline.cases) {  
+            arr.push(elem.timeline.cases[key])
+          }         
+        }
+      })
+      return arr;
+    },  
     compare(a, b) {
       // Use toUpperCase() to ignore character casing
       const countryA = a.name.toUpperCase();

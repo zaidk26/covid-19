@@ -16,12 +16,20 @@ use Illuminate\Support\Facades\Cache;
 
 Route::get('/', function () {
     $newsSa = Cache::remember('newsSa',900, function () {
-        return Http::get('https://newsapi.org/v2/top-headlines?q=corona&country=za&sortBy=publishedAt&apiKey='.env('NEWS_API_KEY'))->body();
+        return Http::get('https://newsapi.org/v2/top-headlines?q=corona&country=za&pageSize=100&sortBy=publishedAt&apiKey='.env('NEWS_API_KEY'))->body();
     });   
     $newsWorld = Cache::remember('newsWorld',900, function () {
         return Http::get('https://newsapi.org/v2/top-headlines?q=corona&pageSize=100&language=en&page=1&sortBy=publishedAt&apiKey='.env('NEWS_API_KEY'))->body();
+    });  
+    
+    $historicalData = Cache::remember('historicalData',30000, function () {
+        return Http::get('https://corona.lmao.ninja/v2/historical')->body();
     });   
-    return view('welcome',['newsSa' => $newsSa, 'newsWorld' => $newsWorld]);
+    
+    return view('welcome',
+        ['newsSa' => $newsSa, 
+        'newsWorld' => $newsWorld, 
+        'historicalData' => $historicalData]);
 });
 
 Route::get('/symptoms', function () {    
