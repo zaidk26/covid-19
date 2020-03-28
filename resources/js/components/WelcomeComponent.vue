@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div class="container mt-3 text-center">
+    <div class="container mt-4 text-center">
       <div class="row">
         <div class="col">
           <div class="card" style="background:transparent;">
             <div class="card-body">
-              <p class="m-0">Updated At:<strong> {{ updatedAt }}</strong></p>
+              <small class="text-black-50 font-percent">UPDATED AT</small>
+              <p class="m-0"><strong> {{ updatedAt }}</strong></p>
             </div>
           </div>           
         </div>
@@ -13,16 +14,16 @@
     </div>
    
 
-    <main class="mb-3 mt-1">
+    <main class="mb-3 mt-0">
       <div class="container">
 
-           <div class="row mt-5">
+        <div class="row mt-3">
           <div class="col">
             <div class="card">
               <div class="card-header bg-white">
                 <div class="row no-gutters">
                   <div class="col-auto">
-                    <img :src="selectedCountry.flag" height="26" class="mr-1" />
+                    <img :src="selectedCountry.flag" height="26" class="mr-1" :alt="selectedCountry.name" />
                   </div>
                   <div class="col">
                     <select
@@ -44,7 +45,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col my-auto">
-                    <span class="btn btn-outline-secondary my-3 btn-sm">TODAY'S STATS</span>
+                    <div class="border-bottom my-2">TODAY'S STATS</div>
                     <div class="stat-row">
                       <div class="row">
                         <div class="col-auto">
@@ -85,7 +86,7 @@
                       </div>
                     </div>
 
-                    <span class="btn btn-outline-secondary my-3 btn-sm">ALL TIME STATS</span>
+                    <div class="border-bottom mb-2 mt-4">ALL TIME STATS</div>
                     <div class="stat-row">
                       <div class="row">
                         <div class="col-auto">
@@ -105,7 +106,7 @@
                           <p class="text-danger font-weight-bold">Deaths</p>
                         </div>
                         <div class="col text-right">
-                          <h5>
+                          <h5 class="text-danger">
                             <small class="text-black-50 font-percent"
                               >({{
                                 ((countryDeaths / countryCases) * 100).toFixed(
@@ -119,17 +120,7 @@
                       </div>
                     </div>
 
-                    <div class="mt-3">
-                      <a
-                        v-show="!countryInfoToggle"
-                        v-on:click="toggleCountryInfo"
-                        class="btn btn-sm btn-success text-white"
-                        >+more info</a
-                      >
-                    </div>
-
-                    <div v-show="countryInfoToggle">
-                      <div class="stat-row">
+                    <div class="stat-row">
                         <div class="row">
                           <div class="col-auto my-auto">
                             <p class="text-success font-weight-bold">
@@ -153,6 +144,18 @@
                           </div>
                         </div>
                       </div>
+
+                    <div class="mt-3">
+                      <a
+                        v-show="!countryInfoToggle"
+                        v-on:click="toggleCountryInfo"
+                        class="btn btn-sm btn-success text-white"
+                        >+more info</a
+                      >
+                    </div>
+
+                    <div v-show="countryInfoToggle">
+                      
 
                       <div class="stat-row">
                         <div class="row">
@@ -266,13 +269,14 @@
           </div>
         </div>
 
+        <!-- world Data -->
         <div class="row mt-5">
           <div class="col">
             <div class="card">
               <div class="card-header bg-white">
                 <div class="row">
                   <div class="col-auto">
-                    <img src="/img/world.png" />
+                    <img src="/img/world.png" alt="world" />
                   </div>
                   <div class="col-auto">
                     <h5 class="m-0 p-0">The World</h5>
@@ -286,7 +290,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col my-auto">
-                    <span class="btn btn-outline-secondary my-3 btn-sm">TODAY'S STATS</span>
+                    <div class="border-bottom my-2">TODAY'S STATS</div>
                     <div class="stat-row">
                       <div class="row">
                         <div class="col-auto">
@@ -327,7 +331,7 @@
                       </div>
                     </div>
 
-                    <span class="btn btn-outline-secondary my-3 btn-sm">ALL TIME STATS</span>
+                    <div class="border-bottom mt-4 mb-2">ALL TIME STATS</div>
 
                     <div class="stat-row">
                       <div class="row">
@@ -360,17 +364,7 @@
                       </div>
                     </div>
 
-                    <div class="mt-3">
-                      <a
-                        v-show="!worldInfoToggle"
-                        v-on:click="toggleWorldInfo"
-                        class="btn btn-sm btn-success text-white"
-                        >+more info</a
-                      >
-                    </div>
-
-                    <div v-show="worldInfoToggle">
-                      <div class="stat-row">
+                    <div class="stat-row">
                         <div class="row">
                           <div class="col-auto my-auto">
                             <p class="text-success font-weight-bold">
@@ -393,6 +387,18 @@
                           </div>
                         </div>
                       </div>
+
+                    <div class="mt-3">
+                      <a
+                        v-show="!worldInfoToggle"
+                        v-on:click="toggleWorldInfo"
+                        class="btn btn-sm btn-success text-white"
+                        >+more info</a
+                      >
+                    </div>
+
+                    <div v-show="worldInfoToggle">
+                      
 
                       <div class="stat-row">
                         <div class="row">
@@ -509,7 +515,7 @@
 
             <div class="card">
               <div class="card-header bg-white">
-                 <h4>TOP 50 COUNTRIES</h4>
+                 <h4>TOP 10 COUNTRIES</h4>
                 <div class="row">
                   <div class="col-auto">
                     Sort By
@@ -528,13 +534,13 @@
             </div>
 
 
-            <div class="card mt-3" v-for="country in countriesData.slice(0,50)" :key="country.country">
+            <div class="card mt-3" v-for="country in countriesData.slice(0,10)" :key="country.country">
               <div class="card-header bg-white">
                <div class="row">
                     <div class="col-3">
                        <img :src="country.countryInfo.flag" height="26" :alt="country.country">
                     </div>
-                    <div class="col">
+                    <div class="col my-auto">
                       <h5>{{ country.country }}</h5>
                     </div>
                   </div>
@@ -545,7 +551,7 @@
 
                   <div class="row">
                   <div class="col my-auto">
-                    <span class="btn btn-outline-secondary my-3 btn-sm">TODAY'S STATS</span>
+                    <div class="border-bottom my-2">TODAY'S STATS</div>
                     <div class="stat-row">
                       <div class="row">
                         <div class="col-auto">
@@ -586,7 +592,7 @@
                       </div>
                     </div>
 
-                    <span class="btn btn-outline-secondary my-3 btn-sm">ALL TIME STATS</span>
+                    <div class="border-bottom mb-2 mt-4">ALL TIME STATS</div>
 
                     <div class="stat-row">
                       <div class="row">
@@ -795,7 +801,7 @@ export default {
       
       (async () => {
         this.countriesData = await covid.getCountry({sort:sort});
-        console.log(this.countriesData);
+        //console.log(this.countriesData);
 
         //World Stats
         this.countriesList = []
@@ -909,7 +915,7 @@ export default {
 <style scoped>
 
 .stat-row {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   border-bottom: solid 1px #eee;
 }
 .font-percent {

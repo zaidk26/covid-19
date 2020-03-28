@@ -43,7 +43,7 @@ header {
   line-height: 1;
   height: 70px;
   padding-top: 15px;
-  border-bottom: solid 1px #eee;
+  border-bottom: solid 1px #DDD;
 }
 
 .float{
@@ -57,4 +57,37 @@ header {
 	border-radius:50px;
 	text-align:center;
 	box-shadow: 2px 2px 3px #999;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  border-radius: 0;
+}
+
+
+.resp-sharing-button {
+  font-size: 13px;
+  transition: 25ms ease-out;
+  padding: .5em .8em;
+}
+
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff;
+  margin-right: .5em;
+  display: inline-block;
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25d366;
+  border-color: #25d366;
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
 }

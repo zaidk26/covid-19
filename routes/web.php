@@ -23,3 +23,11 @@ Route::get('/', function () {
     });   
     return view('welcome',['newsSa' => $newsSa, 'newsWorld' => $newsWorld]);
 });
+
+Route::get('/symptoms', function () {    
+    return view('symptoms');
+});
+
+Route::get('/contacts', function () {    
+    return view('contacts');
+});
