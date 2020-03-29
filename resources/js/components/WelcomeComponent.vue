@@ -1,1129 +1,1467 @@
 <template>
-  <div>
+    <div>
+        <div class="container">
+            <div class="row mt-5">
+                <!-- country data column-->
+                <div class="col-lg-4">
+                    <!-- country data -->
+                    <div class="border p-3">
+                        <div class="row">
+                            <div class="col">
+                                <h4>Select a Country</h4>
+                            </div>
+                        </div>
 
-    <!-- Updated -->
-    <div class="container mt-4 text-center">     
-      <div class="row">
-        <div class="col">
-          <div class="border p-1">
-            
-              <small class="text-black-50 font-percent">UPDATED AT</small>
-              <p class="m-0"><strong> {{ updatedAt }}</strong></p>
-           
-          </div>           
+                        <div class="row no-gutters">
+                            <div class="col-auto">
+                                <img
+                                    :src="selectedCountry.flag"
+                                    height="26"
+                                    class="mr-2"
+                                    :alt="selectedCountry.name"
+                                />
+                            </div>
+                            <div class="col">
+                                <select
+                                    v-model="selectedCountry"
+                                    class="form-control form-control-sm"
+                                    @change="onChangeCountry()"
+                                >
+                                    <option
+                                        v-for="country in countriesList"
+                                        :key="country.id"
+                                        :value="country"
+                                        >{{ country.name }}</option
+                                    >
+                                </select>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                            <div class="col my-auto">
+                                <div class="font-weight-bold my-2">
+                                    TODAY'S STATS
+                                </div>
+                                <div class="stat-row">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <span class="text-secodary "
+                                                >Cases</span
+                                            >
+                                        </div>
+                                        <div class="col text-right">
+                                            <h5 class="m-0">
+                                                {{
+                                                    new Intl.NumberFormat().format(
+                                                        countryCasesToday
+                                                    )
+                                                }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stat-row">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <span class="text-danger "
+                                                >Deaths</span
+                                            >
+                                        </div>
+                                        <div class="col text-right">
+                                            <h5 class="text-danger m-0">                                               
+                                                {{
+                                                    new Intl.NumberFormat().format(
+                                                        countryDeathsToday
+                                                    )
+                                                }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="font-weight-bold mb-2 mt-4">
+                                    ALL TIME STATS
+                                </div>
+                                <div class="stat-row">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <span class="text-secodary "
+                                                >Cases</span
+                                            >
+                                        </div>
+                                        <div class="col text-right">
+                                            <h5 class="m-0">
+                                                {{
+                                                    new Intl.NumberFormat().format(
+                                                        countryCases
+                                                    )
+                                                }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stat-row">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <span class="text-danger "
+                                                >Deaths</span
+                                            >
+                                        </div>
+                                        <div class="col text-right">
+                                            <h5 class="text-danger m-0">
+                                                <small
+                                                    class="text-black-50 font-percent"
+                                                    >({{
+                                                        (
+                                                            (countryDeaths /
+                                                                countryCases) *
+                                                            100
+                                                        ).toFixed(2)
+                                                    }}%)</small
+                                                >
+                                                {{
+                                                    new Intl.NumberFormat().format(
+                                                        countryDeaths
+                                                    )
+                                                }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stat-row">
+                                    <div class="row">
+                                        <div class="col-auto my-auto">
+                                            <span class="text-success ">
+                                                Recovered
+                                            </span>
+                                        </div>
+                                        <div class="col text-right">
+                                            <h5 class="m-0 text-success">
+                                                <small
+                                                    class="text-black-50 font-percent m-0"
+                                                    >({{
+                                                        (
+                                                            (countryRecovered /
+                                                                countryCases) *
+                                                            100
+                                                        ).toFixed(2)
+                                                    }}%)</small
+                                                >
+                                                {{
+                                                    new Intl.NumberFormat().format(
+                                                        countryRecovered
+                                                    )
+                                                }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <a
+                                        v-show="!countryInfoToggle"
+                                        v-on:click="toggleCountryInfo"
+                                        class="btn btn-sm btn-light"
+                                        >more stats +</a
+                                    >
+                                </div>
+                                <div v-show="countryInfoToggle">
+                                    <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span>
+                                                    Active Cases
+                                                </span>
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="m-0">
+                                                    {{
+                                                        new Intl.NumberFormat().format(
+                                                            countryActive
+                                                        )
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span>
+                                                    Critical Cases
+                                                </span>
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="m-0">
+                                                    {{
+                                                        new Intl.NumberFormat().format(
+                                                            countryCritical
+                                                        )
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span>
+                                                    Cases Per Million
+                                                </span>
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="m-0">
+                                                    {{
+                                                        new Intl.NumberFormat().format(
+                                                            countryCasesPerMil
+                                                        )
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span>
+                                                    Deaths Per Million
+                                                </span>
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="m-0">
+                                                    {{
+                                                        new Intl.NumberFormat().format(
+                                                            countryDeathsPerMil
+                                                        )
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="font-weight-bold mb-2 mt-4">
+                            GLOBAL POSITION
+                        </div>
+
+                        <div class="stat-row">
+                          <div class="row">
+                            <div class="col-auto">
+                              <span>
+                                  By Cases
+                              </span>
+                            </div>
+                            <div class="col text-right">
+                                <h5 class="m-0">
+                                  {{ countryPosGlobalCases }}
+                                  <small class="text-black-50 font-percent">{{ numberSuffix(countryPosGlobalCases) }}</small>
+                                </h5>
+                            </div>
+                          </div>                          
+                        </div>
+
+                        <div class="stat-row">
+                          <div class="row">
+                            <div class="col-auto">
+                              <span>
+                                  By Deaths
+                              </span>
+                            </div>
+                            <div class="col text-right">
+                                <h5 class="m-0">
+                                  {{ countryPosGlobalDeaths }}
+                                  <small class="text-black-50 font-percent">{{ numberSuffix(countryPosGlobalDeaths) }}</small>
+                                </h5>
+                            </div>
+                          </div>                          
+                        </div>
+
+                        
+
+                        <div class="stat-row">
+                          <div class="row">
+                            <div class="col-auto">
+                              <span>
+                                  By Recoveries
+                              </span>
+                            </div>
+                            <div class="col text-right">
+                                <h5 class="m-0">
+                                  {{ countryPosGlobalRecoveries }}
+                                  <small class="text-black-50 font-percent">{{ numberSuffix(countryPosGlobalRecoveries ) }}</small>
+                                </h5>
+                            </div>
+                          </div>                          
+                        </div>
+
+                        <!-- SA News -->
+                        <div v-if="selectedCountry.name == 'South Africa'">
+                            <hr />
+                            <h4 class="mt-3">SA News Headlines</h4>
+
+                            <div>
+                                <div
+                                    class="stat-row"
+                                    v-for="article in newsArticlesSa.slice(
+                                        0,
+                                        5
+                                    )"
+                                    :key="article.id"
+                                >
+                                    <a :href="article.url">{{
+                                        article.title
+                                    }}</a
+                                    ><br />
+                                    <small class="text-black-50 font-percentage"
+                                        >- {{ article.source.name }}</small
+                                    >
+                                </div>
+                                <div class="mt-3">
+                                    <a
+                                        v-show="!newsSaToggle"
+                                        v-on:click="toggleNewsSa"
+                                        class="btn btn-sm btn-light"
+                                        >more articles +</a
+                                    >
+                                </div>
+                                <div v-if="newsSaToggle">
+                                    <div
+                                        class="stat-row"
+                                        v-for="article in newsArticlesSa.slice(
+                                            5,
+                                            100
+                                        )"
+                                        :key="article.id"
+                                    >
+                                        <a :href="article.url">{{
+                                            article.title
+                                        }}</a
+                                        ><br />
+                                        <small
+                                            class="text-black-50 font-percentage"
+                                            >- {{ article.source.name }}</small
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <hr>
+
+                        <!-- past 7 days -->
+                        <line-chart
+                            class="mt-3"
+                            :chart-data="past7ChartData"
+                            :options="past7ChartOptions"
+                        />
+
+                        <hr>
+
+                        <!-- History Graph -->
+                        <line-chart
+                            class="mt-2"
+                            :chart-data="historicalChartData"
+                            :options="historicalChartOptions"
+                        />
+
+                        
+                    </div>
+                </div>
+                <!-- /country column -->
+                <!-- world data column-->
+                <div class="col-lg-4 mt-5 mt-lg-0">
+                    <!-- world Data -->
+                    <div class="border p-3">
+                        <div class="row">
+                            <div class="col-auto">
+                                <img src="/img/world.png" alt="world" />
+                            </div>
+                            <div class="col-auto">
+                                <h4 class="m-0 p-0">The World</h4>
+                                <small class="text-muted m-0 p-0"
+                                    >{{ countriesAffected }} Countries
+                                    affected</small
+                                >
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div>
+                            <div class="row">
+                                <div class="col my-auto">
+                                    <div class="font-weight-bold my-2">
+                                        TODAY'S STATS
+                                    </div>
+                                    <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span class="">Cases</span>
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="m-0">
+                                                    {{
+                                                        new Intl.NumberFormat().format(
+                                                            worldCasesToday
+                                                        )
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span class="text-danger "
+                                                    >Deaths</span
+                                                >
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="text-danger m-0">                                                    
+                                                    {{
+                                                        new Intl.NumberFormat().format(
+                                                            worldDeathsToday
+                                                        )
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="font-weight-bold mt-4 mb-2">
+                                        ALL TIME STATS
+                                    </div>
+                                    <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span class="">Cases</span>
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="m-0">
+                                                    {{
+                                                        new Intl.NumberFormat().format(
+                                                            worldCases
+                                                        )
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span class="text-danger "
+                                                    >Deaths</span
+                                                >
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="text-danger m-0">
+                                                    <small
+                                                        class="text-black-50 font-percent"
+                                                        >({{
+                                                            (
+                                                                (worldDeaths /
+                                                                    worldCases) *
+                                                                100
+                                                            ).toFixed(2)
+                                                        }}%)</small
+                                                    >
+                                                    {{
+                                                        new Intl.NumberFormat().format(
+                                                            worldDeaths
+                                                        )
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto my-auto">
+                                                <span class="text-success ">
+                                                    Recovered
+                                                </span>
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="m-0 text-success">
+                                                    <small
+                                                        class="text-black-50 font-percent m-0"
+                                                        >({{
+                                                            (
+                                                                (worldRecovered /
+                                                                    worldCases) *
+                                                                100
+                                                            ).toFixed(2)
+                                                        }}%)</small
+                                                    >
+                                                    {{
+                                                        new Intl.NumberFormat().format(
+                                                            worldRecovered
+                                                        )
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <a
+                                            v-show="!worldInfoToggle"
+                                            v-on:click="toggleWorldInfo"
+                                            class="btn btn-sm btn-light"
+                                            >more stats +</a
+                                        >
+                                    </div>
+                                    <div v-show="worldInfoToggle">
+                                        <div class="stat-row">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <span>
+                                                        Active Cases
+                                                    </span>
+                                                </div>
+                                                <div class="col text-right">
+                                                    <h5 class="m-0">
+                                                        {{
+                                                            new Intl.NumberFormat().format(
+                                                                worldActive
+                                                            )
+                                                        }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <span>
+                                                        Critical Cases
+                                                    </span>
+                                                </div>
+                                                <div class="col text-right">
+                                                    <h5 class="m-0">
+                                                        {{
+                                                            new Intl.NumberFormat().format(
+                                                                worldCritical
+                                                            )
+                                                        }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <span>
+                                                        Cases Per Million
+                                                    </span>
+                                                </div>
+                                                <div class="col text-right">
+                                                    <h5 class="m-0">
+                                                        {{
+                                                            new Intl.NumberFormat().format(
+                                                                worldCasesPerMil
+                                                            )
+                                                        }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <span>
+                                                        Deaths Per Million
+                                                    </span>
+                                                </div>
+                                                <div class="col text-right">
+                                                    <h5 class="m-0">
+                                                        {{
+                                                            new Intl.NumberFormat().format(
+                                                                worldDeathsPerMil
+                                                            )
+                                                        }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <h4>World News Headlines</h4>
+                            <div>
+                                <div
+                                    class="stat-row"
+                                    v-for="article in newsArticlesWorld.slice(
+                                        0,
+                                        5
+                                    )"
+                                    :key="article.id"
+                                >
+                                    <a :href="article.url">{{
+                                        article.title
+                                    }}</a
+                                    ><br />
+                                    <small class="text-black-50 font-percentage"
+                                        >- {{ article.source.name }}</small
+                                    >
+                                </div>
+                                <div class="mt-3">
+                                    <a
+                                        v-show="!newsWorldToggle"
+                                        v-on:click="toggleNewsWorld"
+                                        class="btn btn-sm btn-light"
+                                        >more articles +</a
+                                    >
+                                </div>
+                                <div v-if="newsWorldToggle">
+                                    <div
+                                        class="stat-row"
+                                        v-for="article in newsArticlesWorld.slice(
+                                            5,
+                                            100
+                                        )"
+                                        :key="article.id"
+                                    >
+                                        <a :href="article.url">{{
+                                            article.title
+                                        }}</a
+                                        ><br />
+                                        <small
+                                            class="text-black-50 font-percentage"
+                                            >- {{ article.source.name }}</small
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /world data column -->
+                <!-- Top 10 data column-->
+                <div class="col-lg-4">
+                    <div class="mt-5 mt-lg-0 border p-3">
+                        <div class="pb-1">
+                            <h4>
+                                Top
+                                <select
+                                    v-model="topDropDownInt"
+                                    @change="getData(sortBy)"
+                                    class="form-control form-control-sm"
+                                    style="width:50px;display:inline;"
+                                >
+                                    <option>{{ topDropDownInt }}</option>
+                                    <option>5</option>
+                                    <option>10</option>
+                                    <option>25</option>
+                                    <option>50</option>
+                                </select>
+                                Countries
+                            </h4>
+                            <div class="row">
+                                <div class="col-auto">
+                                    <h6>Sort By:</h6>
+                                </div>
+                                <div class="col">
+                                    <select
+                                        class="form-control form-control-sm"
+                                        @change="onChangeSort($event)"
+                                    >
+                                        <option selected value="deaths"
+                                            >Deaths</option
+                                        >
+                                        <option value="cases">Cases</option>
+                                        <option value="recovered"
+                                            >Recovered</option
+                                        >
+                                        <option value="todayCases"
+                                            >Cases Today</option
+                                        >
+                                        <option value="todayDeaths"
+                                            >Deaths Today</option
+                                        >
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <radar-chart
+                            class="mb-3"
+                            :chart-data="topChartData"
+                            :options="topChartOptions"
+                        />
+
+                        <div
+                            class="border p-3 mb-3"
+                            v-for="country in countriesData.slice(
+                                0,
+                                topDropDownInt
+                            )"
+                            :key="country.country"
+                        >
+                            <div class="row my-2">
+                                <div class="col-3">
+                                    <img
+                                        :src="country.countryInfo.flag"
+                                        class="img-fluid"
+                                        :alt="country.country"
+                                    />
+                                </div>
+                                <div class="col-9">
+                                    <h4>{{ country.country }}</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col my-auto">
+                                    <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span class="">Cases</span>
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="m-0">
+                                                    {{
+                                                        new Intl.NumberFormat().format(
+                                                            country.cases
+                                                        )
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span class="text-danger "
+                                                    >Deaths</span
+                                                >
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="text-danger m-0">
+                                                    <small
+                                                        class="text-black-50 font-percent"
+                                                        >({{
+                                                            (
+                                                                (country.deaths /
+                                                                    country.cases) *
+                                                                100
+                                                            ).toFixed(2)
+                                                        }}%)</small
+                                                    >
+                                                    {{
+                                                        new Intl.NumberFormat().format(
+                                                            country.deaths
+                                                        )
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto my-auto">
+                                                <span class="text-success ">
+                                                    Recovered
+                                                </span>
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="m-0 text-success">
+                                                    <small
+                                                        class="text-black-50 font-percent m-0"
+                                                        >({{
+                                                            (
+                                                                (country.recovered /
+                                                                    country.cases) *
+                                                                100
+                                                            ).toFixed(2)
+                                                        }}%)</small
+                                                    >
+                                                    {{
+                                                        new Intl.NumberFormat().format(
+                                                            country.recovered
+                                                        )
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <a
+                                            v-show="!topInfoToggle"
+                                            v-on:click="toggleTopInfo"
+                                            class="btn btn-sm btn-light"
+                                            >more stats +</a
+                                        >
+                                    </div>
+                                    <div v-show="topInfoToggle">
+                                        <div class="font-weight-bold my-2">
+                                            TODAY'S STATS
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <span>Cases</span>
+                                                </div>
+                                                <div class="col text-right">
+                                                    <h5 class="m-0">
+                                                        {{
+                                                            new Intl.NumberFormat().format(
+                                                                country.todayCases
+                                                            )
+                                                        }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <span class="text-danger "
+                                                        >Deaths</span
+                                                    >
+                                                </div>
+                                                <div class="col text-right">
+                                                    <h5 class="text-danger m-0">
+                                                        <small
+                                                            class="text-black-50 font-percent"
+                                                            v-show="
+                                                                country.todayCases >
+                                                                    0
+                                                            "
+                                                            >({{
+                                                                (
+                                                                    (country.todayDeaths /
+                                                                        country.todayCases) *
+                                                                    100
+                                                                ).toFixed(2)
+                                                            }}%)</small
+                                                        >
+                                                        {{
+                                                            new Intl.NumberFormat().format(
+                                                                country.todayDeaths
+                                                            )
+                                                        }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="font-weight-bold mb-2 mt-4">
+                                            ALL TIME STATS
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <span>
+                                                        Active Cases
+                                                    </span>
+                                                </div>
+                                                <div class="col text-right">
+                                                    <h5 class="m-0">
+                                                        {{
+                                                            new Intl.NumberFormat().format(
+                                                                country.active
+                                                            )
+                                                        }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <span>
+                                                        Critical Cases
+                                                    </span>
+                                                </div>
+                                                <div class="col text-right">
+                                                    <h5 class="m-0">
+                                                        {{
+                                                            new Intl.NumberFormat().format(
+                                                                country.critical
+                                                            )
+                                                        }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <span>
+                                                        Cases Per Million
+                                                    </span>
+                                                </div>
+                                                <div class="col text-right">
+                                                    <h5 class="m-0">
+                                                        {{
+                                                            new Intl.NumberFormat().format(
+                                                                country.casesPerOneMillion
+                                                            )
+                                                        }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <span>
+                                                        Deaths Per Million
+                                                    </span>
+                                                </div>
+                                                <div class="col text-right">
+                                                    <h5 class="m-0">
+                                                        {{
+                                                            new Intl.NumberFormat().format(
+                                                                country.deathsPerOneMillion
+                                                            )
+                                                        }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /end top 10 data col -->
+            </div>
+            <!-- /row  -->
         </div>
-      </div>
+        <!-- /container  -->
+        <!-- Updated -->
+        <div class="container my-3 text-center">
+            <div class="row">
+                <div class="col-12">
+                    <div class="border p-1">
+                        <small class="text-black-50 font-percent"
+                            >UPDATED AT</small
+                        >
+                        <p class="m-0">
+                            <strong> {{ updatedAt }}</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-   
-
-    <main class="mb-3 mt-0">
-      <div class="container">
-
-        <div class="row mt-3">
-          <div class="col">
-            <div class="card">
-              <div class="card-header">
-                <div class="row no-gutters">
-                  <div class="col-auto">
-                    <img :src="selectedCountry.flag" height="26" class="mr-1" :alt="selectedCountry.name" />
-                  </div>
-                  <div class="col">
-                    <select
-                      v-model="selectedCountry"
-                      class="form-control form-control-sm"
-                      @change="onChangeCountry()"
-                    >
-                      <option
-                        v-for="country in countriesList"
-                        :key="country.id"
-                        :value="country"
-                        >{{ country.name }}</option
-                      >
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card-body">
-                <div class="row">
-                  <div class="col my-auto">
-                    <div class="border-bottom my-2">TODAY'S STATS</div>
-                    <div class="stat-row">
-                      <div class="row">
-                        <div class="col-auto">
-                          <span class="text-secodary font-weight-bold">Cases</span>
-                        </div>
-                        <div class="col text-right">
-                          <h5 class="m-0">
-                            {{
-                              new Intl.NumberFormat().format(countryCasesToday)
-                            }}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="stat-row">
-                      <div class="row">
-                        <div class="col-auto">
-                          <span class="text-danger font-weight-bold">Deaths</span>
-                        </div>
-                        <div class="col text-right">
-                          <h5 class="text-danger m-0">
-                            <small
-                              class="text-black-50 font-percent"
-                              v-show="countryCasesToday > 0"
-                              >({{
-                                (
-                                  (countryDeathsToday / countryCasesToday) *
-                                  100
-                                ).toFixed(2)
-                              }}%)</small
-                            >
-                            {{
-                              new Intl.NumberFormat().format(countryDeathsToday)
-                            }}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="border-bottom mb-2 mt-4">ALL TIME STATS</div>
-                    <div class="stat-row">
-                      <div class="row">
-                        <div class="col-auto">
-                          <span class="text-secodary font-weight-bold">Cases</span>
-                        </div>
-                        <div class="col text-right">
-                          <h5 class="m-0">
-                            {{ new Intl.NumberFormat().format(countryCases) }}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="stat-row">
-                      <div class="row">
-                        <div class="col-auto">
-                          <span class="text-danger font-weight-bold">Deaths</span>
-                        </div>
-                        <div class="col text-right">
-                          <h5 class="text-danger m-0">
-                            <small class="text-black-50 font-percent"
-                              >({{
-                                ((countryDeaths / countryCases) * 100).toFixed(
-                                  2
-                                )
-                              }}%)</small
-                            >
-                            {{ new Intl.NumberFormat().format(countryDeaths) }}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto my-auto">
-                            <span class="text-success font-weight-bold">
-                              Recovered
-                            </span>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0 text-success">
-                              <small class="text-black-50 font-percent m-0"
-                                >({{
-                                  (
-                                    (countryRecovered / countryCases) *
-                                    100
-                                  ).toFixed(2)
-                                }}%)</small
-                              >
-                              {{
-                                new Intl.NumberFormat().format(countryRecovered)
-                              }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-
-                    <div class="mt-3">
-                      <a
-                        v-show="!countryInfoToggle"
-                        v-on:click="toggleCountryInfo"
-                        class="btn btn-sm btn-success text-white"
-                        >+more info</a
-                      >
-                    </div>
-
-                    <div v-show="countryInfoToggle">
-                      
-
-                      <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto">
-                            <span class="text-secondary font-weight-bold">
-                              Active Cases
-                            </span>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0">
-                              {{
-                                new Intl.NumberFormat().format(countryActive)
-                              }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto">
-                            <span class="text-secondary font-weight-bold">
-                              Critical Cases
-                            </span>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0">
-                              {{
-                                new Intl.NumberFormat().format(countryCritical)
-                              }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto">
-                            <span class="text-secondary font-weight-bold">
-                              Cases Per Million
-                            </span>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0">
-                              {{
-                                new Intl.NumberFormat().format(
-                                  countryCasesPerMil
-                                )
-                              }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto">
-                            <span class="text-secondary font-weight-bold">
-                              Deaths Per Million
-                            </span>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0">
-                              {{
-                                new Intl.NumberFormat().format(
-                                  countryDeathsPerMil
-                                )
-                              }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- History Graph -->
-        <div class="row mt-0">
-          <div class="col">
-            <div class="card p-2">
-                  <line-chart
-                  :chart-data="historicalChartData"
-                  :options="historicalChartOptions"/>
-                </div>
-            </div>       
-        </div>
-
-
-
-
-        <!-- sa News -->
-        <div class="row mt-5" v-if="selectedCountry.name == 'South Africa'">
-          <div class="col">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="m-0">News Headlines</h4>
-                <small class="text-black-50 m-0">South African Headlines</small>
-              </div>
-              <div class="card-body">
-                <div class="stat-row" v-for="article in newsArticlesSa.slice(0,5)" :key="article.id">
-                  <a :href="article.url">{{ article.title }}</a><br>
-                  <small class="text-black-50 font-percentage">- {{ article.source.name }}</small>
-                </div>
-
-                <div class="mt-3">
-                  <a
-                    v-show="!newsSaToggle"
-                    v-on:click="toggleNewsSa"
-                    class="btn btn-sm btn-success text-white"
-                    >+more articles</a
-                  >
-                </div>
-                <div v-if="newsSaToggle">
-                  <div class="stat-row" v-for="article in newsArticlesSa.slice(5,100)" :key="article.id" >
-                    <a :href="article.url">{{ article.title }}</a><br>
-                    <small class="text-black-50 font-percentage">- {{ article.source.name }}</small>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- world Data -->
-        <div class="row mt-5">
-          <div class="col">
-            <div class="card">
-              <div class="card-header">
-                <div class="row">
-                  <div class="col-auto">
-                    <img src="/img/world.png" alt="world" />
-                  </div>
-                  <div class="col-auto">
-                    <h5 class="m-0 p-0">The World</h5>
-                    <small class="text-muted m-0 p-0"
-                      >{{ countriesAffected }} Countries affected</small
-                    >
-                  </div>
-                </div>
-              </div>
-
-              <div class="card-body">
-                <div class="row">
-                  <div class="col my-auto">
-                    <div class="border-bottom my-2">TODAY'S STATS</div>
-                    <div class="stat-row">
-                      <div class="row">
-                        <div class="col-auto">
-                          <span class="text-secondary font-weight-bold">Cases</span>
-                        </div>
-                        <div class="col text-right">
-                          <h5 class="m-0">
-                            {{
-                              new Intl.NumberFormat().format(worldCasesToday)
-                            }}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="stat-row">
-                      <div class="row">
-                        <div class="col-auto">
-                          <span class="text-danger font-weight-bold">Deaths</span>
-                        </div>
-                        <div class="col text-right">
-                          <h5 class="text-danger m-0">
-                            <small
-                              class="text-black-50 font-percent"
-                              v-show="worldCasesToday > 0"
-                              >({{
-                                (
-                                  (worldDeathsToday / worldCasesToday) *
-                                  100
-                                ).toFixed(2)
-                              }}%)</small
-                            >
-                            {{
-                              new Intl.NumberFormat().format(worldDeathsToday)
-                            }}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="border-bottom mt-4 mb-2">ALL TIME STATS</div>
-
-                    <div class="stat-row">
-                      <div class="row">
-                        <div class="col-auto">
-                          <span class="text-secondary font-weight-bold">Cases</span>
-                        </div>
-                        <div class="col text-right">
-                          <h5 class="m-0">
-                            {{ new Intl.NumberFormat().format(worldCases) }}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="stat-row">
-                      <div class="row">
-                        <div class="col-auto">
-                          <span class="text-danger font-weight-bold">Deaths</span>
-                        </div>
-                        <div class="col text-right">
-                          <h5 class="text-danger m-0">
-                            <small class="text-black-50 font-percent"
-                              >({{
-                                ((worldDeaths / worldCases) * 100).toFixed(2)
-                              }}%)</small
-                            >
-                            {{ new Intl.NumberFormat().format(worldDeaths) }}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto my-auto">
-                            <span class="text-success font-weight-bold">
-                              Recovered
-                            </span>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0 text-success">
-                              <small class="text-black-50 font-percent m-0"
-                                >({{
-                                  ((worldRecovered / worldCases) * 100).toFixed(
-                                    2
-                                  )
-                                }}%)</small
-                              >
-                              {{
-                                new Intl.NumberFormat().format(worldRecovered)
-                              }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-
-                    <div class="mt-3">
-                      <a
-                        v-show="!worldInfoToggle"
-                        v-on:click="toggleWorldInfo"
-                        class="btn btn-sm btn-success text-white"
-                        >+more info</a
-                      >
-                    </div>
-
-                    <div v-show="worldInfoToggle">
-                      
-
-                      <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto">
-                            <span class="text-secondary font-weight-bold">
-                              Active Cases
-                            </span>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0">
-                              {{ new Intl.NumberFormat().format(worldActive) }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto">
-                            <span class="text-secondary font-weight-bold">
-                              Critical Cases
-                            </span>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0">
-                              {{
-                                new Intl.NumberFormat().format(worldCritical)
-                              }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto">
-                            <span class="text-secondary font-weight-bold">
-                              Cases Per Million
-                            </span>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0">
-                              {{
-                                new Intl.NumberFormat().format(worldCasesPerMil)
-                              }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto">
-                            <span class="text-secondary font-weight-bold">
-                              Deaths Per Million
-                            </span>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0">
-                              {{
-                                new Intl.NumberFormat().format(
-                                  worldDeathsPerMil
-                                )
-                              }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- World News -->
-         <div class="row mt-5">
-          <div class="col">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="m-0">World News Headlines</h4>
-                <small class="text-black-50 m-0">Global Headlines</small>
-              </div>
-              <div class="card-body">
-                <div class="stat-row" v-for="article in newsArticlesWorld.slice(0,5)" :key="article.id">
-                  <a :href="article.url">{{ article.title }}</a><br>
-                  <small class="text-black-50 font-percentage">- {{ article.source.name }}</small>
-                </div>
-
-                <div class="mt-3">
-                  <a
-                    v-show="!newsWorldToggle"
-                    v-on:click="toggleNewsWorld"
-                    class="btn btn-sm btn-success text-white"
-                    >+more articles</a
-                  >
-                </div>
-                <div v-if="newsWorldToggle">
-                  <div class="stat-row" v-for="article in newsArticlesWorld.slice(5,100)" :key="article.id" >
-                    <a :href="article.url">{{ article.title }}</a><br>
-                    <small class="text-black-50 font-percentage">- {{ article.source.name }}</small>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Top 10-->
-        <div class="row mt-5">
-          <div class="col">
-
-            <div class="card">
-              <div class="card-header">
-                 <h4>TOP <select v-model="topDropDownInt" @change="getData(sortBy)">
-                          <option>{{ topDropDownInt }}</option>
-                          <option>5</option>
-                          <option>10</option>
-                          <option>25</option>
-                          <option>50</option>
-                        </select>
-                   
-                    COUNTRIES</h4>
-                <div class="row">
-                  <div class="col-auto">
-                    Sort By
-                  </div>
-                  <div class="col">
-                    <select class="form-control form-control-sm"  @change="onChangeSort($event)">
-                      <option selected value="deaths">Deaths</option>
-                      <option value="cases">Cases</option>
-                      <option value="recovered">Recovered</option>
-                      <option value="todayCases">Cases Today</option>
-                      <option value="todayDeaths">Deaths Today</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card p-1">
-               <radar-chart
-                  :chart-data="topChartData"
-                  :options="topChartOptions"/>
-                
-            </div>
-
-           
-
-
-            <div class="card mb-0" v-for="country in countriesData.slice(0,topDropDownInt)" :key="country.country">
-              <div class="card-header">
-               <div class="row">
-                    <div class="col-3">
-                       <img :src="country.countryInfo.flag" height="26" :alt="country.country">
-                    </div>
-                    <div class="col my-auto">
-                      <h4>{{ country.country }}</h4>
-                    </div>
-                  </div>
-                
-                
-              </div>
-              <div class="card-body">                 
-
-                  <div class="row">
-                  <div class="col my-auto">
-                    
-
-                    <div class="stat-row">
-                      <div class="row">
-                        <div class="col-auto">
-                          <span class="text-secondary font-weight-bold">Cases</span>
-                        </div>
-                        <div class="col text-right">
-                          <h5 class="m-0">
-                            {{ new Intl.NumberFormat().format(country.cases) }}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="stat-row">
-                      <div class="row">
-                        <div class="col-auto">
-                          <span class="text-danger font-weight-bold">Deaths</span>
-                        </div>
-                        <div class="col text-right">
-                          <h5 class="text-danger m-0">
-                            <small class="text-black-50 font-percent"
-                              >({{
-                                ((country.deaths / country.cases) * 100).toFixed(2)
-                              }}%)</small
-                            >
-                            {{ new Intl.NumberFormat().format(country.deaths) }}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-
-                      <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto my-auto">
-                            <span class="text-success font-weight-bold">
-                              Recovered
-                            </span>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0 text-success">
-                              <small class="text-black-50 font-percent m-0"
-                                >({{
-                                  ((country.recovered / country.cases) * 100).toFixed(2)}}%)</small>
-                              {{
-                                new Intl.NumberFormat().format(country.recovered)
-                              }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-
-                    <div class="mt-3">
-                      <a
-                        v-show="!topInfoToggle"
-                        v-on:click="toggleTopInfo"
-                        class="btn btn-sm btn-success text-white"
-                        >+more info</a
-                      >
-                    </div>
-
-                    <div v-show="topInfoToggle">
-
-                      <div class="border-bottom my-2">TODAY'S STATS</div>
-                    <div class="stat-row">
-                      <div class="row">
-                        <div class="col-auto">
-                          <span class="text-secondary font-weight-bold">Cases</span>
-                        </div>
-                        <div class="col text-right">
-                          <h5 class="m-0">
-                            {{
-                              new Intl.NumberFormat().format(country.todayCases)
-                            }}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="stat-row">
-                      <div class="row">
-                        <div class="col-auto">
-                          <span class="text-danger font-weight-bold">Deaths</span>
-                        </div>
-                        <div class="col text-right">
-                          <h5 class="text-danger m-0">
-                            <small
-                              class="text-black-50 font-percent"
-                              v-show="country.todayCases > 0"
-                              >({{
-                                (
-                                  (country.todayDeaths / country.todayCases) *
-                                  100
-                                ).toFixed(2)
-                              }}%)</small
-                            >
-                            {{
-                              new Intl.NumberFormat().format(country.todayDeaths)
-                            }}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="border-bottom mb-2 mt-4">ALL TIME STATS</div>
-                    
-
-                      <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto">
-                            <span class="text-secondary font-weight-bold">
-                              Active Cases
-                            </span>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0">
-                              {{ new Intl.NumberFormat().format(country.active) }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto">
-                            <span class="text-secondary font-weight-bold">
-                              Critical Cases
-                            </span>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0">
-                              {{
-                                new Intl.NumberFormat().format(country.critical)
-                              }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto">
-                            <span class="text-secondary font-weight-bold">
-                              Cases Per Million
-                            </span>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0">
-                              {{
-                                new Intl.NumberFormat().format(country.casesPerOneMillion)
-                              }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="stat-row">
-                        <div class="row">
-                          <div class="col-auto">
-                            <span class="text-secondary font-weight-bold">
-                              Deaths Per Million
-                            </span>
-                          </div>
-                          <div class="col text-right">
-                            <h5 class="m-0">
-                              {{
-                                new Intl.NumberFormat().format(
-                                  country.deathsPerOneMillion
-                                )
-                              }}
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                
-              </div>
-            </div>
-          </div>
-        </div>
-
-       
-      </div>
-    </main>
-
-   
-
-    
-  </div>
 </template>
-
 <script>
 const covid = require("novelcovid");
-import LineChart from './LineChartComponent'
-import RadarChart from './RadarChartComponent'
+import LineChart from "./LineChartComponent";
+import RadarChart from "./RadarChartComponent";
 
 export default {
-  components: { LineChart,RadarChart },
-  props:['newsSa','newsWorld','historicalData'],
+    components: { LineChart, RadarChart },
+    props: ["newsSa", "newsWorld", "historicalData"],
 
-  data: function() {
-    return {
-      updatedAt: '',
+    data: function() {
+        return {
+            updatedAt: "",
 
-      historicalChartData: null,
-			historicalChartOptions: {
-				responsive: true,
-				title: {
-					display: true,
-					text: '2020 Data'
-				},
-				tooltips: {
-					mode: 'index',
-					intersect: false,
-				},
-				hover: {
-					mode: 'nearest',
-					intersect: true
-				},
-				scales: {
-					xAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'Day'
-						}
-					}],
-					yAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'Value'
-						}
-					}]
-				}
-			},
-
-      topChartData: null,
-			topChartOptions: {
-				responsive: true,
-				legend: {
-					position: 'top',
-				},				
-				scale: {
-					ticks: {
-						beginAtZero: true
-					}
-				}
-			},
-
-      
-
-      countriesData: [],
-      countriesAffected: 0,
-
-      countriesList: [],
-      selectedCountry: { name: "South Africa", flag: null, id: 1 },
-
-      newsArticlesSa: [],
-      newsArticlesWorld: [],
-
-      worldCases: 0,
-      worldDeaths: 0,
-      worldCasesToday: 0,
-      worldDeathsToday: 0,
-      worldActive: 0,
-      worldCritical: 0,
-      worldRecovered: 0,
-      worldCasesPerMil: 0,
-      worldDeathsPerMil: 0,
-
-      countryCases: 0,
-      countryDeaths: 0,
-      countryCasesToday: 0,
-      countryDeathsToday: 0,
-      countryActive: 0,
-      countryCritical: 0,
-      countryRecovered: 0,
-      countryCasesPerMil: 0,
-      countryDeathsPerMil: 0,
-
-      worldInfoToggle: false,
-      countryInfoToggle: false,
-      topInfoToggle: false,
-      newsSaToggle: false,
-      newsWorldToggle: false,
-
-      topDropDownInt:5,
-
-      sortBy:'deaths'
-    };
-  },
-
-  mounted() {
-    this.getData(this.sortBy)
-    // this.saHistoricalChartData = this.historicalDataSa.timeline.cases  
-    // console.log(this.newsSa);
-    //  console.log(this.newsWorld);
-
-  },
-
-  methods: {
-    getData(sort){
-      
-      (async () => {
-        this.countriesData = await covid.getCountry({sort:sort});
-        //console.log(this.countriesData);
-
-        //World Stats
-        this.countriesList = []
-        this.countriesAffected = this.countriesData.length;
-        this.countriesData.forEach(element => {
-          this.countriesList.push({
-            name: element.country,
-            flag: element.countryInfo.flag,
-            id: element.countryInfo._id
-          });
-          this.worldCases += element.cases;
-          this.worldDeaths += element.deaths;
-          this.worldCasesToday += element.todayCases;
-          this.worldDeathsToday += element.todayDeaths;
-          this.worldActive += element.active;
-          this.worldCritical += element.critical;
-          this.worldRecovered += element.recovered;
-          this.worldCasesPerMil += element.casesPerOneMillion;
-          this.worldDeathsPerMil += element.deathsPerOneMillion;
-        });
-
-        this.countriesList.sort(this.compare);
-
-        //get world news
-        this.newsWorld.articles.forEach( article => {
-          this.newsArticlesWorld.push(article)
-        })
-
-        //set top countries radar chart
-        this.topChartData = {
-            labels: this.getTopLabels(),
-            datasets: [{
-              label: 'Deaths',
-              backgroundColor:  "#F00",
-              borderColor: "#F00",
-              data: this.getTopDeaths(),
-              fill: false,
-            }, 
-            {
-              label: 'Cases',
-              fill: false,
-              backgroundColor: "#333",
-              borderColor: "#333",
-              data: this.getTopCases(),
+            historicalChartData: null,
+            historicalChartOptions: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: "2020 Historical Data"
+                },
+                tooltips: {
+                    mode: "index",
+                    intersect: false
+                },
+                hover: {
+                    mode: "nearest",
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [
+                        {
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Day"
+                            }
+                        }
+                    ],
+                    yAxes: [
+                        {
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Value"
+                            }
+                        }
+                    ]
+                }
             },
-            {
-              label: 'Recovered',
-              fill: false,
-              backgroundColor: "#38c172",
-              borderColor: "#38c172",
-              data: this.getTopRecovered(),
-            }
-            ]
-          }
 
-        let c = this.$cookie.get('country');
-        if(c != undefined && c != null){
-          
-          this.countriesData.forEach(element => {
-            if (element.country == c) {
-              this.selectedCountry.name = c;
-              this.selectedCountry.flag = element.countryInfo.flag;
-              this.selectedCountry.id = element.countryInfo._id;
+            past7ChartData: null,
+            past7ChartOptions: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: "Past 7 Days Exc Today"
+                },
+                tooltips: {
+                    mode: "index",
+                    intersect: false
+                },
+                hover: {
+                    mode: "nearest",
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [
+                        {
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Day"
+                            }
+                        }
+                    ],
+                    yAxes: [
+                        {
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Value"
+                            }
+                        }
+                    ]
+                }
+            },
+
+            topChartData: null,
+            topChartOptions: {
+                responsive: true,
+                legend: {
+                    position: "top"
+                },
+                scale: {
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }
+            },
+
+            countriesData: [],
+            countriesAffected: 0,
+
+            countriesList: [],
+            selectedCountry: {},
+
+            newsArticlesSa: [],
+            newsArticlesWorld: [],
+
+            worldCases: 0,
+            worldDeaths: 0,
+            worldCasesToday: 0,
+            worldDeathsToday: 0,
+            worldActive: 0,
+            worldCritical: 0,
+            worldRecovered: 0,
+            worldCasesPerMil: 0,
+            worldDeathsPerMil: 0,
+
+            countryCases: 0,
+            countryDeaths: 0,
+            countryCasesToday: 0,
+            countryDeathsToday: 0,
+            countryActive: 0,
+            countryCritical: 0,
+            countryRecovered: 0,
+            countryCasesPerMil: 0,
+            countryDeathsPerMil: 0,
+            countryPosGlobalDeaths:0,
+            countryPosGlobalCases:0,
+            countryPosGlobalRecoveries:0,
+
+            worldInfoToggle: false,
+            countryInfoToggle: false,
+            topInfoToggle: false,
+            newsSaToggle: false,
+            newsWorldToggle: false,
+
+            topDropDownInt: 5,
+
+            sortBy: "deaths"
+        };
+    },
+
+    mounted() {
+      this.getData(this.sortBy);
+      setInterval(function(){
+        this.getData(this.sortBy);
+      }.bind(this), 60000);       
+    },
+
+    methods: {
+        getData(sort) {
+            (async () => {
+                this.countriesData = await covid.getCountry({ sort: sort });
+                                //World Stats
+                this.countriesList = [];
+                this.countriesAffected = this.countriesData.length;
+                this.countriesData.forEach(element => {
+                    this.countriesList.push({
+                        name: element.country,
+                        flag: element.countryInfo.flag,
+                        id: element.countryInfo._id,
+                        deaths: element.deaths,
+                        cases: element.cases,
+                        recovered: element.recovered
+                    });
+                    this.worldCases += element.cases;
+                    this.worldDeaths += element.deaths;
+                    this.worldCasesToday += element.todayCases;
+                    this.worldDeathsToday += element.todayDeaths;
+                    this.worldActive += element.active;
+                    this.worldCritical += element.critical;
+                    this.worldRecovered += element.recovered;
+                    this.worldCasesPerMil += element.casesPerOneMillion;
+                    this.worldDeathsPerMil += element.deathsPerOneMillion;
+                });
+
+                this.countriesList.sort(this.compare);
+
+                //get world news
+                this.newsWorld.articles.forEach(article => {
+                    this.newsArticlesWorld.push(article);
+                });
+
+                //set top countries radar chart
+                this.topChartData = {
+                    labels: this.getTopLabels(),
+                    datasets: [
+                        {
+                            label: "Deaths",
+                            backgroundColor: "#F00",
+                            borderColor: "#F00",
+                            data: this.getTopDeaths(),
+                            fill: false
+                        },
+                        {
+                            label: "Cases",
+                            fill: false,
+                            backgroundColor: "#333",
+                            borderColor: "#333",
+                            data: this.getTopCases()
+                        },
+                        {
+                            label: "Recovered",
+                            fill: false,
+                            backgroundColor: "#38c172",
+                            borderColor: "#38c172",
+                            data: this.getTopRecovered()
+                        }
+                    ]
+                };
+
+                let c = this.$cookie.get("country");
+                if (c != undefined && c != null) {
+                    this.countriesData.forEach(element => {
+                        if (element.country == c) {
+                            this.selectedCountry.name = c;
+                            this.selectedCountry.flag = element.countryInfo.flag;
+                            this.selectedCountry.id = element.countryInfo._id;
+                            this.selectedCountry.cases = element.cases;
+                            this.selectedCountry.deaths = element.deaths;
+                            this.selectedCountry.recovered = element.recovered;
+                        }
+                    });
+                    this.getCountryStats(c);
+                } else {
+                    this.getCountryStats(this.selectedCountry.name);
+                }
+
+                this.updatedAt = new Date().toString().substr(0, 25);
+            })();
+        },
+        toggleWorldInfo() {
+            this.worldInfoToggle = !this.worldInfoToggle;
+        },
+        toggleCountryInfo() {
+            this.countryInfoToggle = !this.countryInfoToggle;
+        },
+        toggleTopInfo() {
+            this.topInfoToggle = !this.topInfoToggle;
+        },
+        toggleNewsSa() {
+            this.newsSaToggle = !this.newsSaToggle;
+        },
+        toggleNewsWorld() {
+            this.newsWorldToggle = !this.newsWorldToggle;
+        },
+        onChangeSort(event) {
+            this.getData(event.target.value);
+            this.sortBy = event.target.value;
+        },
+        getCountryStats(country) {
+            this.countriesData.forEach(element => {
+                if (element.country == country) {
+                    this.selectedCountry.flag = element.countryInfo.flag;
+                    this.selectedCountry.id = element.countryInfo._id;
+
+                    this.countryCases = element.cases;
+                    this.countryDeaths = element.deaths;
+                    this.countryCasesToday = element.todayCases;
+                    this.countryDeathsToday = element.todayDeaths;
+                    this.countryActive = element.active;
+                    this.countryCritical = element.critical;
+                    this.countryRecovered = element.recovered;
+                    this.countryCasesPerMil = element.casesPerOneMillion;
+                    this.countryDeathsPerMil = element.deathsPerOneMillion;
+                    this.countryPosGlobalDeaths = this.getCountryPosGlobalDeaths(element.country)
+                    this.countryPosGlobalCases = this.getCountryPosGlobalCases(element.country)
+                    this.countryPosGlobalRecoveries = this.getCountryPosGlobalRecoveries(element.country)
+                    
+                    
+                    this.historicalChartData = {
+                        labels: this.getHistoryLabels(country),
+                        datasets: [
+                            {
+                                label: "Deaths",
+                                backgroundColor: "#F00",
+                                borderColor: "#F00",
+                                data: this.getHistoricalDeaths(country),
+                                fill: false
+                            },
+                            {
+                                label: "Cases",
+                                fill: false,
+                                backgroundColor: "#333",
+                                borderColor: "#333",
+                                data: this.getHistoricalCases(country)
+                            }
+                        ]
+                    };
+
+                    this.past7ChartData = {
+                        labels:  this.historicalChartData.labels.slice(this.historicalChartData.labels.length-7),
+                        datasets: [
+                            {
+                                label: "Deaths",
+                                backgroundColor: "#F00",
+                                borderColor: "#F00",
+                                data: this.historicalChartData.datasets[0].data.slice(this.historicalChartData.labels.length-7),
+                                fill: false
+                            },
+                            {
+                                label: "Cases",
+                                fill: false,
+                                backgroundColor: "#333",
+                                borderColor: "#333",
+                                data: this.historicalChartData.datasets[1].data.slice(this.historicalChartData.labels.length-7)
+                            }
+                        ]
+                    };
+                }
+            });
+            this.getCountryNews();
+        },
+        onChangeCountry() {
+            this.$cookie.set("country", this.selectedCountry.name, 100);
+            this.getCountryStats(this.selectedCountry.name);
+        },
+        getCountryNews() {
+            this.newsSa.articles.forEach(article => {
+                this.newsArticlesSa.push(article);
+            });
+        },
+        getHistoryLabels(country) {
+            let arr = [];
+            this.historicalData.forEach(elem => {
+                if (elem.country == country.toLowerCase()) {
+                    for (let key in elem.timeline.cases) {
+                        arr.push(key);
+                    }
+                }
+            });
+            return arr;
+        },
+        getHistoricalDeaths(country) {
+            let arr = [];
+            this.historicalData.forEach(elem => {
+                if (elem.country == country.toLowerCase()) {
+                    for (let key in elem.timeline.deaths) {
+                        arr.push(elem.timeline.deaths[key]);
+                    }
+                }
+            });
+            return arr;
+        },
+        getHistoricalCases(country) {
+            let arr = [];
+            this.historicalData.forEach(elem => {
+                if (elem.country == country.toLowerCase()) {
+                    for (let key in elem.timeline.cases) {
+                        arr.push(elem.timeline.cases[key]);
+                    }
+                }
+            });
+            return arr;
+        },        
+        getTopLabels() {
+            let arr = [];
+            for (let i = 0; i < this.topDropDownInt; i++) {
+                arr.push(this.countriesData[i].country);
             }
+            return arr;
+        },
+        getTopDeaths() {
+            let arr = [];
+            for (let i = 0; i < this.topDropDownInt; i++) {
+                arr.push(this.countriesData[i].deaths);
+            }
+            return arr;
+        },
+        getTopCases() {
+            let arr = [];
+            for (let i = 0; i < this.topDropDownInt; i++) {
+                arr.push(this.countriesData[i].cases);
+            }
+            return arr;
+        },
+        getTopRecovered() {
+            let arr = [];
+            for (let i = 0; i < this.topDropDownInt; i++) {
+                arr.push(this.countriesData[i].recovered);
+            }
+            return arr;
+        },
+        getCountryPosGlobalDeaths(country){
+          let dl = this.countriesList.slice(0);
+          dl.sort(function(a,b){
+            const countryA = a.deaths;
+            const countryB = b.deaths;
+
+            let comparison = 0;
+            if (countryA < countryB) {
+                comparison = 1;
+            } else if (countryA > countryB) {
+                comparison = -1;
+            }
+            return comparison;
           })
-          this.getCountryStats(c);
-
-        }else{
-          
-          this.getCountryStats(this.selectedCountry.name);
-        }      
-
-        this.updatedAt = new Date().toString().substr(0,25)
-      })();
-    },
-    toggleWorldInfo() {
-      this.worldInfoToggle = !this.worldInfoToggle;
-    },
-    toggleCountryInfo() {
-      this.countryInfoToggle = !this.countryInfoToggle;
-    },
-    toggleTopInfo() {
-      this.topInfoToggle = !this.topInfoToggle;
-    },
-    toggleNewsSa() {
-      this.newsSaToggle = !this.newsSaToggle;
-    },
-    toggleNewsWorld() {
-      this.newsWorldToggle = !this.newsWorldToggle;
-    },
-    onChangeSort(event){
-      this.getData(event.target.value)
-      this.sortBy = event.target.value;
-    },
-    getCountryStats(country) {     
-
-      this.countriesData.forEach(element => {
-        if (element.country == country) {
-
-          this.selectedCountry.flag = element.countryInfo.flag;
-          this.selectedCountry.id = element.countryInfo._id;
-
-          this.countryCases = element.cases;
-          this.countryDeaths = element.deaths;
-          this.countryCasesToday = element.todayCases;
-          this.countryDeathsToday = element.todayDeaths;
-          this.countryActive = element.active;
-          this.countryCritical = element.critical;
-          this.countryRecovered = element.recovered;
-          this.countryCasesPerMil = element.casesPerOneMillion;
-          this.countryDeathsPerMil = element.deathsPerOneMillion;
-
-          this.historicalChartOptions.title.text = "Historical Data"
-
-          this.historicalChartData = {
-            labels: this.getLabels(country),
-            datasets: [{
-              label: 'Deaths',
-              backgroundColor:  "#F00",
-              borderColor: "#F00",
-              data: this.getHistoricalDeaths(country),
-              fill: false,
-            }, {
-              label: 'Cases',
-              fill: false,
-              backgroundColor: "#333",
-              borderColor: "#333",
-              data: this.getHistoricalCases(country),
-            }]
+          let pos=1
+          for (var i = 0; i < dl.length; ++i) {              
+              if (dl[i].name == country) {
+                  break;
+              }else{
+                pos++
+              }
           }
-        }
-      });
-      this.getCountryNews();
-    },
-    onChangeCountry() {
-      this.$cookie.set('country',this.selectedCountry.name, 100);
-      this.getCountryStats(this.selectedCountry.name);
-    },
-    getCountryNews(){
-      this.newsSa.articles.forEach( article => {
-        this.newsArticlesSa.push(article)
-      })
-    },
-    getLabels(country){
-      let arr = [];
-      this.historicalData.forEach( elem => {
-        if(elem.country == country.toLowerCase()){
-          for (let key in elem.timeline.cases) {
-            arr.push(key)
-          }         
-        }
-      })
-      return arr;
-    },  
-     getHistoricalDeaths(country){
-      let arr = [];
-      this.historicalData.forEach( elem => {
-        if(elem.country == country.toLowerCase()){
-          for (let key in elem.timeline.deaths) {
-            arr.push(elem.timeline.deaths[key])
-          }         
-        }
-      })
-      return arr;
-    },  
-     getHistoricalCases(country){
-      let arr = [];
-      this.historicalData.forEach( elem => {
-        if(elem.country == country.toLowerCase()){
-          for (let key in elem.timeline.cases) {  
-            arr.push(elem.timeline.cases[key])
-          }         
-        }
-      })
-      return arr;
-    },  
-    getTopLabels(){
-      let arr = [];
-      for (let i = 0; i < this.topDropDownInt; i++) {
-        arr.push(this.countriesData[i].country);
-      }
-      return arr;
-    },  
-     getTopDeaths(){
-      let arr = [];
-      for (let i = 0; i < this.topDropDownInt; i++) {
-        arr.push(this.countriesData[i].deaths);
-      }
-      return arr;
-    },  
-     getTopCases(){
-      let arr = [];
-      for (let i = 0; i < this.topDropDownInt; i++) {
-        arr.push(this.countriesData[i].cases);
-      }
-      return arr;
-    }, 
-     getTopRecovered(){
-      let arr = [];
-      for (let i = 0; i < this.topDropDownInt; i++) {
-        arr.push(this.countriesData[i].recovered);
-      }
-      return arr;
-    },  
-    compare(a, b) {
-      // Use toUpperCase() to ignore character casing
-      const countryA = a.name.toUpperCase();
-      const countryB = b.name.toUpperCase();
+          
+          return pos
+        },
+        
+        getCountryPosGlobalCases(country){
+          let dl = this.countriesList.slice(0);
+          dl.sort(function(a,b){
+            const countryA = a.cases;
+            const countryB = b.cases;
 
-      let comparison = 0;
-      if (countryA > countryB) {
-        comparison = 1;
-      } else if (countryA < countryB) {
-        comparison = -1;
-      }
-      return comparison;
+            let comparison = 0;
+            if (countryA < countryB) {
+                comparison = 1;
+            } else if (countryA > countryB) {
+                comparison = -1;
+            }
+            return comparison;
+          })
+          let pos=1
+          for (var i = 0; i < dl.length; ++i) {              
+              if (dl[i].name == country) {
+                  break;
+              }else{
+                pos++
+              }
+          }
+          
+          return pos
+        },
+        getCountryPosGlobalRecoveries(country){
+          let dl = this.countriesList.slice(0);
+          dl.sort(function(a,b){
+            const countryA = a.recovered;
+            const countryB = b.recovered;
+
+            let comparison = 0;
+            if (countryA < countryB) {
+                comparison = 1;
+            } else if (countryA > countryB) {
+                comparison = -1;
+            }
+            return comparison;
+          })
+          let pos=1
+          for (var i = 0; i < dl.length; ++i) {              
+              if (dl[i].name == country) {
+                  break;
+              }else{
+                pos++
+              }
+          }
+          
+          return pos
+        },
+        numberSuffix(number){
+         switch(number.toString().split('').pop()) {
+            case '0':
+              return 'th'
+            case '1':
+              return 'st'
+            case '2':
+              return 'nd'
+            case '3':
+              return 'rd'
+            case '4':
+              return 'th'
+            case '5':
+              return 'th'
+            case '6':
+              return 'th'
+            case '7':
+              return 'th'
+            case '8':
+              return 'th'
+            case '9':
+              return 'th'
+           
+          }
+        },
+        compare(a, b) {
+            const countryA = a.name.toUpperCase();
+            const countryB = b.name.toUpperCase();
+
+            let comparison = 0;
+            if (countryA > countryB) {
+                comparison = 1;
+            } else if (countryA < countryB) {
+                comparison = -1;
+            }
+            return comparison;
+        }
     }
-  }
 };
 </script>
 
 <style scoped>
-
 .stat-row {
-  margin-bottom: 5px;
-  border-bottom: solid 1px #eee;
+    margin-bottom: 5px;
+    border-bottom: solid 1px #eee;
 }
 .font-percent {
-  font-size: 10px;
+    font-size: 10px;
 }
 </style>

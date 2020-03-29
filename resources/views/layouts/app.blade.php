@@ -39,7 +39,8 @@
 
   <meta name="theme-color" content="#e3342f">
 
-  <script data-ad-client="ca-pub-2683239704362097" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script data-ad-client="ca-pub-2683239704362097" async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 
   <script>
@@ -73,7 +74,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
         crossorigin="anonymous" />
   <link
-        href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Quantico:700&display=swap"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:700,400|Exo+2:700&display=swap"
         rel="stylesheet" />
 
   <link rel="stylesheet" href="{{ mix('/css/app.css')}}">
@@ -85,36 +86,18 @@
 </head>
 
 <body>
-  <header>
-    <div class="container">
-      <div class="row">
-        <div class="col-auto">
-          <img src="/img/virus.png" height="40" alt="corona virus" />
-        </div>
-        <div class="col-auto">
-          <h5 class="m-0 p-0">COVID 19</h5>
-          <small class="text-muted m-0">Corona Virus Stats & News</small>
-        </div>
-      </div>
-    </div>
-  </header>
-  <ul class="nav nav-pills nav-justified border-bottom font-weight-bold bg-light" style="font-size:13px;">
-    <li class="nav-item">
-      <a class="nav-link @if (\Request::is('/')) active @endif " href="/"  >STATS</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link @if (\Request::is('symptoms')) active @endif " href="/symptoms">SYMPTOMS</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link @if (\Request::is('contacts')) active @endif " href="/contacts">CONTACTS</a>
-    </li>
-  </ul>
-
   <div id="app">
-    @yield('content')
-  </div>
 
-  <div class="container">
+
+    <header-component></header-component>
+
+    <main>
+      @yield('content')
+    </main>
+
+  </div><!-- end of vue js -->
+
+  {{-- <div class="container">
     <div class="row">
       <div class="col">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -130,16 +113,17 @@
         </script>
       </div>
     </div>
-  </div>
+  </div> --}}
 
-  <hr>
 
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <small class="text-black-50">SHARE PAGE:</small><br />
-        <a
-             href="whatsapp://send?text=https://covid.niftybit.co.za" target="_blank" aria-label="WhatsApp" rel="noopener" class="resp-sharing-button__link mb-1">
+  <div class="bg-light py-3 mt-3">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col">
+          <small class="text-black-50">SHARE PAGE</small><br /><br />
+          <a
+             href="whatsapp://send?text=https://covid.niftybit.co.za" target="_blank" aria-label="WhatsApp"
+             rel="noopener" class="resp-sharing-button__link mb-1">
             <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--medium">
               <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--circle"></div>WhatsApp
             </div>
@@ -156,26 +140,31 @@
               <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--circle"></div>Twitter
             </div>
           </a>
-        
+
+        </div>
       </div>
     </div>
   </div>
 
-  <footer class="my-5 text-black-50 font-percent">
-    <hr />
+
+  <footer class="py-5 text-white font-percent text-center bg-dark">
+
     <div class="container">
-      <small>MAINTAINED BY:</small><br />
-      <a href="https://niftybit.co.za">Zaid Kajee</a><br /><br>
-      <small>ATTRIBUTIONS:</small><br />
-      <a href="https://newsapi.org">newsapi.org</a><br />
-      <a href="https://www.flaticon.com">https://www.flaticon.com</a><br />
-      <a href="https://github.com/NovelCOVID/API">novelCovid</a>
+      <h6>MAINTAINED BY:</h6>
+      <a href="https://niftybit.co.za" class="text-success">Zaid Kajee</a><br /><br>
+      <h6>ATTRIBUTIONS:</h6>
+      <a href="https://newsapi.org" class="text-success">newsapi.org</a><br />
+      <a href="https://www.flaticon.com" class="text-success">www.flaticon.com</a><br />
+      <a href="https://github.com/NovelCOVID/API" class="text-success">novelCovid</a>
     </div>
   </footer>
 
-  <a href="/" class="float">
+  {{-- <a href="/" class="float">
     <img src="/img/refresh.png" alt="refresh" height="60">
-  </a>
+  </a> --}}
+
+
+
 
   <script src="{{ mix('/js/app.js') }}"></script>
 
@@ -189,6 +178,7 @@
 
       gtag('config', 'UA-76003418-2');
   </script>
+
 </body>
 
 </html>

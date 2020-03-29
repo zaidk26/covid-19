@@ -12,6 +12,11 @@
                      
                       <h5>24-HOUR Hotline Number:</h5>
                        <a href="tel:0800 029 999"><strong> 0800 029 999</strong> </a> 
+
+                       <hr>
+
+                       <h5>SA Corona Virus Website</h5>
+                       <a href="www.sacoronavirus.co.za">www.sacoronavirus.co.za</a>
                         
                 </div>
                 <hr>

@@ -28,6 +28,7 @@
     },
     "dependencies": {
         "chart.js": "^2.9.3",
+        "laravel-mix-purgecss": "^5.0.0-rc.1",
         "vue-chartjs": "^3.5.0",
         "vue-cookie": "^1.1.4",
         "workbox-cli": "^5.1.2"

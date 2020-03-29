@@ -6,7 +6,7 @@
 
 body {
   background-color: #FFF;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 h1,
@@ -16,16 +16,16 @@ h4,
 h5,
 h6 {
   font-weight: bold;
-  font-family: 'Quantico', sans-serif;
+  font-family: 'Exo 2', sans-serif;
 }
 
-.container {
-  max-width: 500px;
-}
 
 .card {
   border-radius: 0;
-  border-width:2px;
+}
+
+.form-control{
+  border-radius: 0;
 }
 
 .pointer {
@@ -37,14 +37,14 @@ h6 {
 }
 
 .btn {
-  border-radius: 0;
+  border-radius: 4px;
+}
+.btn-light{
+  border:solid 1px #EEE;
 }
 
-header {
-  line-height: 1;
-  height: 70px;
-  padding-top: 15px;
-  border-bottom: solid 1px #DDD;
+.navbar-toggler {
+  border: 0;
 }
 
 .float{
