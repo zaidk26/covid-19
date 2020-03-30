@@ -39,8 +39,7 @@
 
   <meta name="theme-color" content="#e3342f">
 
-  <script data-ad-client="ca-pub-2683239704362097" async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script data-ad-client="ca-pub-2683239704362097" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 
   <script>
@@ -97,7 +96,7 @@
 
   </div><!-- end of vue js -->
 
-  {{-- <div class="container">
+  <div class="container">
     <div class="row">
       <div class="col">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -113,7 +112,7 @@
         </script>
       </div>
     </div>
-  </div> --}}
+  </div>
 
 
   <div class="bg-light py-3 mt-3">

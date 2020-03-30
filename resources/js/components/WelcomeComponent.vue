@@ -652,7 +652,7 @@
                                     v-model="topDropDownInt"
                                     @change="getData(sortBy)"
                                     class="form-control form-control-sm"
-                                    style="width:50px;display:inline;"
+                                    style="width:60px;display:inline;"
                                 >
                                     <option>{{ topDropDownInt }}</option>
                                     <option>5</option>
@@ -699,7 +699,7 @@
 
                         <div
                             class="border p-3 mb-3"
-                            v-for="country in countriesData.slice(
+                            v-for="(country,i) in countriesData.slice(
                                 0,
                                 topDropDownInt
                             )"
@@ -713,8 +713,11 @@
                                         :alt="country.country"
                                     />
                                 </div>
-                                <div class="col-9">
+                                <div class="col-7">
                                     <h4>{{ country.country }}</h4>
+                                </div>
+                                <div class="col-2">
+                                    <span class="badge badge-primary">#{{ i+1 }}</span>
                                 </div>
                             </div>
                             <div class="row">
@@ -1181,7 +1184,8 @@ export default {
                     });
                     this.getCountryStats(c);
                 } else {
-                    this.getCountryStats(this.selectedCountry.name);
+                    //set SA as selected country by default
+                    this.getCountryStats('South Africa');
                 }
 
                 this.updatedAt = new Date().toString().substr(0, 25);
@@ -1211,6 +1215,10 @@ export default {
                 if (element.country == country) {
                     this.selectedCountry.flag = element.countryInfo.flag;
                     this.selectedCountry.id = element.countryInfo._id;
+                    this.selectedCountry.name = element.country;
+                    this.selectedCountry.deaths = element.deaths;
+                    this.selectedCountry.cases = element.cases;
+                    this.selectedCountry.recovered = element.recovered;
 
                     this.countryCases = element.cases;
                     this.countryDeaths = element.deaths;

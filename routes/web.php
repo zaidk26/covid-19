@@ -39,3 +39,7 @@ Route::get('/symptoms', function () {
 Route::get('/contacts', function () {    
     return view('contacts');
 });
+
+Route::get('/social-media-feeds', function () {    
+    return view('social-media-feeds');
+});
