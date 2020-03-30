@@ -92,3 +92,10 @@ h6 {
   background-color: #55acee;
   border-color: #55acee;
 }
+
+@media (min-width: 992px){
+  .navbar-expand-lg .navbar-nav .nav-link {
+      padding-right: 1rem;
+      padding-left: 1rem;
+  }
+}

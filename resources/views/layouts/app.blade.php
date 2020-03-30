@@ -96,6 +96,8 @@
 
   </div><!-- end of vue js -->
 
+  @yield('content-no-vue')
+
   <div class="container">
     <div class="row">
       <div class="col">

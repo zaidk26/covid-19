@@ -25,9 +25,9 @@
             <li class="nav-item">
               <a class="nav-link font-weight-bold text-white" href="/"  >STATISTICS</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link font-weight-bold text-white" href="/social-media-feeds"  >SOCIAL MEDIA FEEDS</a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link font-weight-bold text-white" href="/symptoms">SYMPTOMS</a>
             </li>

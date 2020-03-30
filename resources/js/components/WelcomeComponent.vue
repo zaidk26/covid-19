@@ -5,7 +5,7 @@
                 <!-- country data column-->
                 <div class="col-lg-4">
                     <!-- country data -->
-                    <div class="border p-3">
+                    <div class="border p-3" style="border-width:3px!important;">
                         <div class="row">
                             <div class="col">
                                 <h4>Select a Country</h4>
@@ -70,7 +70,7 @@
                                             >
                                         </div>
                                         <div class="col text-right">
-                                            <h5 class="text-danger m-0">                                               
+                                            <h5 class="text-danger m-0">
                                                 {{
                                                     new Intl.NumberFormat().format(
                                                         countryDeathsToday
@@ -247,53 +247,72 @@
                         </div>
 
                         <div class="stat-row">
-                          <div class="row">
-                            <div class="col-auto">
-                              <span>
-                                  By Cases
-                              </span>
+                            <div class="row">
+                                <div class="col-auto">
+                                    <span>
+                                        By Cases
+                                    </span>
+                                </div>
+                                <div class="col text-right">
+                                    <h5 class="m-0">
+                                        {{ countryPosGlobalCases }}
+                                        <small
+                                            class="text-black-50 font-percent"
+                                            >{{
+                                                numberSuffix(
+                                                    countryPosGlobalCases
+                                                )
+                                            }}</small
+                                        >
+                                    </h5>
+                                </div>
                             </div>
-                            <div class="col text-right">
-                                <h5 class="m-0">
-                                  {{ countryPosGlobalCases }}
-                                  <small class="text-black-50 font-percent">{{ numberSuffix(countryPosGlobalCases) }}</small>
-                                </h5>
-                            </div>
-                          </div>                          
                         </div>
 
                         <div class="stat-row">
-                          <div class="row">
-                            <div class="col-auto">
-                              <span>
-                                  By Deaths
-                              </span>
+                            <div class="row">
+                                <div class="col-auto">
+                                    <span>
+                                        By Deaths
+                                    </span>
+                                </div>
+                                <div class="col text-right">
+                                    <h5 class="m-0">
+                                        {{ countryPosGlobalDeaths }}
+                                        <small
+                                            class="text-black-50 font-percent"
+                                            >{{
+                                                numberSuffix(
+                                                    countryPosGlobalDeaths
+                                                )
+                                            }}</small
+                                        >
+                                    </h5>
+                                </div>
                             </div>
-                            <div class="col text-right">
-                                <h5 class="m-0">
-                                  {{ countryPosGlobalDeaths }}
-                                  <small class="text-black-50 font-percent">{{ numberSuffix(countryPosGlobalDeaths) }}</small>
-                                </h5>
-                            </div>
-                          </div>                          
                         </div>
 
-                        
-
                         <div class="stat-row">
-                          <div class="row">
-                            <div class="col-auto">
-                              <span>
-                                  By Recoveries
-                              </span>
+                            <div class="row">
+                                <div class="col-auto">
+                                    <span>
+                                        By Recoveries
+                                    </span>
+                                </div>
+                                <div class="col text-right">
+                                    <h5 class="m-0">
+                                        {{ countryPosGlobalRecoveries }}
+                                        <small
+                                            class="text-black-50 font-percent"
+                                            >{{
+                                                numberSuffix(
+                                                    countryPosGlobalRecoveries
+                                                )
+                                            }}</small
+                                        >
+                                    </h5>
+                                </div>
                             </div>
-                            <div class="col text-right">
-                                <h5 class="m-0">
-                                  {{ countryPosGlobalRecoveries }}
-                                  <small class="text-black-50 font-percent">{{ numberSuffix(countryPosGlobalRecoveries ) }}</small>
-                                </h5>
-                            </div>
-                          </div>                          
                         </div>
 
                         <!-- SA News -->
@@ -346,10 +365,11 @@
                                     </div>
                                 </div>
                             </div>
+
+                      
                         </div>
 
-
-                        <hr>
+                        <hr />
 
                         <!-- past 7 days -->
                         <line-chart
@@ -358,7 +378,7 @@
                             :options="past7ChartOptions"
                         />
 
-                        <hr>
+                        <hr />
 
                         <!-- History Graph -->
                         <line-chart
@@ -366,15 +386,13 @@
                             :chart-data="historicalChartData"
                             :options="historicalChartOptions"
                         />
-
-                        
                     </div>
                 </div>
                 <!-- /country column -->
                 <!-- world data column-->
                 <div class="col-lg-4 mt-5 mt-lg-0">
                     <!-- world Data -->
-                    <div class="border p-3">
+                    <div class="border p-3" style="border-width:3px!important;">
                         <div class="row">
                             <div class="col-auto">
                                 <img src="/img/world.png" alt="world" />
@@ -420,7 +438,7 @@
                                                 >
                                             </div>
                                             <div class="col text-right">
-                                                <h5 class="text-danger m-0">                                                    
+                                                <h5 class="text-danger m-0">
                                                     {{
                                                         new Intl.NumberFormat().format(
                                                             worldDeathsToday
@@ -623,7 +641,7 @@
                                         class="stat-row"
                                         v-for="article in newsArticlesWorld.slice(
                                             5,
-                                            100
+                                            25
                                         )"
                                         :key="article.id"
                                     >
@@ -638,13 +656,18 @@
                                     </div>
                                 </div>
                             </div>
+                        
+
                         </div>
                     </div>
                 </div>
                 <!-- /world data column -->
                 <!-- Top 10 data column-->
                 <div class="col-lg-4">
-                    <div class="mt-5 mt-lg-0 border p-3">
+                    <div
+                        class="mt-5 mt-lg-0 border p-3"
+                        style="border-width:3px!important;"
+                    >
                         <div class="pb-1">
                             <h4>
                                 Top
@@ -699,7 +722,7 @@
 
                         <div
                             class="border p-3 mb-3"
-                            v-for="(country,i) in countriesData.slice(
+                            v-for="(country, i) in countriesData.slice(
                                 0,
                                 topDropDownInt
                             )"
@@ -717,7 +740,9 @@
                                     <h4>{{ country.country }}</h4>
                                 </div>
                                 <div class="col-2">
-                                    <span class="badge badge-primary">#{{ i+1 }}</span>
+                                    <span class="badge badge-primary"
+                                        >#{{ i + 1 }}</span
+                                    >
                                 </div>
                             </div>
                             <div class="row">
@@ -1085,15 +1110,16 @@ export default {
             countryRecovered: 0,
             countryCasesPerMil: 0,
             countryDeathsPerMil: 0,
-            countryPosGlobalDeaths:0,
-            countryPosGlobalCases:0,
-            countryPosGlobalRecoveries:0,
+            countryPosGlobalDeaths: 0,
+            countryPosGlobalCases: 0,
+            countryPosGlobalRecoveries: 0,
 
             worldInfoToggle: false,
             countryInfoToggle: false,
             topInfoToggle: false,
             newsSaToggle: false,
             newsWorldToggle: false,
+            addStatsToggle: false,
 
             topDropDownInt: 5,
 
@@ -1102,17 +1128,22 @@ export default {
     },
 
     mounted() {
-      this.getData(this.sortBy);
-      setInterval(function(){
         this.getData(this.sortBy);
-      }.bind(this), 60000);       
+        setInterval(
+            function() {
+                this.getData(this.sortBy);
+            }.bind(this),
+            60000
+        );
+
+        console.log(this.historicalData);
     },
 
     methods: {
         getData(sort) {
             (async () => {
                 this.countriesData = await covid.getCountry({ sort: sort });
-                                //World Stats
+                //World Stats
                 this.countriesList = [];
                 this.countriesAffected = this.countriesData.length;
                 this.countriesData.forEach(element => {
@@ -1175,7 +1206,8 @@ export default {
                     this.countriesData.forEach(element => {
                         if (element.country == c) {
                             this.selectedCountry.name = c;
-                            this.selectedCountry.flag = element.countryInfo.flag;
+                            this.selectedCountry.flag =
+                                element.countryInfo.flag;
                             this.selectedCountry.id = element.countryInfo._id;
                             this.selectedCountry.cases = element.cases;
                             this.selectedCountry.deaths = element.deaths;
@@ -1185,7 +1217,7 @@ export default {
                     this.getCountryStats(c);
                 } else {
                     //set SA as selected country by default
-                    this.getCountryStats('South Africa');
+                    this.getCountryStats("South Africa");
                 }
 
                 this.updatedAt = new Date().toString().substr(0, 25);
@@ -1205,6 +1237,9 @@ export default {
         },
         toggleNewsWorld() {
             this.newsWorldToggle = !this.newsWorldToggle;
+        },
+        toggleAddStats() {
+            this.addStatsToggle = !this.addStatsToggle;
         },
         onChangeSort(event) {
             this.getData(event.target.value);
@@ -1229,11 +1264,16 @@ export default {
                     this.countryRecovered = element.recovered;
                     this.countryCasesPerMil = element.casesPerOneMillion;
                     this.countryDeathsPerMil = element.deathsPerOneMillion;
-                    this.countryPosGlobalDeaths = this.getCountryPosGlobalDeaths(element.country)
-                    this.countryPosGlobalCases = this.getCountryPosGlobalCases(element.country)
-                    this.countryPosGlobalRecoveries = this.getCountryPosGlobalRecoveries(element.country)
-                    
-                    
+                    this.countryPosGlobalDeaths = this.getCountryPosGlobalDeaths(
+                        element.country
+                    );
+                    this.countryPosGlobalCases = this.getCountryPosGlobalCases(
+                        element.country
+                    );
+                    this.countryPosGlobalRecoveries = this.getCountryPosGlobalRecoveries(
+                        element.country
+                    );
+
                     this.historicalChartData = {
                         labels: this.getHistoryLabels(country),
                         datasets: [
@@ -1250,18 +1290,29 @@ export default {
                                 backgroundColor: "#333",
                                 borderColor: "#333",
                                 data: this.getHistoricalCases(country)
+                            },
+                            {
+                                label: "Recovered",
+                                fill: false,
+                                backgroundColor: "#38c172",
+                                borderColor: "#38c172",
+                                data: this.getHistoricalRecovered(country)
                             }
                         ]
                     };
 
                     this.past7ChartData = {
-                        labels:  this.historicalChartData.labels.slice(this.historicalChartData.labels.length-7),
+                        labels: this.historicalChartData.labels.slice(
+                            this.historicalChartData.labels.length - 7
+                        ),
                         datasets: [
                             {
                                 label: "Deaths",
                                 backgroundColor: "#F00",
                                 borderColor: "#F00",
-                                data: this.historicalChartData.datasets[0].data.slice(this.historicalChartData.labels.length-7),
+                                data: this.historicalChartData.datasets[0].data.slice(
+                                    this.historicalChartData.labels.length - 7
+                                ),
                                 fill: false
                             },
                             {
@@ -1269,7 +1320,18 @@ export default {
                                 fill: false,
                                 backgroundColor: "#333",
                                 borderColor: "#333",
-                                data: this.historicalChartData.datasets[1].data.slice(this.historicalChartData.labels.length-7)
+                                data: this.historicalChartData.datasets[1].data.slice(
+                                    this.historicalChartData.labels.length - 7
+                                )
+                            },
+                            {
+                                label: "Recovered",
+                                fill: false,
+                                backgroundColor: "#38c172",
+                                borderColor: "#38c172",
+                                data: this.historicalChartData.datasets[2].data.slice(
+                                    this.historicalChartData.labels.length - 7
+                                )
                             }
                         ]
                     };
@@ -1289,7 +1351,7 @@ export default {
         getHistoryLabels(country) {
             let arr = [];
             this.historicalData.forEach(elem => {
-                if (elem.country == country.toLowerCase()) {
+                if (elem.country.toLowerCase() == country.toLowerCase()) {
                     for (let key in elem.timeline.cases) {
                         arr.push(key);
                     }
@@ -1300,7 +1362,7 @@ export default {
         getHistoricalDeaths(country) {
             let arr = [];
             this.historicalData.forEach(elem => {
-                if (elem.country == country.toLowerCase()) {
+                if (elem.country.toLowerCase() == country.toLowerCase()) {
                     for (let key in elem.timeline.deaths) {
                         arr.push(elem.timeline.deaths[key]);
                     }
@@ -1311,14 +1373,25 @@ export default {
         getHistoricalCases(country) {
             let arr = [];
             this.historicalData.forEach(elem => {
-                if (elem.country == country.toLowerCase()) {
+                if (elem.country.toLowerCase() == country.toLowerCase()) {
                     for (let key in elem.timeline.cases) {
                         arr.push(elem.timeline.cases[key]);
                     }
                 }
             });
             return arr;
-        },        
+        },
+        getHistoricalRecovered(country) {
+            let arr = [];
+            this.historicalData.forEach(elem => {
+                if (elem.country.toLowerCase() == country.toLowerCase()) {
+                    for (let key in elem.timeline.recovered) {
+                        arr.push(elem.timeline.recovered[key]);
+                    }
+                }
+            });
+            return arr;
+        },
         getTopLabels() {
             let arr = [];
             for (let i = 0; i < this.topDropDownInt; i++) {
@@ -1347,106 +1420,110 @@ export default {
             }
             return arr;
         },
-        getCountryPosGlobalDeaths(country){
-          let dl = this.countriesList.slice(0);
-          dl.sort(function(a,b){
-            const countryA = a.deaths;
-            const countryB = b.deaths;
+        getCountryPosGlobalDeaths(country) {
+            let dl = this.countriesList.slice(0);
+            dl.sort(function(a, b) {
+                const countryA = a.deaths;
+                const countryB = b.deaths;
 
-            let comparison = 0;
-            if (countryA < countryB) {
-                comparison = 1;
-            } else if (countryA > countryB) {
-                comparison = -1;
+                let comparison = 0;
+                if (countryA < countryB) {
+                    comparison = 1;
+                } else if (countryA > countryB) {
+                    comparison = -1;
+                }
+                return comparison;
+            });
+            let pos = 1;
+            for (var i = 0; i < dl.length; ++i) {
+                if (dl[i].name == country) {
+                    break;
+                } else {
+                    pos++;
+                }
             }
-            return comparison;
-          })
-          let pos=1
-          for (var i = 0; i < dl.length; ++i) {              
-              if (dl[i].name == country) {
-                  break;
-              }else{
-                pos++
-              }
-          }
-          
-          return pos
-        },
-        
-        getCountryPosGlobalCases(country){
-          let dl = this.countriesList.slice(0);
-          dl.sort(function(a,b){
-            const countryA = a.cases;
-            const countryB = b.cases;
 
-            let comparison = 0;
-            if (countryA < countryB) {
-                comparison = 1;
-            } else if (countryA > countryB) {
-                comparison = -1;
-            }
-            return comparison;
-          })
-          let pos=1
-          for (var i = 0; i < dl.length; ++i) {              
-              if (dl[i].name == country) {
-                  break;
-              }else{
-                pos++
-              }
-          }
-          
-          return pos
+            return pos;
         },
-        getCountryPosGlobalRecoveries(country){
-          let dl = this.countriesList.slice(0);
-          dl.sort(function(a,b){
-            const countryA = a.recovered;
-            const countryB = b.recovered;
 
-            let comparison = 0;
-            if (countryA < countryB) {
-                comparison = 1;
-            } else if (countryA > countryB) {
-                comparison = -1;
+        getCountryPosGlobalCases(country) {
+            let dl = this.countriesList.slice(0);
+            dl.sort(function(a, b) {
+                const countryA = a.cases;
+                const countryB = b.cases;
+
+                let comparison = 0;
+                if (countryA < countryB) {
+                    comparison = 1;
+                } else if (countryA > countryB) {
+                    comparison = -1;
+                }
+                return comparison;
+            });
+            let pos = 1;
+            for (var i = 0; i < dl.length; ++i) {
+                if (dl[i].name == country) {
+                    break;
+                } else {
+                    pos++;
+                }
             }
-            return comparison;
-          })
-          let pos=1
-          for (var i = 0; i < dl.length; ++i) {              
-              if (dl[i].name == country) {
-                  break;
-              }else{
-                pos++
-              }
-          }
-          
-          return pos
+
+            return pos;
         },
-        numberSuffix(number){
-         switch(number.toString().split('').pop()) {
-            case '0':
-              return 'th'
-            case '1':
-              return 'st'
-            case '2':
-              return 'nd'
-            case '3':
-              return 'rd'
-            case '4':
-              return 'th'
-            case '5':
-              return 'th'
-            case '6':
-              return 'th'
-            case '7':
-              return 'th'
-            case '8':
-              return 'th'
-            case '9':
-              return 'th'
-           
-          }
+        getCountryPosGlobalRecoveries(country) {
+            let dl = this.countriesList.slice(0);
+            dl.sort(function(a, b) {
+                const countryA = a.recovered;
+                const countryB = b.recovered;
+
+                let comparison = 0;
+                if (countryA < countryB) {
+                    comparison = 1;
+                } else if (countryA > countryB) {
+                    comparison = -1;
+                }
+                return comparison;
+            });
+            let pos = 1;
+            for (var i = 0; i < dl.length; ++i) {
+                if (dl[i].name == country) {
+                    break;
+                } else {
+                    pos++;
+                }
+            }
+
+            return pos;
+        },
+        numberSuffix(number) {
+            switch (
+                number
+                    .toString()
+                    .split("")
+                    .pop()
+            ) {
+                case "0":
+                    return "th";
+                case "1":
+                    return "st";
+                case "2":
+                    return "nd";
+                case "3":
+                    return "rd";
+                case "4":
+                    return "th";
+                case "5":
+                    return "th";
+                case "6":
+                    return "th";
+                case "7":
+                    return "th";
+                case "8":
+                    return "th";
+                case "9":
+                    return "th";
+            }
         },
         compare(a, b) {
             const countryA = a.name.toUpperCase();
