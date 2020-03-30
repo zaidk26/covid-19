@@ -23,16 +23,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" :class="{show: menuActive}" >
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link font-weight-bold text-white" href="/"  >STATISTICS</a>
+              <a class="nav-link font-weight-bold text-white" href="/"  >Statistics</a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link font-weight-bold text-white" href="/social-media-feeds"  >SOCIAL MEDIA FEEDS</a>
             </li> -->
             <li class="nav-item">
-              <a class="nav-link font-weight-bold text-white" href="/symptoms">SYMPTOMS</a>
+              <a class="nav-link font-weight-bold text-white" href="/symptoms">Symptoms</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link font-weight-bold text-white" href="/contacts">CONTACTS <small class="font-weight-normal text-white-50">(South Africa)</small></a>
+              <a class="nav-link font-weight-bold text-white" href="/contacts">Contacts <small class="font-weight-normal text-white-50">(South Africa)</small></a>
             </li>
           </ul>
         

@@ -5,7 +5,7 @@
                 <!-- country data column-->
                 <div class="col-lg-4">
                     <!-- country data -->
-                    <div class="border p-3" style="border-width:3px!important;">
+                    <div class="p-3 b-12 border">
                         <div class="row">
                             <div class="col">
                                 <h4>Select a Country</h4>
@@ -37,54 +37,13 @@
                             </div>
                         </div>
 
-                        <hr />
 
-                        <div class="row">
-                            <div class="col my-auto">
-                                <div class="font-weight-bold my-2">
-                                    TODAY'S STATS
-                                </div>
-                                <div class="stat-row">
-                                    <div class="row">
-                                        <div class="col-auto">
-                                            <span class="text-secodary "
-                                                >Cases</span
-                                            >
-                                        </div>
-                                        <div class="col text-right">
-                                            <h5 class="m-0">
-                                                {{
-                                                    new Intl.NumberFormat().format(
-                                                        countryCasesToday
-                                                    )
-                                                }}
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="stat-row">
-                                    <div class="row">
-                                        <div class="col-auto">
-                                            <span class="text-danger "
-                                                >Deaths</span
-                                            >
-                                        </div>
-                                        <div class="col text-right">
-                                            <h5 class="text-danger m-0">
-                                                {{
-                                                    new Intl.NumberFormat().format(
-                                                        countryDeathsToday
-                                                    )
-                                                }}
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="font-weight-bold mb-2 mt-4">
-                                    ALL TIME STATS
-                                </div>
-                                <div class="stat-row">
-                                    <div class="row">
+                        
+
+                        
+                               
+                                <div class="stat-row mt-4">
+                                   <div class="row">
                                         <div class="col-auto">
                                             <span class="text-secodary "
                                                 >Cases</span
@@ -157,6 +116,48 @@
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div class="row">
+                            <div class="col my-auto">
+                                
+                                <div class="stat-row">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <span class="text-secodary "
+                                                >Cases Today</span
+                                            >
+                                        </div>
+                                        <div class="col text-right">
+                                            <h5 class="m-0">
+                                                {{
+                                                    new Intl.NumberFormat().format(
+                                                        countryCasesToday
+                                                    )
+                                                }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stat-row">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <span class="text-danger "
+                                                >Deaths Today</span
+                                            >
+                                        </div>
+                                        <div class="col text-right">
+                                            <h5 class="text-danger m-0">
+                                                {{
+                                                    new Intl.NumberFormat().format(
+                                                        countryDeathsToday
+                                                    )
+                                                }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="mt-3">
                                     <a
                                         v-show="!countryInfoToggle"
@@ -420,13 +421,13 @@
                             <div class="col-6">
                                 <div class="row">
                                     <div class="col my-auto">
-                                        <div class="stat-row" style="height:45px; overflow:hidden;">
+                                        <div class="stat-row" style="height:50px; overflow:hidden;">
                                             <img :src="selectedCountry.flag" height="22" :alt="selectedCountry.name">
-                                            <h6>{{ selectedCountry.name }}</h6>
+                                            <h6 class="mt-2">{{ selectedCountry.name }}</h6>
                                         </div>
-                                        <div class="font-weight-bold my-2">
-                                            TODAY
-                                        </div>
+                                        
+                                       
+                                       
                                         <div class="stat-row">
                                             <div class="row">
                                                 <div class="col-12">
@@ -435,52 +436,13 @@
                                                     >
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="m-0">
-                                                        {{
-                                                            new Intl.NumberFormat().format(
-                                                                countryCasesToday
-                                                            )
-                                                        }}
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="stat-row">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <span class="text-danger font-compare"
-                                                        >Deaths</span
-                                                    >
-                                                </div>
-                                                <div class="col">
-                                                    <h6 class="text-danger m-0">
-                                                        {{
-                                                            new Intl.NumberFormat().format(
-                                                                countryDeathsToday
-                                                            )
-                                                        }}
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="font-weight-bold mb-2 mt-4">
-                                            ALL TIME
-                                        </div>
-                                        <div class="stat-row">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <span class="text-secodary font-compare"
-                                                        >Cases</span
-                                                    >
-                                                </div>
-                                                <div class="col">
-                                                    <h6 class="m-0">
+                                                    <h5 class="m-0">
                                                         {{
                                                             new Intl.NumberFormat().format(
                                                                 countryCases
                                                             )
                                                         }}
-                                                    </h6>
+                                                    </h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -492,7 +454,7 @@
                                                     >
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="text-danger m-0">
+                                                    <h5 class="text-danger m-0">
                                                        
                                                         {{
                                                             new Intl.NumberFormat().format(
@@ -509,7 +471,7 @@
                                                                 ).toFixed(2)
                                                             }}%)</small
                                                         >
-                                                    </h6>
+                                                    </h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -521,7 +483,7 @@
                                                     </span>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="m-0 text-success">
+                                                    <h5 class="m-0 text-success">
                                                        
                                                         {{
                                                             new Intl.NumberFormat().format(
@@ -538,7 +500,44 @@
                                                                 ).toFixed(2)
                                                             }}%)</small
                                                         >
-                                                    </h6>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                         <div class="stat-row">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <span class="text-secodary font-compare"
+                                                        >Cases Today</span
+                                                    >
+                                                </div>
+                                                <div class="col">
+                                                    <h5 class="m-0">
+                                                        {{
+                                                            new Intl.NumberFormat().format(
+                                                                countryCasesToday
+                                                            )
+                                                        }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <span class="text-danger font-compare"
+                                                        >Deaths Today</span
+                                                    >
+                                                </div>
+                                                <div class="col">
+                                                    <h5 class="text-danger m-0">
+                                                        {{
+                                                            new Intl.NumberFormat().format(
+                                                                countryDeathsToday
+                                                            )
+                                                        }}
+                                                    </h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -552,13 +551,13 @@
                                                         </span>
                                                     </div>
                                                     <div class="col">
-                                                        <h6 class="m-0">
+                                                        <h5 class="m-0">
                                                             {{
                                                                 new Intl.NumberFormat().format(
                                                                     countryActive
                                                                 )
                                                             }}
-                                                        </h6>
+                                                        </h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -570,13 +569,13 @@
                                                         </span>
                                                     </div>
                                                     <div class="col">
-                                                        <h6 class="m-0">
+                                                        <h5 class="m-0">
                                                             {{
                                                                 new Intl.NumberFormat().format(
                                                                     countryCritical
                                                                 )
                                                             }}
-                                                        </h6>
+                                                        </h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -588,13 +587,13 @@
                                                         </span>
                                                     </div>
                                                     <div class="col">
-                                                        <h6 class="m-0">
+                                                        <h5 class="m-0">
                                                             {{
                                                                 new Intl.NumberFormat().format(
                                                                     countryCasesPerMil
                                                                 )
                                                             }}
-                                                        </h6>
+                                                        </h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -606,13 +605,13 @@
                                                         </span>
                                                     </div>
                                                     <div class="col">
-                                                        <h6 class="m-0">
+                                                        <h5 class="m-0">
                                                             {{
                                                                 new Intl.NumberFormat().format(
                                                                     countryDeathsPerMil
                                                                 )
                                                             }}
-                                                        </h6>
+                                                        </h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -632,7 +631,7 @@
                                             </span>
                                         </div>
                                         <div class="col">
-                                            <h6 class="m-0">
+                                            <h5 class="m-0">
                                                 {{ countryPosGlobalCases }}
                                                 <small
                                                     class="text-black-50 font-percent"
@@ -642,7 +641,7 @@
                                                         )
                                                     }}</small
                                                 >
-                                            </h6>
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
@@ -655,7 +654,7 @@
                                             </span>
                                         </div>
                                         <div class="col">
-                                            <h6 class="m-0">
+                                            <h5 class="m-0">
                                                 {{ countryPosGlobalDeaths }}
                                                 <small
                                                     class="text-black-50 font-percent"
@@ -665,7 +664,7 @@
                                                         )
                                                     }}</small
                                                 >
-                                            </h6>
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
@@ -678,7 +677,7 @@
                                             </span>
                                         </div>
                                         <div class="col">
-                                            <h6 class="m-0">
+                                            <h5 class="m-0">
                                                 {{ countryPosGlobalRecoveries }}
                                                 <small
                                                     class="text-black-50 font-percent"
@@ -688,7 +687,7 @@
                                                         )
                                                     }}</small
                                                 >
-                                            </h6>
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
@@ -698,79 +697,40 @@
                             <div class="col-6">
                                 <div class="row">
                                     <div class="col my-auto">
-                                        <div class="stat-row" style="height:45px; overflow:hidden;">
+                                        <div class="stat-row" style="height:50px; overflow:hidden;">
                                             <img :src="vsSelectedCountry.flag" height="22" :alt="vsSelectedCountry.name">
-                                            <h6>{{ vsSelectedCountry.name }}</h6>
+                                            <h6 class="mt-2">{{ vsSelectedCountry.name }}</h6>
                                         </div>
-                                        <div class="font-weight-bold my-2 text-white">
-                                            TODAY
-                                        </div>
+                                        
+                                        
+                                        
                                         <div class="stat-row">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <span class="text-secodary font-compare"
+                                                    <span class="text-white font-compare"
                                                         >Cases</span
                                                     >
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="m-0">
-                                                        {{
-                                                            new Intl.NumberFormat().format(
-                                                                vsCountryCasesToday
-                                                            )
-                                                        }}
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="stat-row">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <span class="text-danger font-compare"
-                                                        >Deaths</span
-                                                    >
-                                                </div>
-                                                <div class="col">
-                                                    <h6 class="text-danger m-0">
-                                                        {{
-                                                            new Intl.NumberFormat().format(
-                                                                vsCountryDeathsToday
-                                                            )
-                                                        }}
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="font-weight-bold mb-2 mt-4 text-white">
-                                            ALL TIME
-                                        </div>
-                                        <div class="stat-row">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <span class="text-secodary font-compare"
-                                                        >Cases</span
-                                                    >
-                                                </div>
-                                                <div class="col">
-                                                    <h6 class="m-0">
+                                                    <h5 class="m-0">
                                                         {{
                                                             new Intl.NumberFormat().format(
                                                                 vsCountryCases
                                                             )
                                                         }}
-                                                    </h6>
+                                                    </h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="stat-row">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <span class="text-danger font-compare"
+                                                    <span class="text-white font-compare"
                                                         >Deaths</span
                                                     >
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="text-danger m-0">
+                                                    <h5 class="text-danger m-0">
                                                        
                                                         {{
                                                             new Intl.NumberFormat().format(
@@ -787,19 +747,19 @@
                                                                 ).toFixed(2)
                                                             }}%)</small
                                                         >
-                                                    </h6>
+                                                    </h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="stat-row">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <span class="text-success font-compare">
+                                                    <span class="text-white font-compare">
                                                         Recovered
                                                     </span>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="m-0 text-success">
+                                                    <h5 class="m-0 text-success">
                                                        
                                                         {{
                                                             new Intl.NumberFormat().format(
@@ -816,7 +776,44 @@
                                                                 ).toFixed(2)
                                                             }}%)</small
                                                         >
-                                                    </h6>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stat-row">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <span class="text-white font-compare"
+                                                        >Cases Today</span
+                                                    >
+                                                </div>
+                                                <div class="col">
+                                                    <h5 class="m-0">
+                                                        {{
+                                                            new Intl.NumberFormat().format(
+                                                                vsCountryCasesToday
+                                                            )
+                                                        }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <span class="text-white font-compare"
+                                                        >Deaths Today</span
+                                                    >
+                                                </div>
+                                                <div class="col">
+                                                    <h5 class="text-danger m-0">
+                                                        {{
+                                                            new Intl.NumberFormat().format(
+                                                                vsCountryDeathsToday
+                                                            )
+                                                        }}
+                                                    </h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -825,72 +822,72 @@
                                             <div class="stat-row">
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <span class="font-compare">
+                                                        <span class="font-compare text-white">
                                                             Active Cases
                                                         </span>
                                                     </div>
                                                     <div class="col">
-                                                        <h6 class="m-0">
+                                                        <h5 class="m-0">
                                                             {{
                                                                 new Intl.NumberFormat().format(
                                                                     vsCountryActive
                                                                 )
                                                             }}
-                                                        </h6>
+                                                        </h5>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="stat-row">
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <span class="font-compare">
+                                                        <span class="font-compare text-white">
                                                             Critical Cases
                                                         </span>
                                                     </div>
                                                     <div class="col">
-                                                        <h6 class="m-0">
+                                                        <h5 class="m-0">
                                                             {{
                                                                 new Intl.NumberFormat().format(
                                                                     vsCountryCritical
                                                                 )
                                                             }}
-                                                        </h6>
+                                                        </h5>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="stat-row">
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <span class="font-compare">
+                                                        <span class="font-compare text-white">
                                                             Cases Per Million
                                                         </span>
                                                     </div>
                                                     <div class="col">
-                                                        <h6 class="m-0">
+                                                        <h5 class="m-0">
                                                             {{
                                                                 new Intl.NumberFormat().format(
                                                                     vsCountryCasesPerMil
                                                                 )
                                                             }}
-                                                        </h6>
+                                                        </h5>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="stat-row">
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <span class="font-compare">
+                                                        <span class="font-compare text-white">
                                                             Deaths Per Million
                                                         </span>
                                                     </div>
                                                     <div class="col">
-                                                        <h6 class="m-0">
+                                                        <h5 class="m-0">
                                                             {{
                                                                 new Intl.NumberFormat().format(
                                                                     vsCountryDeathsPerMil
                                                                 )
                                                             }}
-                                                        </h6>
+                                                        </h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -905,12 +902,12 @@
                                 <div class="stat-row">
                                     <div class="row">
                                         <div class="col-12">
-                                            <span class="font-compare">
+                                            <span class="font-compare text-white">
                                                 By Cases
                                             </span>
                                         </div>
                                         <div class="col">
-                                            <h6 class="m-0">
+                                            <h5 class="m-0">
                                                 {{ vsCountryPosGlobalCases }}
                                                 <small
                                                     class="text-black-50 font-percent"
@@ -920,7 +917,7 @@
                                                         )
                                                     }}</small
                                                 >
-                                            </h6>
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
@@ -928,12 +925,12 @@
                                 <div class="stat-row">
                                     <div class="row">
                                         <div class="col-12">
-                                            <span class="font-compare">
+                                            <span class="font-compare text-white">
                                                 By Deaths
                                             </span>
                                         </div>
                                         <div class="col">
-                                            <h6 class="m-0">
+                                            <h5 class="m-0">
                                                 {{ vsCountryPosGlobalDeaths }}
                                                 <small
                                                     class="text-black-50 font-percent"
@@ -943,7 +940,7 @@
                                                         )
                                                     }}</small
                                                 >
-                                            </h6>
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
@@ -951,12 +948,12 @@
                                 <div>
                                     <div class="row">
                                         <div class="col-12">
-                                            <span class="font-compare">
+                                            <span class="font-compare text-white">
                                                 By Recoveries
                                             </span>
                                         </div>
                                         <div class="col">
-                                            <h6 class="m-0">
+                                            <h5 class="m-0">
                                                 {{ vsCountryPosGlobalRecoveries }}
                                                 <small
                                                     class="text-black-50 font-percent"
@@ -966,7 +963,7 @@
                                                         )
                                                     }}</small
                                                 >
-                                            </h6>
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
@@ -994,6 +991,26 @@
                             :chart-data="historicalChartData"
                             :options="historicalChartOptions"
                         />
+
+                        <div v-if="vsSelectedCountry != ''">
+                             <h4 class="mt-3">{{ vsSelectedCountry.name }} Historical</h4>
+
+                            <!-- past 7 days -->
+                            <line-chart
+                                class="mt-3"
+                                :chart-data="vsPast7ChartData"
+                                :options="vsPast7ChartOptions"
+                            />
+
+                            <hr />
+
+                            <!-- History Graph -->
+                            <line-chart
+                                class="mt-2"
+                                :chart-data="vsHistoricalChartData"
+                                :options="vsHistoricalChartOptions"
+                            />
+                        </div>
                     </div>
                 </div>
                 <!-- /country column -->
@@ -1001,7 +1018,7 @@
                 <!-- world data column-->
                 <div class="col-lg-4 mt-5 mt-lg-0">
                     <!-- world Data -->
-                    <div class="border p-3" style="border-width:3px!important;">
+                    <div class="p-3 border b-12">
                         <div class="row">
                             <div class="col-auto">
                                 <img src="/img/world.png" alt="world" />
@@ -1015,9 +1032,8 @@
                             </div>
                         </div>
 
-                        <hr />
-
-                        <div>
+                       
+                        <div class="mt-2">
                             <div class="row">
                                 <div class="col my-auto">
                                     <div class="font-weight-bold my-2">
@@ -1274,8 +1290,7 @@
                 <!-- Top 10 data column-->
                 <div class="col-lg-4">
                     <div
-                        class="mt-5 mt-lg-0 border p-3"
-                        style="border-width:3px!important;"
+                        class="mt-5 mt-lg-0 border p-3 b-12"
                     >
                         <div class="pb-1">
                             <h4>
@@ -1323,16 +1338,16 @@
                             </div>
                         </div>
 
-                        <hr />
+                     
 
                         <radar-chart
-                            class="mb-3"
+                            class="mb-3 mt-2"
                             :chart-data="topChartData"
                             :options="topChartOptions"
                         />
 
                         <div
-                            class="border p-3 mb-3"
+                            class="border b-12 p-3 mb-3"
                             v-for="(country, i) in countriesData.slice(
                                 0,
                                 topDropDownInt
@@ -1430,6 +1445,54 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span>Cases Today</span>
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="m-0">
+                                                    {{
+                                                        new Intl.NumberFormat().format(
+                                                            country.todayCases
+                                                        )
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span class="text-danger "
+                                                    >Deaths Today</span
+                                                >
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="text-danger m-0">
+                                                    <small
+                                                        class="text-black-50 font-percent"
+                                                        v-show="
+                                                            country.todayCases >
+                                                                0
+                                                        "
+                                                        >({{
+                                                            (
+                                                                (country.todayDeaths /
+                                                                    country.todayCases) *
+                                                                100
+                                                            ).toFixed(2)
+                                                        }}%)</small
+                                                    >
+                                                    {{
+                                                        new Intl.NumberFormat().format(
+                                                            country.todayDeaths
+                                                        )
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="mt-3">
                                         <a
                                             v-show="!topInfoToggle"
@@ -1438,61 +1501,8 @@
                                             >more stats +</a
                                         >
                                     </div>
-                                    <div v-show="topInfoToggle">
-                                        <div class="font-weight-bold my-2">
-                                            TODAY'S STATS
-                                        </div>
-                                        <div class="stat-row">
-                                            <div class="row">
-                                                <div class="col-auto">
-                                                    <span>Cases</span>
-                                                </div>
-                                                <div class="col text-right">
-                                                    <h5 class="m-0">
-                                                        {{
-                                                            new Intl.NumberFormat().format(
-                                                                country.todayCases
-                                                            )
-                                                        }}
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="stat-row">
-                                            <div class="row">
-                                                <div class="col-auto">
-                                                    <span class="text-danger "
-                                                        >Deaths</span
-                                                    >
-                                                </div>
-                                                <div class="col text-right">
-                                                    <h5 class="text-danger m-0">
-                                                        <small
-                                                            class="text-black-50 font-percent"
-                                                            v-show="
-                                                                country.todayCases >
-                                                                    0
-                                                            "
-                                                            >({{
-                                                                (
-                                                                    (country.todayDeaths /
-                                                                        country.todayCases) *
-                                                                    100
-                                                                ).toFixed(2)
-                                                            }}%)</small
-                                                        >
-                                                        {{
-                                                            new Intl.NumberFormat().format(
-                                                                country.todayDeaths
-                                                            )
-                                                        }}
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="font-weight-bold mb-2 mt-4">
-                                            ALL TIME STATS
-                                        </div>
+                                    <div v-show="topInfoToggle">                                       
+                                        
                                         <div class="stat-row">
                                             <div class="row">
                                                 <div class="col-auto">
@@ -1580,9 +1590,9 @@
         <div class="container my-3 text-center">
             <div class="row">
                 <div class="col-12">
-                    <div class="border p-1">
+                    <div class="border b-12 p-1">
                         <small class="text-black-50 font-percent"
-                            >UPDATED AT</small
+                            >Updated At</small
                         >
                         <p class="m-0">
                             <strong> {{ updatedAt }}</strong>
@@ -1645,6 +1655,80 @@ export default {
 
             past7ChartData: null,
             past7ChartOptions: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: "Past 7 Days Exc Today"
+                },
+                tooltips: {
+                    mode: "index",
+                    intersect: false
+                },
+                hover: {
+                    mode: "nearest",
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [
+                        {
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Day"
+                            }
+                        }
+                    ],
+                    yAxes: [
+                        {
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Value"
+                            }
+                        }
+                    ]
+                }
+            },
+
+            vsHistoricalChartData: null,
+            vsHistoricalChartOptions: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: "2020 Historical Data"
+                },
+                tooltips: {
+                    mode: "index",
+                    intersect: false
+                },
+                hover: {
+                    mode: "nearest",
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [
+                        {
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Day"
+                            }
+                        }
+                    ],
+                    yAxes: [
+                        {
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Value"
+                            }
+                        }
+                    ]
+                }
+            },
+
+            vsPast7ChartData: null,
+            vsPast7ChartOptions: {
                 responsive: true,
                 title: {
                     display: true,
@@ -1807,7 +1891,8 @@ export default {
                             backgroundColor: "#F00",
                             borderColor: "#F00",
                             data: this.getTopDeaths(),
-                            fill: false
+                            fill: false,
+                            
                         },
                         {
                             label: "Cases",
@@ -2153,6 +2238,68 @@ export default {
                     this.vsCountryPosGlobalRecoveries = this.getCountryPosGlobalRecoveries(
                         element.country
                     );
+
+                    this.vsHistoricalChartData = {
+                        labels: this.getHistoryLabels(element.country),
+                        datasets: [
+                            {
+                                label: "Deaths",
+                                backgroundColor: "#F00",
+                                borderColor: "#F00",
+                                data: this.getHistoricalDeaths(element.country),
+                                fill: false
+                            },
+                            {
+                                label: "Cases",
+                                fill: false,
+                                backgroundColor: "#333",
+                                borderColor: "#333",
+                                data: this.getHistoricalCases(element.country)
+                            },
+                            {
+                                label: "Recovered",
+                                fill: false,
+                                backgroundColor: "#38c172",
+                                borderColor: "#38c172",
+                                data: this.getHistoricalRecovered(element.country)
+                            }
+                        ]
+                    };
+
+                    this.vsPast7ChartData = {
+                        labels: this.vsHistoricalChartData.labels.slice(
+                            this.vsHistoricalChartData.labels.length - 7
+                        ),
+                        datasets: [
+                            {
+                                label: "Deaths",
+                                backgroundColor: "#F00",
+                                borderColor: "#F00",
+                                data: this.vsHistoricalChartData.datasets[0].data.slice(
+                                    this.vsHistoricalChartData.labels.length - 7
+                                ),
+                                fill: false
+                            },
+                            {
+                                label: "Cases",
+                                fill: false,
+                                backgroundColor: "#333",
+                                borderColor: "#333",
+                                data: this.vsHistoricalChartData.datasets[1].data.slice(
+                                    this.vsHistoricalChartData.labels.length - 7
+                                )
+                            },
+                            {
+                                label: "Recovered",
+                                fill: false,
+                                backgroundColor: "#38c172",
+                                borderColor: "#38c172",
+                                data: this.vsHistoricalChartData.datasets[2].data.slice(
+                                    this.vsHistoricalChartData.labels.length - 7
+                                )
+                            }
+                        ]
+                    };
                 }
              })
             }   

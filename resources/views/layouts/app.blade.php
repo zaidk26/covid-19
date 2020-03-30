@@ -121,7 +121,7 @@
     <div class="container text-center">
       <div class="row">
         <div class="col">
-          <small class="text-black-50">SHARE PAGE</small><br /><br />
+          <h6>Share Page</h6>
           <a
              href="whatsapp://send?text=https://covid.niftybit.co.za" target="_blank" aria-label="WhatsApp"
              rel="noopener" class="resp-sharing-button__link mb-1">
@@ -151,12 +151,12 @@
   <footer class="py-5 text-white font-percent text-center bg-dark">
 
     <div class="container">
-      <h6>MAINTAINED BY:</h6>
+      <h6>Maintained By:</h6>
       <a href="https://niftybit.co.za" class="text-success">Zaid Kajee</a><br /><br>
-      <h6>ATTRIBUTIONS:</h6>
+      <h6>Attributions:</h6>
+      <a href="https://github.com/NovelCOVID/API" class="text-success">novelCovid</a><br>
       <a href="https://newsapi.org" class="text-success">newsapi.org</a><br />
-      <a href="https://www.flaticon.com" class="text-success">www.flaticon.com</a><br />
-      <a href="https://github.com/NovelCOVID/API" class="text-success">novelCovid</a>
+      <a href="https://www.flaticon.com" class="text-success">www.flaticon.com</a>      
     </div>
   </footer>
 

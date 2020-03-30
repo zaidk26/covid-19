@@ -25,6 +25,8 @@ Route::get('/', function () {
     $historicalData = Cache::remember('historicalData',30000, function () {
         return Http::get('https://corona.lmao.ninja/v2/historical')->body();
     });   
+
+       
     
     return view('welcome',
         ['newsSa' => $newsSa, 
