@@ -203,6 +203,54 @@
                                             </div>
                                         </div>
                                     </div>
+                                     <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span>
+                                                    First Case
+                                                </span>
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="m-0">
+                                                    {{
+                                                        countryFirstCase
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span>
+                                                    First Death
+                                                </span>
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="m-0">
+                                                    {{
+                                                        countryFirstDeath
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="stat-row">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span>
+                                                    First Recovered
+                                                </span>
+                                            </div>
+                                            <div class="col text-right">
+                                                <h5 class="m-0">
+                                                    {{
+                                                       countryFirstRecovered
+                                                    }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="stat-row">
                                         <div class="row">
                                             <div class="col-auto">
@@ -615,6 +663,54 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                             <div class="stat-row">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <span class="font-compare">
+                                                            First Case
+                                                        </span>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h5 class="m-0">
+                                                            {{
+                                                               countryFirstCase
+                                                            }}
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             <div class="stat-row">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <span class="font-compare">
+                                                            First Death
+                                                        </span>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h5 class="m-0">
+                                                            {{
+                                                                countryFirstDeath
+                                                            }}
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             <div class="stat-row">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <span class="font-compare">
+                                                            First Recovered
+                                                        </span>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h5 class="m-0">
+                                                            {{
+                                                                countryFirstRecovered
+                                                            }}
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -886,6 +982,55 @@
                                                                 new Intl.NumberFormat().format(
                                                                     vsCountryDeathsPerMil
                                                                 )
+                                                            }}
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                             <div class="stat-row">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <span class="font-compare text-light">
+                                                            First Case
+                                                        </span>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h5 class="m-0">
+                                                            {{
+                                                               vsCountryFirstCase
+                                                            }}
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             <div class="stat-row">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <span class="font-compare text-light">
+                                                            First Death
+                                                        </span>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h5 class="m-0">
+                                                            {{
+                                                                vsCountryFirstDeath
+                                                            }}
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             <div class="stat-row">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <span class="font-compare text-light">
+                                                            First Recovered
+                                                        </span>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h5 class="m-0">
+                                                            {{
+                                                                vsCountryFirstRecovered
                                                             }}
                                                         </h5>
                                                     </div>
@@ -1810,6 +1955,9 @@ export default {
             countryPosGlobalDeaths: 0,
             countryPosGlobalCases: 0,
             countryPosGlobalRecoveries: 0,
+            countryFirstCase:'',
+            countryFirstDeath:'',
+            countryFirstRecovered:'',
 
             vsCountryCases: 0,
             vsCountryDeaths: 0,
@@ -1823,6 +1971,9 @@ export default {
             vsCountryPosGlobalDeaths: 0,
             vsCountryPosGlobalCases: 0,
             vsCountryPosGlobalRecoveries: 0,
+            vsCountryFirstCase:'',
+            vsCountryFirstDeath:'',
+            vsCountryFirstRecovered:'',
 
             worldInfoToggle: false,
             countryInfoToggle: false,
@@ -1983,15 +2134,18 @@ export default {
                     this.countryPosGlobalRecoveries = this.getCountryPosGlobalRecoveries(
                         element.country
                     );
+                    this.countryFirstCase = this.getCountryFirstCase(element.country)
+                    this.countryFirstDeath = this.getCountryFirstDeath(element.country)
+                    this.countryFirstRecovered = this.getCountryFirstRecovered(element.country)
 
                     this.historicalChartData = {
-                        labels: this.getHistoryLabels(country),
+                        labels: this.getHistoryLabels(country,this.countryFirstCase ),
                         datasets: [
                             {
                                 label: "Deaths",
                                 backgroundColor: "#F00",
                                 borderColor: "#F00",
-                                data: this.getHistoricalDeaths(country),
+                                data: this.getHistoricalDeaths(country,this.countryFirstCase),
                                 fill: false
                             },
                             {
@@ -1999,14 +2153,14 @@ export default {
                                 fill: false,
                                 backgroundColor: "#333",
                                 borderColor: "#333",
-                                data: this.getHistoricalCases(country)
+                                data: this.getHistoricalCases(country,this.countryFirstCase)
                             },
                             {
                                 label: "Recovered",
                                 fill: false,
                                 backgroundColor: "#38c172",
                                 borderColor: "#38c172",
-                                data: this.getHistoricalRecovered(country)
+                                data: this.getHistoricalRecovered(country,this.countryFirstCase)
                             }
                         ]
                     };
@@ -2058,45 +2212,62 @@ export default {
                 this.newsArticlesSa.push(article);
             });
         },
-        getHistoryLabels(country) {
+        getHistoryLabels(country,firstCaseDate) {
             let arr = [];
+            let started = false;
             this.historicalData.forEach(elem => {
                 if (elem.country.toLowerCase() == country.toLowerCase()) {
                     for (let key in elem.timeline.cases) {
-                        arr.push(key);
+                        if(key == firstCaseDate || started){
+                            arr.push(key);
+                            started = true;
+                        }
+                        
                     }
                 }
             });
             return arr;
         },
-        getHistoricalDeaths(country) {
-            let arr = [];
+        getHistoricalDeaths(country,firstCaseDate) {
+            let arr = [];  
+            let started = false;          
             this.historicalData.forEach(elem => {
                 if (elem.country.toLowerCase() == country.toLowerCase()) {
                     for (let key in elem.timeline.deaths) {
-                        arr.push(elem.timeline.deaths[key]);
+                        if(key == firstCaseDate || started){
+                            arr.push(elem.timeline.deaths[key]);
+                            started = true;
+                        }
                     }
                 }
             });
             return arr;
         },
-        getHistoricalCases(country) {
+        getHistoricalCases(country,firstCaseDate) {
             let arr = [];
+            let started = false;
             this.historicalData.forEach(elem => {
                 if (elem.country.toLowerCase() == country.toLowerCase()) {
                     for (let key in elem.timeline.cases) {
-                        arr.push(elem.timeline.cases[key]);
+                        if(key == firstCaseDate || started){
+                            arr.push(elem.timeline.cases[key]);
+                            started = true;
+                        }
                     }
                 }
             });
             return arr;
         },
-        getHistoricalRecovered(country) {
+        getHistoricalRecovered(country,firstCaseDate) {
             let arr = [];
+            let started = false;
             this.historicalData.forEach(elem => {
                 if (elem.country.toLowerCase() == country.toLowerCase()) {
                     for (let key in elem.timeline.recovered) {
-                        arr.push(elem.timeline.recovered[key]);
+                        if(key == firstCaseDate || started){
+                            arr.push(elem.timeline.recovered[key]);
+                            started = true;
+                        }
                     }
                 }
             });
@@ -2206,6 +2377,48 @@ export default {
 
             return pos;
         },
+        getCountryFirstCase(country) {             
+            let v = '';       
+            this.historicalData.forEach(elem => {
+                if (elem.country.toLowerCase() == country.toLowerCase()) {
+                    for (let key in elem.timeline.cases) {                       
+                        if(elem.timeline.cases[key] > 0){                             
+                            v = key;
+                            break;
+                        };
+                    }
+                }
+            });  
+            return v;          
+        },
+        getCountryFirstDeath(country) {      
+            let v = '';        
+            this.historicalData.forEach(elem => {
+                if (elem.country.toLowerCase() == country.toLowerCase()) {
+                    for (let key in elem.timeline.deaths) {
+                        if(elem.timeline.deaths[key] > 0){
+                            v = key;
+                            break;
+                        };
+                    }
+                }
+            });  
+             return v;              
+        },
+        getCountryFirstRecovered(country) {    
+            let v = '';          
+            this.historicalData.forEach(elem => {
+                if (elem.country.toLowerCase() == country.toLowerCase()) {
+                    for (let key in elem.timeline.recovered) {
+                        if(elem.timeline.recovered[key] > 0){
+                            v = key;
+                            break;
+                        };
+                    }
+                }
+            });   
+             return v;             
+        },
         compareCountries(){
             if(this.vsSelectedCountry == ''){
                 alert("Please select a country")
@@ -2238,15 +2451,19 @@ export default {
                     this.vsCountryPosGlobalRecoveries = this.getCountryPosGlobalRecoveries(
                         element.country
                     );
+                    this.vsCountryFirstCase = this.getCountryFirstCase(element.country)
+                    this.vsCountryFirstDeath = this.getCountryFirstDeath(element.country)
+                    this.vsCountryFirstRecovered = this.getCountryFirstRecovered(element.country)
+
 
                     this.vsHistoricalChartData = {
-                        labels: this.getHistoryLabels(element.country),
+                        labels: this.getHistoryLabels(element.country,this.vsCountryFirstCase),
                         datasets: [
                             {
                                 label: "Deaths",
                                 backgroundColor: "#F00",
                                 borderColor: "#F00",
-                                data: this.getHistoricalDeaths(element.country),
+                                data: this.getHistoricalDeaths(element.country,this.vsCountryFirstCase),
                                 fill: false
                             },
                             {
@@ -2254,14 +2471,14 @@ export default {
                                 fill: false,
                                 backgroundColor: "#333",
                                 borderColor: "#333",
-                                data: this.getHistoricalCases(element.country)
+                                data: this.getHistoricalCases(element.country,this.vsCountryFirstCase)
                             },
                             {
                                 label: "Recovered",
                                 fill: false,
                                 backgroundColor: "#38c172",
                                 borderColor: "#38c172",
-                                data: this.getHistoricalRecovered(element.country)
+                                data: this.getHistoricalRecovered(element.country,this.vsCountryFirstCase)
                             }
                         ]
                     };
