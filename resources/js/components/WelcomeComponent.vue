@@ -5,7 +5,7 @@
                 <!-- country data column-->
                 <div class="col-lg-4">
                     <!-- country data -->
-                    <div class="p-3 b-12 border">
+                    <div class="p-3 b-12" style="border:solid 3px #EEE;">
                         <div class="row">
                             <div class="col">
                                 <h4>Select a Country</h4>
@@ -377,25 +377,25 @@
                                 <p>Read On at: <a :href="saCoronaUpdate.link">sacoronavirus.co.za</a></p>
                             </div>
 
-                            <h4 class="mt-3">SA News Headlines</h4>
-
-                            <div>
+                            <h4 class="mt-3">SA News Headlines</h4>                          
                                 <div
                                     class="stat-row"
-                                    v-for="article in newsArticlesSa.slice(
-                                        0,
-                                        5
-                                    )"
+                                    v-for="article in newsArticlesSa.slice(0,5)"
                                     :key="article.id"
                                 >
-                                    <a :href="article.url">{{
-                                        article.title
-                                    }}</a
-                                    ><br />
-                                    <small class="text-black-50 font-percentage"
-                                        >- {{ article.source.name }}</small
-                                    >
+                                    <a :href="article.url">
+                                        <div class="media" v-lazy-container="{ selector: 'img' }">
+                                        <img :data-src="article.urlToImage" class="mr-2" :alt="article.title" width="72">
+                                        <div class="media-body">
+                                            {{ article.title }}<br />
+                                            <small class="text-black-50 font-percentage">
+                                                - {{ article.source.name }}
+                                            </small>
+                                        </div>
+                                        </div>
+                                    </a>
                                 </div>
+                                  
                                 <div class="mt-3">
                                     <a
                                         v-show="!newsSaToggle"
@@ -406,24 +406,24 @@
                                 </div>
                                 <div v-if="newsSaToggle">
                                     <div
-                                        class="stat-row"
-                                        v-for="article in newsArticlesSa.slice(
-                                            5,
-                                            100
-                                        )"
-                                        :key="article.id"
+                                    class="stat-row"
+                                    v-for="article in newsArticlesSa.slice(5,15)"
+                                    :key="article.id"
                                     >
-                                        <a :href="article.url">{{
-                                            article.title
-                                        }}</a
-                                        ><br />
-                                        <small
-                                            class="text-black-50 font-percentage"
-                                            >- {{ article.source.name }}</small
-                                        >
+                                        <a :href="article.url">
+                                            <div class="media" v-lazy-container="{ selector: 'img' }">
+                                            <img :data-src="article.urlToImage" class="mr-2" :alt="article.title" width="72">
+                                            <div class="media-body">
+                                                {{ article.title }}<br />
+                                                <small class="text-black-50 font-percentage">
+                                                    - {{ article.source.name }}
+                                                </small>
+                                            </div>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
+                            
 
                       
                         </div>
@@ -1173,7 +1173,7 @@
                 <!-- world data column-->
                 <div class="col-lg-4 mt-5 mt-lg-0">
                     <!-- world Data -->
-                    <div class="p-3 border b-12">
+                    <div class="p-3 b-12" style="border:solid 3px #EEE;">
                         <div class="row">
                             <div class="col-auto">
                                 <img src="/img/world.png" alt="world" />
@@ -1394,19 +1394,20 @@
                             <div>
                                 <div
                                     class="stat-row"
-                                    v-for="article in newsArticlesWorld.slice(
-                                        0,
-                                        5
-                                    )"
+                                    v-for="article in newsArticlesWorld.slice(0,5)"
                                     :key="article.id"
                                 >
-                                    <a :href="article.url">{{
-                                        article.title
-                                    }}</a
-                                    ><br />
-                                    <small class="text-black-50 font-percentage"
-                                        >- {{ article.source.name }}</small
-                                    >
+                                    <a :href="article.url">
+                                        <div class="media" v-lazy-container="{ selector: 'img' }">
+                                        <img :data-src="article.urlToImage" class="mr-2" :alt="article.title" width="72">
+                                        <div class="media-body">
+                                            {{ article.title }}<br />
+                                            <small class="text-black-50 font-percentage">
+                                                - {{ article.source.name }}
+                                            </small>
+                                        </div>
+                                        </div>
+                                    </a>
                                 </div>
                                 <div class="mt-3">
                                     <a
@@ -1418,22 +1419,22 @@
                                 </div>
                                 <div v-if="newsWorldToggle">
                                     <div
-                                        class="stat-row"
-                                        v-for="article in newsArticlesWorld.slice(
-                                            5,
-                                            25
-                                        )"
-                                        :key="article.id"
+                                    class="stat-row"
+                                    v-for="article in newsArticlesWorld.slice(5,15)"
+                                    :key="article.id"
                                     >
-                                        <a :href="article.url">{{
-                                            article.title
-                                        }}</a
-                                        ><br />
-                                        <small
-                                            class="text-black-50 font-percentage"
-                                            >- {{ article.source.name }}</small
-                                        >
-                                    </div>
+                                    <a :href="article.url">
+                                        <div class="media" v-lazy-container="{ selector: 'img' }">
+                                        <img :data-src="article.urlToImage" class="mr-2" :alt="article.title" width="72">
+                                        <div class="media-body">
+                                            {{ article.title }}<br />
+                                            <small class="text-black-50 font-percentage">
+                                                - {{ article.source.name }}
+                                            </small>
+                                        </div>
+                                        </div>
+                                    </a>
+                                </div>
                                 </div>
                             </div>
                         
@@ -1445,7 +1446,7 @@
                 <!-- Top 10 data column-->
                 <div class="col-lg-4">
                     <div
-                        class="mt-5 mt-lg-0 border p-3 b-12"
+                        class="mt-5 mt-lg-0 p-3 b-12" style="border:solid 3px #EEE;"
                     >
                         <div class="pb-1">
                             <h4>
@@ -1501,8 +1502,12 @@
                             :options="topChartOptions"
                         />
 
-                        <h6>View Style:</h6>
-
+                        
+                        <div class="form-check form-check-inline">                        
+                        <label class="form-check-label" for="exampleRadios1">
+                            <h6>View As</h6>
+                        </label>
+                        </div>
                         <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" v-model="topViewStyle" value="table">
                         <label class="form-check-label" for="exampleRadios1">
@@ -1516,32 +1521,73 @@
                         </label>
                         </div>
 
+                        <div class="row no-gutters">
+                                <div class="col-auto">
+                                    <h6 class="mr-1 mt-1">Sorted By:</h6>
+                                </div>
+                                <div class="col">
+                                    <select
+                                        class="form-control form-control-sm"
+                                        @change="onChangeSort($event)"
+                                    >
+                                        <option selected value="deaths"
+                                            >Most Deaths</option
+                                        >
+                                        <option value="cases">
+                                            Most Cases
+                                        </option>
+                                        <option value="recovered"
+                                            >Most Recovered</option
+                                        >
+                                        <option value="todayCases"
+                                            >Most Cases Today</option
+                                        >
+                                        <option value="todayDeaths"
+                                            >Most Deaths Today</option
+                                        >
+                                    </select>
+                                </div>
+                            </div>
+
                         <!-- table -->
-                        <div v-if="topViewStyle == 'table'" class="table-responsive mt-3">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr class="bg-light">
-                                        <td></td>
-                                        <td></td>
-                                        <td>Cases</td>
-                                        <td>Deaths</td>
-                                    </tr>
-                                </thead>
-                                <tr v-for="(country, i) in countriesData.slice(0,topDropDownInt)" :key="country.country" class="px-0">
-                                    <td class="text-primary">
-                                        #{{ i }}
-                                    </td>
-                                    <td class="font-weight-bold">
-                                        {{ country.country }}
-                                    </td>
-                                    <td class="font-weight-bold">
+                        <div v-if="topViewStyle == 'table'" class="table-responsive mt-3" style="font-size:12px;">
+                            <div style="font-size:12px; min-width:320px;" class="bg-light">                                 
+                                <div class="float-left bg-light"  style="width:20%;">Cases</div>
+                                <div class="float-left bg-light"  style="width:20%;">Deaths</div>
+                                <div class="float-left bg-light"  style="width:20%;">Recovered</div>
+                                <div class="float-left bg-light"  style="width:20%;">Cases Today</div>
+                                <div class="float-left bg-light"  style="width:20%;">Deaths Today</div>
+                            </div>  
+
+                            <div style="clear:both;"></div>
+                             
+                               
+                                <div  v-for="(country, i) in countriesData.slice(0,topDropDownInt)" :key="country.country" class="stat-row"  style="font-size:12px; min-width:320px;">
+                                   
+                                    <h6 class="m-0 mt-3 text-secondary">#{{ i+1 }} {{ country.country.toUpperCase() }}</h6>                                       
+                                    
+                                       
+                                    <div class="font-weight-bold float-left" style="width:20%;">
                                         {{   new Intl.NumberFormat().format(country.cases) }}
-                                    </td>
-                                    <td class="text-danger font-weight-bold">
+                                    </div>
+                                     <div class="font-weight-bold text-danger float-left" style="width:20%;">
                                         {{   new Intl.NumberFormat().format(country.deaths) }}
-                                    </td>
-                                </tr>
-                            </table>
+                                     </div>
+                                    <div class="font-weight-bold text-success float-left" style="width:20%;">
+                                        {{   new Intl.NumberFormat().format(country.recovered) }}
+                                     </div>
+                                    <div class="font-weight-bold  float-left" style="width:20%;">
+                                        {{   new Intl.NumberFormat().format(country.todayCases) }}
+                                    </div>
+                                    <div class="font-weight-bold  text-danger float-left" style="width:20%;">
+                                        {{   new Intl.NumberFormat().format(country.todayDeaths) }}
+                                    </div>
+
+                                    <div style="clear:both;"></div>
+                                       
+                                    
+                                </div>
+                            
                         </div>
 
 
@@ -1693,15 +1739,16 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="mt-3">
+                                        <!-- <div class="mt-3">
                                             <a
                                                 v-show="!topInfoToggle"
                                                 v-on:click="toggleTopInfo"
                                                 class="btn btn-sm btn-light"
                                                 >more stats +</a
                                             >
-                                        </div>
-                                        <div v-show="topInfoToggle">                                       
+                                        </div> -->
+                                        <!-- <div v-show="topInfoToggle">  -->
+                                        <div>                                       
                                             
                                             <div class="stat-row">
                                                 <div class="row">

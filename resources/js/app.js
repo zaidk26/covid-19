@@ -5,8 +5,11 @@
  */
 
 require('./bootstrap');
+import VueLazyload from 'vue-lazyload'
 
 window.Vue = require('vue');
+
+Vue.use(VueLazyload);
 
 /**
  * The following block of code may be used to automatically register your
