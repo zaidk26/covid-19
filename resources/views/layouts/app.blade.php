@@ -153,7 +153,13 @@
     <div class="container">
       <h6>Maintained By:</h6>
       <a href="https://niftybit.co.za" class="text-success">Zaid Kajee</a><br /><br>
-      <h6>Attributions:</h6>
+      <h6>About this data</h6>
+      <small class="text-white-50">
+This data changes rapidly, so what’s shown may be out of date. Table totals may not always represent an accurate sum. Information about reported cases is also available on the World Health Organisation site.
+It doesn’t include all cases
+Confirmed cases aren’t all cases. They only include people who tested positive. Testing rules and availability vary by country. The Data on China is not accurate but whats available in the data source.
+      </small>
+      <h6 class="mt-4">Attributions:</h6>
       <a href="https://github.com/NovelCOVID/API" class="text-success">novelCovid</a><br>
       <a href="https://newsapi.org" class="text-success">newsapi.org</a><br />
       <a href="https://www.flaticon.com" class="text-success">www.flaticon.com</a>      

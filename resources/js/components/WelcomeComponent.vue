@@ -2002,6 +2002,18 @@ export default {
     methods: {
         getData(sort) {
             (async () => {
+
+                this.worldCases = 0;
+                this.worldDeaths = 0;
+                this.worldCasesToday = 0;
+                this.worldDeathsToday = 0;
+                this.worldActive = 0;
+                this.worldCritical = 0;
+                this.worldRecovered = 0;
+                this.worldCasesPerMil = 0;
+                this.worldDeathsPerMil= 0;
+
+
                 this.countriesData = await covid.getCountry({ sort: sort });
                 //World Stats
                 this.countriesList = [];
