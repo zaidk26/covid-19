@@ -33,7 +33,7 @@ Route::get('/', function () {
         $xmlData = simplexml_load_string(Http::get('https://sacoronavirus.co.za/feed/')->body());
 
         foreach ($xmlData->channel->item as $item){
-            if (strpos($item->title, 'Update of COVID-19 (') !== false) {
+            if (strpos($item->title, 'Update of COVID-19') !== false) {
                 $info['title'] =(string)$item->title;
                 $info['link'] = (string)$item->link;
                 $info['data'] = (string)$item->children('http://purl.org/rss/1.0/modules/content/')->encoded;
