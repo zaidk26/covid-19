@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Cache;
 */
 
 Route::get('/', function () {
+    
     $newsSa = Cache::remember('newsSa',900, function () {
         return Http::get('https://newsapi.org/v2/top-headlines?q=corona&country=za&pageSize=100&sortBy=publishedAt&apiKey='.env('NEWS_API_KEY'))->body();
     });   
@@ -26,12 +27,30 @@ Route::get('/', function () {
         return Http::get('https://corona.lmao.ninja/v2/historical')->body();
     });   
 
+    $saCoronaUpdate =  Cache::remember('saCoronaUpdate',30000, function () {
+
+        $info = [];
+        $xmlData = simplexml_load_string(Http::get('https://sacoronavirus.co.za/feed/')->body());
+
+        foreach ($xmlData->channel->item as $item){
+            if (strpos($item->title, 'Update of COVID-19 (') !== false) {
+                $info['title'] =(string)$item->title;
+                $info['link'] = (string)$item->link;
+                $info['data'] = (string)$item->children('http://purl.org/rss/1.0/modules/content/')->encoded;
+                break;
+            }     
+        }
+
+       return $info;
+    });   
+      
        
     
     return view('welcome',
         ['newsSa' => $newsSa, 
         'newsWorld' => $newsWorld, 
-        'historicalData' => $historicalData]);
+        'historicalData' => $historicalData,
+        'saCoronaUpdate' => json_encode($saCoronaUpdate)]);
 });
 
 Route::get('/symptoms', function () {    

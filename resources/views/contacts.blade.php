@@ -16,7 +16,7 @@
                        <hr>
 
                        <h5>SA Corona Virus Website</h5>
-                       <a href="www.sacoronavirus.co.za">www.sacoronavirus.co.za</a>
+                       <a href="http://www.sacoronavirus.co.za">www.sacoronavirus.co.za</a>
                         
                 </div>
                 <hr>
