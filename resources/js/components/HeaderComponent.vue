@@ -1,6 +1,6 @@
 <template>
-  <header class="bg-dark">
-    <div class="container">     
+  <header class="bg-dark border-bottom border-secondary">
+    <div class="container-fluid">     
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-0">
         <a class="navbar-brand" href="/">
           <div class="row">

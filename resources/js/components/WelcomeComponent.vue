@@ -5,7 +5,7 @@
                 <!-- country data column-->
                 <div class="col-lg-4">
                     <!-- country data -->
-                    <div class="p-3 b-12" style="border:solid 3px #EEE;">
+                    <div class="p-3 b-12 bg-white">
                         <div class="row">
                             <div class="col">
                                 <h4>Select a Country</h4>
@@ -213,7 +213,7 @@
                                             <div class="col text-right">
                                                 <h5 class="m-0">
                                                     {{
-                                                        countryFirstCase
+                                                        countryFirstCase | date
                                                     }}
                                                 </h5>
                                             </div>
@@ -229,7 +229,7 @@
                                             <div class="col text-right">
                                                 <h5 class="m-0">
                                                     {{
-                                                        countryFirstDeath
+                                                        countryFirstDeath | date
                                                     }}
                                                 </h5>
                                             </div>
@@ -245,7 +245,7 @@
                                             <div class="col text-right">
                                                 <h5 class="m-0">
                                                     {{
-                                                       countryFirstRecovered
+                                                       countryFirstRecovered | date
                                                     }}
                                                 </h5>
                                             </div>
@@ -299,7 +299,7 @@
                             <div class="row">
                                 <div class="col-auto">
                                     <span>
-                                        By Cases
+                                        By #Cases
                                     </span>
                                 </div>
                                 <div class="col text-right">
@@ -316,13 +316,13 @@
                                     </h5>
                                 </div>
                             </div>
-                        </div>
+                        </div>                       
 
                         <div class="stat-row">
                             <div class="row">
                                 <div class="col-auto">
                                     <span>
-                                        By Deaths
+                                        By #Deaths
                                     </span>
                                 </div>
                                 <div class="col text-right">
@@ -341,11 +341,34 @@
                             </div>
                         </div>
 
+                        <div class="stat-row">
+                            <div class="row">
+                                <div class="col-auto">
+                                    <span>
+                                        By Low Mortality Rate
+                                    </span>
+                                </div>
+                                <div class="col text-right">
+                                    <h5 class="m-0">
+                                        {{ countryPosGlobalDeathsByRate }}
+                                        <small
+                                            class="text-black-50 font-percent"
+                                            >{{
+                                                numberSuffix(
+                                                   countryPosGlobalDeathsByRate
+                                                )
+                                            }}</small
+                                        >
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+
                         <div>
                             <div class="row">
                                 <div class="col-auto">
                                     <span>
-                                        By Recoveries
+                                        By #Recoveries
                                     </span>
                                 </div>
                                 <div class="col text-right">
@@ -713,7 +736,7 @@
                                                     <div class="col">
                                                         <h5 class="m-0">
                                                             {{
-                                                               countryFirstCase
+                                                               countryFirstCase | date
                                                             }}
                                                         </h5>
                                                     </div>
@@ -729,7 +752,7 @@
                                                     <div class="col">
                                                         <h5 class="m-0">
                                                             {{
-                                                                countryFirstDeath
+                                                                countryFirstDeath | date
                                                             }}
                                                         </h5>
                                                     </div>
@@ -745,7 +768,7 @@
                                                     <div class="col">
                                                         <h5 class="m-0">
                                                             {{
-                                                                countryFirstRecovered
+                                                                countryFirstRecovered | date
                                                             }}
                                                         </h5>
                                                     </div>
@@ -1038,7 +1061,7 @@
                                                     <div class="col">
                                                         <h5 class="m-0">
                                                             {{
-                                                               vsCountryFirstCase
+                                                               vsCountryFirstCase | date
                                                             }}
                                                         </h5>
                                                     </div>
@@ -1054,7 +1077,7 @@
                                                     <div class="col">
                                                         <h5 class="m-0">
                                                             {{
-                                                                vsCountryFirstDeath
+                                                                vsCountryFirstDeath | date
                                                             }}
                                                         </h5>
                                                     </div>
@@ -1070,7 +1093,7 @@
                                                     <div class="col">
                                                         <h5 class="m-0">
                                                             {{
-                                                                vsCountryFirstRecovered
+                                                                vsCountryFirstRecovered | date
                                                             }}
                                                         </h5>
                                                     </div>
@@ -1203,7 +1226,7 @@
                 <!-- world data column-->
                 <div class="col-lg-4 mt-5 mt-lg-0">
                     <!-- world Data -->
-                    <div class="p-3 b-12" style="border:solid 3px #EEE;">
+                    <div class="p-3 b-12 bg-white">
                         <div class="row">
                             <div class="col-auto">
                                 <img src="/img/world.png" alt="world" />
@@ -1476,8 +1499,7 @@
                 <!-- Top 10 data column-->
                 <div class="col-lg-4">
                     <div
-                        class="mt-5 mt-lg-0 p-3 b-12" style="border:solid 3px #EEE;"
-                    >
+                        class="mt-5 mt-lg-0 p-3 b-12 bg-white">
                         <div class="pb-1">
                             <h4>
                                 Top
@@ -1593,7 +1615,7 @@
                              
                                
                                 <div  v-for="(country, i) in countriesData.slice(0,topDropDownInt)" :key="country.country" :class="{ 'bg-light': (i%2==0) }" 
-                                    class="py-2" style="font-size:12px; min-width:300px;">
+                                    class="py-2 pointer" style="font-size:12px; min-width:300px;" @click="viewCountryStatsOnClick(country.country)">
                                    
                                    
                                     <h6 class="m-0 text-secondary">#{{ i+1 }} {{ country.country.toUpperCase() }}</h6>                                       
@@ -1632,7 +1654,7 @@
                                     topDropDownInt
                                 )"
                                 :key="country.country">
-                                <div class="row my-2">
+                                <div class="row my-2 pointer" @click="viewCountryStatsOnClick(country.country)">
                                     <div class="col-3">
                                         <img
                                             :src="country.countryInfo.flag"
@@ -1867,14 +1889,14 @@
         </div>
         <!-- /container  -->
         <!-- Updated -->
-        <div class="container my-3 text-center">
+        <div class="container-fluid my-5 text-center">
             <div class="row">
                 <div class="col-12">
-                    <div class="border b-12 p-1">
-                        <small class="text-black-50 font-percent"
-                            >Updated At</small
+                    <div class=" b-12 p-1">
+                        <p class="text-white-50 font-percent m-0"
+                            >Updated At</p
                         >
-                        <p class="m-0">
+                        <p class="m-0 text-white">
                             <strong> {{ updatedAt }}</strong>
                         </p>
                     </div>
@@ -2044,6 +2066,7 @@ export default {
                     ]
                 }
             },
+           
 
             topChartData: null,
             topChartOptions: {
@@ -2089,6 +2112,7 @@ export default {
             countryCasesPerMil: 0,
             countryDeathsPerMil: 0,
             countryPosGlobalDeaths: 0,
+            countryPosGlobalDeathsByRate: 0,
             countryPosGlobalCases: 0,
             countryPosGlobalRecoveries: 0,
             countryFirstCase:'',
@@ -2105,6 +2129,7 @@ export default {
             vsCountryCasesPerMil: 0,
             vsCountryDeathsPerMil: 0,
             vsCountryPosGlobalDeaths: 0,
+            vsCountryPosGlobalDeathsByRate: 0,
             vsCountryPosGlobalCases: 0,
             vsCountryPosGlobalRecoveries: 0,
             vsCountryFirstCase:'',
@@ -2137,7 +2162,56 @@ export default {
         setTimeout(function(){ window.location.href="/"; }, 6000000);
     },
 
+    filters: {
+        date: function (value) {
+            var r = value.split("/");     
+            var m = '';
+            console.log(r[0])
+            switch(parseInt(r[0])) {
+                
+                case 1:
+                   m = "Jan"
+                   break;
+                case 2:
+                    m = "Feb"
+                    break;
+                case 3:
+                    m = "Mar"  
+                    break;            
+                case 4:
+                   m = "Apr"
+                    break;
+                case 5:
+                    m = "May"
+                    break;
+                case 6:
+                    m = "Jun"
+                    break;
+                case 7:
+                    m = "Jul"
+                    break;
+                case 8:
+                    m = "Aug"
+                    break;
+                case 9:
+                    m = "Sep"
+                    break;
+                case 10:
+                    m = "Oct"
+                    break;
+                case 11:
+                    m = "Nov"
+                    break;
+                case 12:
+                    m = "Dec"  
+                    break;              
+            }      
+            return r[1]+"-"+m+"-"+r[2]
+        }
+    },
+
     methods: {
+        
         getData(sort) {
             (async () => {
 
@@ -2256,6 +2330,11 @@ export default {
             this.getData(event.target.value);
             this.sortBy = event.target.value;
         },
+        viewCountryStatsOnClick(country){
+            window.scrollTo(0,0);
+            this.$cookie.set("country",country, 100);
+            this.getCountryStats(country)
+        },
         getCountryStats(country) {
             this.countriesData.forEach(element => {
                 if (element.country.toLowerCase()  == country.toLowerCase()) {
@@ -2282,6 +2361,9 @@ export default {
                         element.country
                     );
                     this.countryPosGlobalRecoveries = this.getCountryPosGlobalRecoveries(
+                        element.country
+                    );
+                    this.countryPosGlobalDeathsByRate = this.getCountryPosGlobalDeathsByRate(
                         element.country
                     );
                     this.countryFirstCase = this.getCountryFirstCase(element.country)
@@ -2369,7 +2451,8 @@ export default {
                 if (elem.country.toLowerCase() == country.toLowerCase()) {
                     for (let key in elem.timeline.cases) {
                         if(key == firstCaseDate || started){
-                            arr.push(key);
+                            var res = key.split("/");
+                            arr.push(res[1]+"-"+res[0]);
                             started = true;
                         }
                         
@@ -2471,6 +2554,32 @@ export default {
                     break;
                 } else {
                     pos++;
+                }
+            }
+
+            return pos;
+        },
+        getCountryPosGlobalDeathsByRate(country) {
+            let dl = this.countriesList.slice(0);
+            dl.sort(function(a, b) {
+                const countryA = (a.deaths/a.cases) *100;
+                const countryB = (b.deaths/b.cases) *100;
+                let comparison = 0;
+                if (countryA > countryB) {
+                    comparison = 1;
+                } else if (countryA < countryB) {
+                    comparison = -1;
+                }
+                return comparison;
+            });
+
+       
+            let pos = 1;
+            for (var i = 0; i < dl.length; ++i) {
+                if (dl[i].name.toLowerCase()  == country.toLowerCase() ) {
+                    break;
+                } else {                  
+                    pos++;                                      
                 }
             }
 
@@ -2593,6 +2702,9 @@ export default {
                     this.vsCountryCasesPerMil = element.casesPerOneMillion;
                     this.vsCountryDeathsPerMil = element.deathsPerOneMillion;
                     this.vsCountryPosGlobalDeaths = this.getCountryPosGlobalDeaths(
+                        element.country
+                    );
+                    this.vsCountryPosGlobalDeathsByRate = this.getCountryPosGlobalDeathsByRate(
                         element.country
                     );
                     this.vsCountryPosGlobalCases = this.getCountryPosGlobalCases(

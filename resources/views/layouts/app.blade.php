@@ -98,7 +98,7 @@
 
   @yield('content-no-vue')
 
-  <div class="container">
+  {{-- <div class="container">
     <div class="row">
       <div class="col">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -114,14 +114,14 @@
         </script>
       </div>
     </div>
-  </div>
+  </div> --}}
 
 
-  <div class="bg-light py-3 mt-3">
+  <div class="border-top border-bottom border-secondary py-3 mt-3">
     <div class="container text-center">
       <div class="row">
         <div class="col">
-          <h6>Share Page</h6>
+          <h2 class="text-white my-3">Share Page</h2>
           <a
              href="whatsapp://send?text=https://covid.niftybit.co.za" target="_blank" aria-label="WhatsApp"
              rel="noopener" class="resp-sharing-button__link mb-1">
@@ -151,15 +151,15 @@
   <footer class="py-5 text-white font-percent text-center bg-dark">
 
     <div class="container">
-      <h6>Maintained By:</h6>
+      <h5>Maintained By:</h5>
       <a href="https://niftybit.co.za" class="text-success">Zaid Kajee</a><br /><br>
       <h6>About this data</h6>
-      <small class="text-white-50">
+      <p class="text-white-50">
 This data changes rapidly, so what’s shown may be out of date. Table totals may not always represent an accurate sum. Information about reported cases is also available on the World Health Organisation site.
 It doesn’t include all cases
 Confirmed cases aren’t all cases. They only include people who tested positive. Testing rules and availability vary by country. The Data on China is not accurate but whats available in the data source.
-      </small>
-      <h6 class="mt-4">Attributions:</h6>
+      </p>
+      <h5 class="mt-4">Attributions:</h5>
       <a href="https://github.com/NovelCOVID/API" class="text-success">novelCovid</a><br>
       <a href="https://newsapi.org" class="text-success">newsapi.org</a><br />
       <a href="https://www.flaticon.com" class="text-success">www.flaticon.com</a>      
