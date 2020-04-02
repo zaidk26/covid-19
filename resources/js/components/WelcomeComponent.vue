@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row mt-5">
                 <!-- country data column-->
                 <div class="col-lg-4">
@@ -366,6 +366,33 @@
 
                         <!-- SA News -->
                         <div v-if="selectedCountry.name == 'South Africa'">
+
+                            <hr class="section-line"/>
+
+                           <h4>Lockdown Time Remaining</h4>
+                            <div id="timer" class="timer">
+                            <!--  Timer Component  -->
+                            <Timer 
+                                    starttime="Mar 26, 2020 23:59:59" 
+                                    endtime="Apr 16, 2020 23:59:59" 
+                                    trans='{  
+                                    "day":"Day",
+                                    "hours":"Hours",
+                                    "minutes":"Minuts",
+                                    "seconds":"Seconds",
+                                    "expired":"Lockdown Over.",
+                                    "running":"Till the end of lockdown.",
+                                    "upcoming":"Till start of lockdown.",
+                                    "status": {
+                                        "expired":"Expired",
+                                        "running":"Running",
+                                        "upcoming":"Future"
+                                    }}'
+                                    ></Timer>
+                            <!--  End! Timer Component  -->
+                            </div> 
+
+
                            <hr class="section-line"/>
 
                             <div v-if="saCoronaUpdate.title  != undefined">    
@@ -376,6 +403,9 @@
                                 <br>
                                 <p>Read On at: <a :href="saCoronaUpdate.link">sacoronavirus.co.za</a></p>
                             </div>
+
+
+                            <hr>
 
                             <h4 class="mt-3">SA News Headlines</h4>                          
                                 <div
@@ -1551,20 +1581,22 @@
 
                         <!-- table -->
                         <div v-if="topViewStyle == 'table'" class="table-responsive mt-3" style="font-size:12px;">
-                            <div style="font-size:12px; min-width:320px;" class="bg-light">                                 
-                                <div class="float-left bg-light"  style="width:20%;">Cases</div>
-                                <div class="float-left bg-light"  style="width:20%;">Deaths</div>
-                                <div class="float-left bg-light"  style="width:20%;">Recovered</div>
-                                <div class="float-left bg-light"  style="width:20%;">Cases Today</div>
-                                <div class="float-left bg-light"  style="width:20%;">Deaths Today</div>
+                            <div style="font-size:12px; min-width:300px;" class="bg-light">                                 
+                                <div class="float-left"  style="width:20%;">Cases</div>
+                                <div class="float-left "  style="width:20%;">Deaths</div>
+                                <div class="float-left "  style="width:20%;">Recov.</div>
+                                <div class="float-left "  style="width:20%;">C. Today</div>
+                                <div class="float-left"  style="width:20%;">D. Today</div>
                             </div>  
 
                             <div style="clear:both;"></div>
                              
                                
-                                <div  v-for="(country, i) in countriesData.slice(0,topDropDownInt)" :key="country.country" class="stat-row"  style="font-size:12px; min-width:320px;">
+                                <div  v-for="(country, i) in countriesData.slice(0,topDropDownInt)" :key="country.country" :class="{ 'bg-light': (i%2==0) }" 
+                                    class="py-2" style="font-size:12px; min-width:300px;">
                                    
-                                    <h6 class="m-0 mt-3 text-secondary">#{{ i+1 }} {{ country.country.toUpperCase() }}</h6>                                       
+                                   
+                                    <h6 class="m-0 text-secondary">#{{ i+1 }} {{ country.country.toUpperCase() }}</h6>                                       
                                     
                                        
                                     <div class="font-weight-bold float-left" style="width:20%;">
@@ -1855,9 +1887,10 @@
 const covid = require("novelcovid");
 import LineChart from "./LineChartComponent";
 import RadarChart from "./RadarChartComponent";
+import Timer from "./CountdownTimer";
 
 export default {
-    components: { LineChart, RadarChart },
+    components: { LineChart, RadarChart,Timer },
     props: ["newsSa", "newsWorld", "historicalData","saCoronaUpdate"],
 
     data: function() {
@@ -2101,6 +2134,7 @@ export default {
             }.bind(this),
             60000
         );
+        setTimeout(function(){ window.location.href="/"; }, 6000000);
     },
 
     methods: {
