@@ -73,7 +73,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
         crossorigin="anonymous" />
   <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:700,400|Exo+2:700&display=swap"
+        href="https://fonts.googleapis.com/css?family=Nunito:700,400&display=swap"
         rel="stylesheet" />
 
   <link rel="stylesheet" href="{{ mix('/css/app.css')}}">
@@ -98,9 +98,9 @@
 
   @yield('content-no-vue')
 
-  {{-- <div class="container">
+  <div class="container text-center my-2">
     <div class="row">
-      <div class="col">
+      <div class="col-12">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <!-- Covid -->
         <ins class="adsbygoogle"
@@ -114,14 +114,14 @@
         </script>
       </div>
     </div>
-  </div> --}}
+  </div>
 
 
-  <div class="border-top border-bottom border-secondary py-3 mt-3">
+  <div class="py-5 mt-3">
     <div class="container text-center">
       <div class="row">
         <div class="col">
-          <h2 class="text-white my-3">Share Page</h2>
+          <h3 class="text-body my-3">Share Page</h3>
           <a
              href="whatsapp://send?text=https://covid.niftybit.co.za" target="_blank" aria-label="WhatsApp"
              rel="noopener" class="resp-sharing-button__link mb-1">
@@ -148,13 +148,13 @@
   </div>
 
 
-  <footer class="py-5 text-white font-percent text-center bg-dark">
+  <footer class="py-5 text-body font-percent text-center bg-light">
 
     <div class="container">
-      <h5>Maintained By:</h5>
+      <h5>Maintained By</h5>
       <a href="https://niftybit.co.za" class="text-success">Zaid Kajee</a><br /><br>
-      <h6>About this data</h6>
-      <p class="text-white-50">
+      <h5>About This Data</h5>
+      <p class="text-black-50">
 This data changes rapidly, so what’s shown may be out of date. Table totals may not always represent an accurate sum. Information about reported cases is also available on the World Health Organisation site.
 It doesn’t include all cases
 Confirmed cases aren’t all cases. They only include people who tested positive. Testing rules and availability vary by country. The Data on China is not accurate but whats available in the data source.

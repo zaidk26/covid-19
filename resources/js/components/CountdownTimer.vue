@@ -97,7 +97,7 @@ export default {
   font-size: 20px;
   color: #fff;
   text-align:center;
-  margin-top: 50px;
+  margin-top: 15px;
 
       .day, .hour, .min, .sec {
         font-size: 30px;
@@ -115,7 +115,7 @@ export default {
         }
       }
       .number{
-        background: rgba(51, 51, 51, 0.53);
+        background: #574B90;
         padding: 0 5px;
         border-radius: 5px;
         display: inline-block;

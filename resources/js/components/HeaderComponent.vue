@@ -1,15 +1,15 @@
 <template>
-  <header class="bg-dark border-bottom border-secondary">
+  <header class="bg-light">
     <div class="container-fluid">     
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-0">
+      <nav class="navbar navbar-expand-lg navbar-light px-0">
         <a class="navbar-brand" href="/">
           <div class="row">
             <div class="col-auto">
               <img src="/img/virus.png" height="32" alt="corona virus" />
             </div>
             <div class="col-auto" style="line-height:1;">
-              <h5 class="m-0">COVID 19</h5>
-              <small class="text-white-50">Statistics & News</small>
+              <h5 class="m-0">COVID-19</h5>
+              <small class="text-black-50">Statistics & News</small>
             </div>
           </div>          
           
@@ -23,16 +23,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" :class="{show: menuActive}" >
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link font-weight-bold text-white" href="/"  >Statistics</a>
+              <a class="nav-link font-weight-bold " href="/"  >Statistics</a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link font-weight-bold text-white" href="/social-media-feeds"  >SOCIAL MEDIA FEEDS</a>
             </li> -->
             <li class="nav-item">
-              <a class="nav-link font-weight-bold text-white" href="/symptoms">Symptoms</a>
+              <a class="nav-link font-weight-bold" href="/symptoms">Symptoms</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link font-weight-bold text-white" href="/contacts">Contacts <small class="font-weight-normal text-white-50">(South Africa)</small></a>
+              <a class="nav-link font-weight-bold" href="/contacts">Contacts <small class="font-weight-normal text-white-50">(South Africa)</small></a>
             </li>
           </ul>
         
