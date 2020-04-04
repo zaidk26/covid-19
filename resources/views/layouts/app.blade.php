@@ -87,7 +87,7 @@
 
 <body>
   <div  id="particles-js"> </div>
-    <div id="app">
+    <div id="app" style="min-height:500px;">
 
 
       <main>

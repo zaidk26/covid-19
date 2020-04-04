@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="min-height:400px;">
         <transition name="fade">
             <div id="loading" v-if="loading">Loading...</div>
         </transition>
