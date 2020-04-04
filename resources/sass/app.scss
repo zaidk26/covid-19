@@ -22,6 +22,21 @@ body {
   color: #FD71A2 !important;
 }
 
+.btn-primary{
+  background-color: lighten($color: #574B90 , $amount:30)  ;
+  border: none;
+  color: white !important;
+}
+
+#particles-js{
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 h1,
 h2,
 h3,

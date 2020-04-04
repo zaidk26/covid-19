@@ -27,6 +27,21 @@ Route::get('/', function () {
         return Http::get('https://corona.lmao.ninja/v2/historical')->body();
     });   
 
+    $saProvinces = Cache::remember('saProvinces',300000, function () {
+        return [
+            'Gauteng' => 1,
+            'Gauteng' => 1,
+            'Gauteng' => 1,
+            'Gauteng' => 1,
+            'Gauteng' => 1,
+            'Gauteng' => 1,
+            'Gauteng' => 1,
+            'Gauteng' => 1,
+            'Gauteng' => 1,
+        ];
+    });   
+
+
     $saCoronaUpdate =  Cache::remember('saCoronaUpdate',30000, function () {
 
         $info = [];
