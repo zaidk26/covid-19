@@ -27,19 +27,19 @@ Route::get('/', function () {
         return Http::get('https://corona.lmao.ninja/v2/historical')->body();
     });   
 
-    $saProvinces = Cache::remember('saProvinces',300000, function () {
-        return [
-            'Gauteng' => 1,
-            'Gauteng' => 1,
-            'Gauteng' => 1,
-            'Gauteng' => 1,
-            'Gauteng' => 1,
-            'Gauteng' => 1,
-            'Gauteng' => 1,
-            'Gauteng' => 1,
-            'Gauteng' => 1,
+    $saProvinces =  [
+            'Gauteng' => 693,
+            'Western Cape' => 433,
+            'KwaZulu Natal' => 232,
+            'Freestate' => 	85,
+            'North West' => 11,
+            'Mpumalanga' => 18,
+            'Limpopo' => 18,
+            'Easter Cape' => 25,
+            'Northern Cape' => 7,
+            'UnAllocated' => 63
         ];
-    });   
+      
 
 
     $saCoronaUpdate =  Cache::remember('saCoronaUpdate',30000, function () {
@@ -65,6 +65,7 @@ Route::get('/', function () {
         ['newsSa' => $newsSa, 
         'newsWorld' => $newsWorld, 
         'historicalData' => $historicalData,
+        'saProvinces' => json_encode($saProvinces), 
         'saCoronaUpdate' => json_encode($saCoronaUpdate)]);
 });
 

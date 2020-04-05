@@ -181,165 +181,197 @@
                                         </div>
                                     </div>
 
-                                
-                                    <div v-show="countryInfoToggle">
-                                        <div class="stat-row">
-                                            <div class="row">
-                                                <div class="col-auto">
-                                                    <span>
-                                                        Active Cases
-                                                    </span>
+                                    <div id="addInfoCountry">
+                                        <transition name="fade">
+                                            <div v-show="countryInfoToggle" >
+                                                <div class="stat-row">
+                                                    <div class="row">
+                                                        <div class="col-auto">
+                                                            <span>
+                                                                Active Cases
+                                                            </span>
+                                                        </div>
+                                                        <div class="col text-right">
+                                                            <h5 class="m-0">
+                                                                {{
+                                                                    new Intl.NumberFormat().format(
+                                                                        countryActive
+                                                                    )
+                                                                }}
+                                                            </h5>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col text-right">
-                                                    <h5 class="m-0">
-                                                        {{
-                                                            new Intl.NumberFormat().format(
-                                                                countryActive
-                                                            )
-                                                        }}
-                                                    </h5>
+                                                <div class="stat-row">
+                                                    <div class="row">
+                                                        <div class="col-auto">
+                                                            <span>
+                                                                Critical Cases
+                                                            </span>
+                                                        </div>
+                                                        <div class="col text-right">
+                                                            <h5 class="m-0">
+                                                                {{
+                                                                    new Intl.NumberFormat().format(
+                                                                        countryCritical
+                                                                    )
+                                                                }}
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="stat-row">
+                                                    <div class="row">
+                                                        <div class="col-auto">
+                                                            <span>
+                                                                First Case
+                                                            </span>
+                                                        </div>
+                                                        <div class="col text-right">
+                                                            <h5 class="m-0">
+                                                                {{
+                                                                    countryFirstCase | date
+                                                                }}
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="stat-row">
+                                                    <div class="row">
+                                                        <div class="col-auto">
+                                                            <span>
+                                                                First Death
+                                                            </span>
+                                                        </div>
+                                                        <div class="col text-right">
+                                                            <h5 class="m-0">
+                                                                {{
+                                                                    countryFirstDeath | date
+                                                                }}
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="stat-row">
+                                                    <div class="row">
+                                                        <div class="col-auto">
+                                                            <span>
+                                                                First Recovered
+                                                            </span>
+                                                        </div>
+                                                        <div class="col text-right">
+                                                            <h5 class="m-0">
+                                                                {{
+                                                                    countryFirstRecovered
+                                                                        | date
+                                                                }}
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="stat-row">
+                                                    <div class="row">
+                                                        <div class="col-auto">
+                                                            <span>
+                                                                Cases Per Million
+                                                            </span>
+                                                        </div>
+                                                        <div class="col text-right">
+                                                            <h5 class="m-0">
+                                                                {{
+                                                                    new Intl.NumberFormat().format(
+                                                                        countryCasesPerMil
+                                                                    )
+                                                                }}
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-auto">
+                                                            <span>
+                                                                Deaths Per Million
+                                                            </span>
+                                                        </div>
+                                                        <div class="col text-right">
+                                                            <h5 class="m-0">
+                                                                {{
+                                                                    new Intl.NumberFormat().format(
+                                                                        countryDeathsPerMil
+                                                                    )
+                                                                }}
+                                                            </h5>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="stat-row">
-                                            <div class="row">
-                                                <div class="col-auto">
-                                                    <span>
-                                                        Critical Cases
-                                                    </span>
-                                                </div>
-                                                <div class="col text-right">
-                                                    <h5 class="m-0">
-                                                        {{
-                                                            new Intl.NumberFormat().format(
-                                                                countryCritical
-                                                            )
-                                                        }}
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="stat-row">
-                                            <div class="row">
-                                                <div class="col-auto">
-                                                    <span>
-                                                        First Case
-                                                    </span>
-                                                </div>
-                                                <div class="col text-right">
-                                                    <h5 class="m-0">
-                                                        {{
-                                                            countryFirstCase | date
-                                                        }}
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="stat-row">
-                                            <div class="row">
-                                                <div class="col-auto">
-                                                    <span>
-                                                        First Death
-                                                    </span>
-                                                </div>
-                                                <div class="col text-right">
-                                                    <h5 class="m-0">
-                                                        {{
-                                                            countryFirstDeath | date
-                                                        }}
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="stat-row">
-                                            <div class="row">
-                                                <div class="col-auto">
-                                                    <span>
-                                                        First Recovered
-                                                    </span>
-                                                </div>
-                                                <div class="col text-right">
-                                                    <h5 class="m-0">
-                                                        {{
-                                                            countryFirstRecovered
-                                                                | date
-                                                        }}
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="stat-row">
-                                            <div class="row">
-                                                <div class="col-auto">
-                                                    <span>
-                                                        Cases Per Million
-                                                    </span>
-                                                </div>
-                                                <div class="col text-right">
-                                                    <h5 class="m-0">
-                                                        {{
-                                                            new Intl.NumberFormat().format(
-                                                                countryCasesPerMil
-                                                            )
-                                                        }}
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="row">
-                                                <div class="col-auto">
-                                                    <span>
-                                                        Deaths Per Million
-                                                    </span>
-                                                </div>
-                                                <div class="col text-right">
-                                                    <h5 class="m-0">
-                                                        {{
-                                                            new Intl.NumberFormat().format(
-                                                                countryDeathsPerMil
-                                                            )
-                                                        }}
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </transition>
                                     </div>
 
-                                    <div v-if="chartsToggle">
-                                        <div class="row">
-                                            <div class="co">
-                                                <!-- past 7 days -->
-                                                <line-chart
-                                                    class="mt-3"
-                                                    :chart-data="past7ChartData"
-                                                    :options="past7ChartOptions"
-                                                />
+                                    <div id="chartsCountry">
+                                        <transition name="fade">
+                                            <div v-show="chartsToggle">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <!-- past 7 days -->
+                                                        <line-chart
+                                                            class="mt-3"
+                                                            :chart-data="past7ChartData"
+                                                            :options="past7ChartOptions"
+                                                        />
 
-                                                <hr />
+                                                        <hr />
 
-                                                <!-- History Graph -->
-                                                <line-chart
-                                                    class="mt-2"
-                                                    :chart-data="historicalChartData"
-                                                    :options="historicalChartOptions"
-                                                />
+                                                        <!-- History Graph -->
+                                                        <line-chart
+                                                            class="mt-2"
+                                                            :chart-data="historicalChartData"
+                                                            :options="historicalChartOptions"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>    
+                                        </transition>
+                                    </div>
+
+                                    <div  id="provincesCountry">
+                                        <transition name="fade">
+                                            <div v-show="provincesToggle" class="mt-3">
+                                                <small class="text-black-50">*Data may be out of date</small> 
+                                                <div class="stat-row" v-for="(val,key) in saProvinces" :key="key">
+                                                  <div class="row">
+                                                      <div class="col-8">
+                                                          {{ key }}
+                                                      </div>
+                                                      <div class="col-4 text-right font-weight-bold">
+                                                          {{ val }}
+                                                      </div>
+                                                  </div>  
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>                               
+                                        </transition>
+                                    </div>                           
 
-                                    <div class="mt-3">
+                                    <div>
                                         <a
                                             v-show="!countryInfoToggle"
                                             v-on:click="toggleCountryInfo"
-                                            class="btn btn-sm btn-light"
+                                            class="btn btn-sm btn-light my-1"
                                             >more stats +</a
                                         >
                                         <a
                                             v-show="!chartsToggle"
                                             v-on:click="toggleCharts"
-                                            class="btn btn-sm btn-primary"
+                                            class="btn btn-sm btn-primary my-1"
                                             >view charts</a
+                                        >
+                                        <a
+                                            v-show="!provincesToggle"
+                                            v-on:click="toggleProvinces"
+                                            class="btn btn-sm btn-warning my-1"
+                                            v-if="selectedCountry.name=='South Africa'"
+                                            >by province</a
                                         >
                                     </div>
                                 </div>
@@ -729,104 +761,110 @@
                                             </div>
                                         </div>
 
-
-                                        <div v-show="worldInfoToggle">
-                                            <div class="stat-row">
-                                                <div class="row">
-                                                    <div class="col-auto">
-                                                        <span>
-                                                            Active Cases
-                                                        </span>
+                                        <div id="addInfoWorld">
+                                            <transition name="fade">
+                                                <div v-show="worldInfoToggle">
+                                                    <div class="stat-row">
+                                                        <div class="row">
+                                                            <div class="col-auto">
+                                                                <span>
+                                                                    Active Cases
+                                                                </span>
+                                                            </div>
+                                                            <div class="col text-right">
+                                                                <h5 class="m-0">
+                                                                    {{
+                                                                        new Intl.NumberFormat().format(
+                                                                            worldActive
+                                                                        )
+                                                                    }}
+                                                                </h5>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col text-right">
-                                                        <h5 class="m-0">
-                                                            {{
-                                                                new Intl.NumberFormat().format(
-                                                                    worldActive
-                                                                )
-                                                            }}
-                                                        </h5>
+                                                    <div class="stat-row">
+                                                        <div class="row">
+                                                            <div class="col-auto">
+                                                                <span>
+                                                                    Critical Cases
+                                                                </span>
+                                                            </div>
+                                                            <div class="col text-right">
+                                                                <h5 class="m-0">
+                                                                    {{
+                                                                        new Intl.NumberFormat().format(
+                                                                            worldCritical
+                                                                        )
+                                                                    }}
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="stat-row">
+                                                        <div class="row">
+                                                            <div class="col-auto">
+                                                                <span>
+                                                                    Cases Per Million
+                                                                </span>
+                                                            </div>
+                                                            <div class="col text-right">
+                                                                <h5 class="m-0">
+                                                                    {{
+                                                                        new Intl.NumberFormat().format(
+                                                                            worldCasesPerMil
+                                                                        )
+                                                                    }}
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="row">
+                                                            <div class="col-auto">
+                                                                <span>
+                                                                    Deaths Per Million
+                                                                </span>
+                                                            </div>
+                                                            <div class="col text-right">
+                                                                <h5 class="m-0">
+                                                                    {{
+                                                                        new Intl.NumberFormat().format(
+                                                                            worldDeathsPerMil
+                                                                        )
+                                                                    }}
+                                                                </h5>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="stat-row">
-                                                <div class="row">
-                                                    <div class="col-auto">
-                                                        <span>
-                                                            Critical Cases
-                                                        </span>
-                                                    </div>
-                                                    <div class="col text-right">
-                                                        <h5 class="m-0">
-                                                            {{
-                                                                new Intl.NumberFormat().format(
-                                                                    worldCritical
-                                                                )
-                                                            }}
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="stat-row">
-                                                <div class="row">
-                                                    <div class="col-auto">
-                                                        <span>
-                                                            Cases Per Million
-                                                        </span>
-                                                    </div>
-                                                    <div class="col text-right">
-                                                        <h5 class="m-0">
-                                                            {{
-                                                                new Intl.NumberFormat().format(
-                                                                    worldCasesPerMil
-                                                                )
-                                                            }}
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="row">
-                                                    <div class="col-auto">
-                                                        <span>
-                                                            Deaths Per Million
-                                                        </span>
-                                                    </div>
-                                                    <div class="col text-right">
-                                                        <h5 class="m-0">
-                                                            {{
-                                                                new Intl.NumberFormat().format(
-                                                                    worldDeathsPerMil
-                                                                )
-                                                            }}
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            </transition>
                                         </div>
 
+                                         <div id="chartsWorld">
+                                            <transition name="fade">
+                                                <div v-if="chartsWorldToggle">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <!-- past 7 days -->
+                                                            <line-chart
+                                                                class="mt-3"
+                                                                :chart-data="worldPast7ChartData"
+                                                                :options="worldPast7ChartOptions"
+                                                            />
 
-                                        <div v-if="chartsToggle">
-                                            <div class="row">
-                                                <div class="co">
-                                                    <!-- past 7 days -->
-                                                    <line-chart
-                                                        class="mt-3"
-                                                        :chart-data="worldPast7ChartData"
-                                                        :options="worldPast7ChartOptions"
-                                                    />
+                                                            <hr />
 
-                                                    <hr />
-
-                                                    <!-- History Graph -->
-                                                    <line-chart
-                                                        class="mt-2"
-                                                        :chart-data="worldHistoricalChartData"
-                                                        :options="worldHistoricalChartOptions"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>    
+                                                            <!-- History Graph -->
+                                                            <line-chart
+                                                                class="mt-2"
+                                                                :chart-data="worldHistoricalChartData"
+                                                                :options="worldHistoricalChartOptions"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>    
+                                            </transition>
+                                         </div>
 
 
 
@@ -838,13 +876,41 @@
                                                 >more stats +</a
                                             >
                                             <a
-                                                v-show="!chartsToggle"
-                                                v-on:click="toggleCharts"
+                                                v-show="!chartsWorldToggle"
+                                                v-on:click="toggleWorldCharts"
                                                 class="btn btn-sm btn-primary"
                                                 >view charts</a
                                             >
                                         </div>
                                         
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- continents -->
+                            <div>
+                                <div class="row mt-3">
+                                    <div class="col-4">
+
+                                    </div>
+                                    <div class="col-4 font-weight-bold text-right">
+                                        Cases
+                                    </div>
+                                    <div class="col-4 font-weight-bold text-right">
+                                        Deaths
+                                    </div>
+                                </div>
+                                <div class="stat-row" v-for="continent in continentsTotals" :key="continent.continent">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            {{ continent.continent }}
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            {{ new Intl.NumberFormat().format(continent.cases) }}
+                                        </div>
+                                        <div class="col-4 text-right text-danger">
+                                            {{ new Intl.NumberFormat().format(continent.deaths) }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1858,7 +1924,7 @@
                                     )"
                                     :key="country.country"
                                     :class="{ 'bg-light': i % 2 == 0 }"
-                                    class="py-2 px-1 pointer"
+                                    class="py-2 pl-2 pointer"
                                     style="font-size:12px; min-width:100%;"
                                     @click="
                                         viewCountryStatsOnClick(country.country)
@@ -1872,7 +1938,7 @@
                                         </h6>
                                     </div>
                                     <div class="col-3 text-right">                                    
-                                    <span class="badge badge-primary"> #{{ i + 1 }} </span>
+                                    <span class="badge badge-primary mr-2"> #{{ i + 1 }} </span>
                                     </div>
                                     </div>
                                 </div>
@@ -2257,10 +2323,11 @@ const covid = require("novelcovid");
 import LineChart from "./LineChartComponent";
 import RadarChart from "./RadarChartComponent";
 import Timer from "./CountdownTimer";
+import continents from "./../continents";
 
 export default {
     components: { LineChart, RadarChart, Timer },
-    props: ["newsSa", "newsWorld", "historicalData", "saCoronaUpdate"],
+    props: ["newsSa", "newsWorld", "historicalData", "saCoronaUpdate", "saProvinces"],
 
     data: function() {
         return {
@@ -2547,6 +2614,19 @@ export default {
             worldData:{},
             worldDataYesterday:{},
 
+            continentsTotals:[
+                
+                    {continent:'Africa',deaths:0,cases:0,recovered:0},
+                    {continent:'Asia',deaths:0,cases:0,recovered:0},
+                    {continent:'Europe',deaths:0,cases:0,recovered:0},
+                    {continent:'Oceania',deaths:0,cases:0,recovered:0},
+                    {continent:'North America',deaths:0,cases:0,recovered:0},
+                    {continent:'South America',deaths:0,cases:0,recovered:0},
+                    {continent:'Antarctica',deaths:0,cases:0,recovered:0},
+                    {continent:'Ships/Other',deaths:0,cases:0,recovered:0}
+                
+            ],
+
             worldCases: 0,
             worldDeaths: 0,
             worldCasesToday: 0,
@@ -2602,6 +2682,8 @@ export default {
             newsWorldToggle: false,
             addStatsToggle: false,
             chartsToggle: false,
+            chartsWorldToggle: false,
+            provincesToggle: false,
             countriesCompared: false,
 
             topDropDownInt: 10,
@@ -2611,7 +2693,7 @@ export default {
         };
     },
 
-    mounted() {
+    mounted() {       
         this.getData(this.sortBy);
         setInterval(
             function() {
@@ -2685,10 +2767,18 @@ export default {
                 this.worldRecovered = 0;
                 this.worldCasesPerMil = 0;
                 this.worldDeathsPerMil = 0;
+                this.continentsTotals= [
+                    {continent:'Africa',deaths:0,cases:0,recovered:0},
+                    {continent:'Asia',deaths:0,cases:0,recovered:0},
+                    {continent:'Europe',deaths:0,cases:0,recovered:0},
+                    {continent:'Oceania',deaths:0,cases:0,recovered:0},
+                    {continent:'North America',deaths:0,cases:0,recovered:0},
+                    {continent:'South America',deaths:0,cases:0,recovered:0},
+                    {continent:'Antarctica',deaths:0,cases:0,recovered:0},
+                    {continent:'Ships/Other',deaths:0,cases:0,recovered:0}
+                ]
 
-                this.countriesData = await covid.getCountry({ sort: sort });
-                
-                
+                this.countriesData = await covid.getCountry({ sort: sort });    
              
                 this.countriesList = [];
                 this.countriesAffected = this.countriesData.length;
@@ -2708,7 +2798,24 @@ export default {
                             recovered: element.recovered
                         });
                     }                   
-                        
+                       let f = false;
+                     continents.forEach(con => {                         
+                         if(con.Two_Letter_Country_Code == element.countryInfo.iso2){
+                             this.continentsTotals.forEach(ct => {
+                                if(ct.continent.toLowerCase() == con.Continent_Name.toLowerCase()){
+                                  f = true;  
+                                  ct.deaths += element.deaths;
+                                  ct.cases += element.cases;
+                                  ct.recovered += element.recovered;
+                                }
+                             })                            
+                         }
+                     })  
+                     if(!f){
+                        this.continentsTotals[7].deaths += element.deaths;
+                        this.continentsTotals[7].cases += element.cases;
+                        this.continentsTotals[7].recovered += element.recovered;
+                     }
 
                     this.worldCases += element.cases;
                     this.worldDeaths += element.deaths;
@@ -2721,9 +2828,7 @@ export default {
                     this.worldDeathsPerMil += element.deathsPerOneMillion/this.countriesData.length;
                 });
 
-                
-
-            
+                  
 
                 //get yesterdays total for world
                 axios
@@ -2869,6 +2974,17 @@ export default {
         },
         toggleWorldInfo() {
             this.worldInfoToggle = !this.worldInfoToggle;
+            var element = document.getElementById('addInfoWorld');
+            var offset = 60;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         },
         toggleCountryInfo() {
             this.countryInfoToggle = !this.countryInfoToggle;
@@ -2884,9 +3000,60 @@ export default {
         },
         toggleCharts() {
             this.chartsToggle = !this.chartsToggle;
+            var element = document.getElementById('chartsCountry');
+            var offset = 60;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+          
+        },
+         toggleWorldCharts() {
+            this.chartsWorldToggle = !this.chartsWorldToggle;
+            var element = document.getElementById('chartsWorld')
+            var offset = 60;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         },
         toggleAddStats() {
             this.addStatsToggle = !this.addStatsToggle;
+            var element = document.getElementById('addInfoCountry');
+            var offset = 60;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        },
+        toggleProvinces() {
+            this.provincesToggle = !this.provincesToggle;
+            var element = document.getElementById('provincesCountry');
+            var offset = 60;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         },
         onChangeSort(event) {
             this.getData(event.target.value);
