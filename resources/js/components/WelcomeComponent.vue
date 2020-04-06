@@ -479,7 +479,8 @@
                         <div class="b-12 mt-3 text-center bg-white" style="border:solid 3px #FCFDCB; ">
 
                             <div class="p-3" v-show="customList.length == 0">
-                                <p>Want to monitor stats of a few countries? create a custom list</p>
+                                <h4>Monitor</h4>
+                                <small>Want to monitor stats of a few countries? create a custom list</small><br><br>
                                 <button class="btn btn-sm btn-warning" @click="manageCustomList">Create List +</button>  
                             </div>
                             
@@ -487,6 +488,34 @@
                                 v-show="customList.length > 0"
                                 class="text-left"
                                 style="font-size:12px;">
+
+                                 <div class="row no-gutters mx-3 mt-4">
+                                        <div class="col-auto">
+                                            <h6 class="mr-1 mt-1">Sorted By:</h6>
+                                        </div>
+                                        <div class="col">
+                                            <select
+                                                class="form-control form-control-sm"
+                                                @change="onChangeSort($event)"
+                                            >
+                                                <option selected value="deaths"
+                                                    >Most Deaths</option
+                                                >
+                                                <option value="cases">
+                                                    Most Cases
+                                                </option>
+                                                <option value="recovered"
+                                                    >Most Recovered</option
+                                                >
+                                                <option value="todayCases"
+                                                    >Most Cases Today</option
+                                                >
+                                                <option value="todayDeaths"
+                                                    >Most Deaths Today</option
+                                                >
+                                            </select>
+                                        </div>
+                                    </div>
                                 
                                 <div
                                     style="font-size:12px;min-width:100%;"
@@ -511,24 +540,27 @@
 
                                 <div style="clear:both;"></div>
                                 
-                                    <div v-for="(country) in countriesData"
+                                    <div v-for="(country,i) in countriesData"
                                         :key="country.country">
 
                                         <div v-if="customList.indexOf(country.country) > -1">
                                             
                                           <div 
                                             
-                                            class="py-2 pl-2 pointer"
+                                            class="py-2 pl-2 pointer border-bottom"
                                             style="font-size:12px; min-width:100%;"
                                             @click="viewCountryStatsOnClick(country.country)"> 
 
                                             <div>
                                                 <div class="row">
-                                                    <div class="col-9">
+                                                   <div class="col-9">
                                                         <h6 class="my-1 text-primary">                                    
                                                             <u>{{ country.country }}</u>
                                                         </h6>
-                                                    </div>                                   
+                                                    </div>
+                                                    <div class="col-3 text-right">                                    
+                                                        <span class="badge badge-primary mr-2"> #{{ i + 1 }} </span>
+                                                    </div>                          
                                                 </div>
                                             </div>
                                     
@@ -587,7 +619,7 @@
                                     </div>
                                 
                             </div>
-                            <div class="row mx-1 mb-4 text-right" v-if="customList.length > 0" >                               
+                            <div class="row mx-1 mb-4 mt-2 text-right" v-if="customList.length > 0" >                               
                                 <div class="col-12">
                                     <button class="btn btn-sm btn-warning" @click="manageCustomList">Manage List</button>
                                 </div>
@@ -2057,7 +2089,7 @@
                                         </h6>
                                     </div>
                                     <div class="col-3 text-right">                                    
-                                    <span class="badge badge-primary mr-2"> #{{ i + 1 }} </span>
+                                        <span class="badge badge-primary mr-2"> #{{ i + 1 }} </span>
                                     </div>
                                     </div>
                                 </div>
