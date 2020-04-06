@@ -476,11 +476,11 @@
                         
                         </div>
 
-                        <div class="b-12 mt-3 text-center con-box bg-white">
+                        <div class="b-12 mt-3 text-center bg-white" style="border:solid 3px #FCFDCB; ">
 
                             <div class="p-3" v-show="customList.length == 0">
-                                <small>Want to monitor stats in a few countries? create a custom list</small><br>
-                                <button class="btn btn-sm btn-info text-white" @click="manageCustomList">Create +</button>  
+                                <p>Want to monitor stats of a few countries? create a custom list</p>
+                                <button class="btn btn-sm btn-warning" @click="manageCustomList">Create List +</button>  
                             </div>
                             
                              <div
@@ -490,7 +490,7 @@
                                 
                                 <div
                                     style="font-size:12px;min-width:100%;"
-                                    class="bg-light px-1 mt-1"
+                                    class="bg-light px-1 mt-4"
                                 >
                                     <div class="float-left" style="width:20%;">
                                         Cases
@@ -515,9 +515,9 @@
                                         :key="country.country">
 
                                         <div v-if="customList.indexOf(country.country) > -1">
-
+                                            
                                           <div 
-                                            :class="{ 'bg-light': customList.indexOf(country.country) % 2 == 0 }"
+                                            
                                             class="py-2 pl-2 pointer"
                                             style="font-size:12px; min-width:100%;"
                                             @click="viewCountryStatsOnClick(country.country)"> 
@@ -587,12 +587,9 @@
                                     </div>
                                 
                             </div>
-                            <div class="row m-2" v-if="customList.length > 0" >
-                                <div class="col-6 text-left">
-                                    My custom list
-                                </div>
-                                <div class="col-6 text-right">
-                                    <button class="btn btn-sm btn-info text-white" @click="manageCustomList">Manage</button>
+                            <div class="row mx-1 mb-4 text-right" v-if="customList.length > 0" >                               
+                                <div class="col-12">
+                                    <button class="btn btn-sm btn-warning" @click="manageCustomList">Manage List</button>
                                 </div>
                             </div>    
                               
@@ -2443,7 +2440,7 @@
                     <div class="modal-body" style="height:280px; overflow-y:scroll;">
                         <p>Select the countries you would like to add to you custom list.</p>
                        <div class="form-check" v-for="country in countriesList" :key="country.name">
-                            <input type="checkbox"  :value="country.name" v-model="customList" class="form-check-input">
+                            <input type="checkbox"  :value="country.name" v-model="customList" class="form-check-input form-check-input-lg">
                             <label  class="form-check-label" >{{country.name}}</label>
                        </div>                   
                         

@@ -4602,9 +4602,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
 var covid = __webpack_require__(/*! novelcovid */ "./node_modules/novelcovid/index.js");
 
 
@@ -45004,7 +45001,10 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "b-12 mt-3 text-center con-box bg-white" },
+                    {
+                      staticClass: "b-12 mt-3 text-center bg-white",
+                      staticStyle: { border: "solid 3px #FCFDCB" }
+                    },
                     [
                       _c(
                         "div",
@@ -45020,20 +45020,19 @@ var render = function() {
                           staticClass: "p-3"
                         },
                         [
-                          _c("small", [
+                          _c("p", [
                             _vm._v(
-                              "Want to monitor stats in a few countries? create a custom list"
+                              "Want to monitor stats of a few countries? create a custom list"
                             )
                           ]),
-                          _c("br"),
                           _vm._v(" "),
                           _c(
                             "button",
                             {
-                              staticClass: "btn btn-sm btn-info text-white",
+                              staticClass: "btn btn-sm btn-warning",
                               on: { click: _vm.manageCustomList }
                             },
-                            [_vm._v("Create +")]
+                            [_vm._v("Create List +")]
                           )
                         ]
                       ),
@@ -45056,7 +45055,7 @@ var render = function() {
                           _c(
                             "div",
                             {
-                              staticClass: "bg-light px-1 mt-1",
+                              staticClass: "bg-light px-1 mt-4",
                               staticStyle: {
                                 "font-size": "12px",
                                 "min-width": "100%"
@@ -45140,14 +45139,6 @@ var render = function() {
                                       "div",
                                       {
                                         staticClass: "py-2 pl-2 pointer",
-                                        class: {
-                                          "bg-light":
-                                            _vm.customList.indexOf(
-                                              country.country
-                                            ) %
-                                              2 ==
-                                            0
-                                        },
                                         staticStyle: {
                                           "font-size": "12px",
                                           "min-width": "100%"
@@ -45300,24 +45291,22 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _vm.customList.length > 0
-                        ? _c("div", { staticClass: "row m-2" }, [
-                            _c("div", { staticClass: "col-6 text-left" }, [
-                              _vm._v(
-                                "\n                                My custom list\n                            "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "col-6 text-right" }, [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-sm btn-info text-white",
-                                  on: { click: _vm.manageCustomList }
-                                },
-                                [_vm._v("Manage")]
-                              )
-                            ])
-                          ])
+                        ? _c(
+                            "div",
+                            { staticClass: "row mx-1 mb-4 text-right" },
+                            [
+                              _c("div", { staticClass: "col-12" }, [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-sm btn-warning",
+                                    on: { click: _vm.manageCustomList }
+                                  },
+                                  [_vm._v("Manage List")]
+                                )
+                              ])
+                            ]
+                          )
                         : _vm._e()
                     ]
                   ),
@@ -48935,7 +48924,8 @@ var render = function() {
                                   expression: "customList"
                                 }
                               ],
-                              staticClass: "form-check-input",
+                              staticClass:
+                                "form-check-input form-check-input-lg",
                               attrs: { type: "checkbox" },
                               domProps: {
                                 value: country.name,
