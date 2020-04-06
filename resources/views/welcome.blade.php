@@ -3,8 +3,7 @@
       <welcome-component 
             :news-sa="{{$newsSa}}" 
             :news-world="{{$newsWorld}}"
-            :historical-data="{{ $historicalData }}"
-            :sa-corona-update="{{$saCoronaUpdate}}"
+            :historical-data="{{ $historicalData }}"            
             :sa-provinces="{{$saProvinces}}"
       ></welcome-component>
 @endsection

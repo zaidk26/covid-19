@@ -338,11 +338,11 @@
                                     <div  id="provincesCountry">
                                         <transition name="fade">
                                             <div v-show="provincesToggle" class="mt-3">
-                                                <small class="text-black-50">*Data may be out of date</small> 
+                                                <small class="text-black-50">*Data may be out of date <a href="https://sacoronavirus.co.za">sacoronavirus.co.za</a></small> 
                                                 <div class="stat-row" v-for="(val,key) in saProvinces" :key="key">
                                                   <div class="row">
                                                       <div class="col-8">
-                                                          {{ key }}
+                                                          {{ key.charAt(0).toUpperCase() + key.slice(1) }}
                                                       </div>
                                                       <div class="col-4 text-right font-weight-bold">
                                                           {{ val }}
@@ -358,7 +358,7 @@
                                             v-show="!countryInfoToggle"
                                             v-on:click="toggleCountryInfo"
                                             class="btn btn-sm btn-light my-1"
-                                            >more stats +</a
+                                            >more stats</a
                                         >
                                         <a
                                             v-show="!chartsToggle"
@@ -474,6 +474,128 @@
                             </div>
 
                         
+                        </div>
+
+                        <div class="b-12 mt-3 text-center con-box bg-white">
+
+                            <div class="p-3" v-show="customList.length == 0">
+                                <small>Want to monitor stats in a few countries? create a custom list</small><br>
+                                <button class="btn btn-sm btn-info text-white" @click="manageCustomList">Create +</button>  
+                            </div>
+                            
+                             <div
+                                v-show="customList.length > 0"
+                                class="text-left"
+                                style="font-size:12px;">
+                                
+                                <div
+                                    style="font-size:12px;min-width:100%;"
+                                    class="bg-light px-1 mt-1"
+                                >
+                                    <div class="float-left" style="width:20%;">
+                                        Cases
+                                    </div>
+                                    <div class="float-left " style="width:20%;">
+                                        Deaths
+                                    </div>
+                                    <div class="float-left " style="width:20%;">
+                                        Recov.
+                                    </div>
+                                    <div class="float-left " style="width:20%;">
+                                        C. Today
+                                    </div>
+                                    <div class="float-left" style="width:20%;">
+                                        D. Today
+                                    </div>
+                                </div>
+
+                                <div style="clear:both;"></div>
+                                
+                                    <div v-for="(country) in countriesData"
+                                        :key="country.country">
+
+                                        <div v-if="customList.indexOf(country.country) > -1">
+
+                                          <div 
+                                            :class="{ 'bg-light': customList.indexOf(country.country) % 2 == 0 }"
+                                            class="py-2 pl-2 pointer"
+                                            style="font-size:12px; min-width:100%;"
+                                            @click="viewCountryStatsOnClick(country.country)"> 
+
+                                            <div>
+                                                <div class="row">
+                                                    <div class="col-9">
+                                                        <h6 class="my-1 text-primary">                                    
+                                                            <u>{{ country.country }}</u>
+                                                        </h6>
+                                                    </div>                                   
+                                                </div>
+                                            </div>
+                                    
+
+                                        <div class="font-weight-bold float-left" style="width:20%;">
+                                            {{
+                                                new Intl.NumberFormat().format(
+                                                    country.cases
+                                                )
+                                            }}
+                                        </div>
+                                        <div
+                                            class="font-weight-bold text-danger float-left"
+                                            style="width:20%;"
+                                        >
+                                            {{
+                                                new Intl.NumberFormat().format(
+                                                    country.deaths
+                                                )
+                                            }}
+                                        </div>
+                                        <div
+                                            class="font-weight-bold text-success float-left"
+                                            style="width:20%;"
+                                        >
+                                            {{
+                                                new Intl.NumberFormat().format(
+                                                    country.recovered
+                                                )
+                                            }}
+                                        </div>
+                                        <div
+                                            class="font-weight-bold  float-left"
+                                            style="width:20%;"
+                                        >
+                                            {{
+                                                new Intl.NumberFormat().format(
+                                                    country.todayCases
+                                                )
+                                            }}
+                                        </div>
+                                        <div
+                                            class="font-weight-bold  text-danger float-left"
+                                            style="width:20%;"
+                                        >
+                                            {{
+                                                new Intl.NumberFormat().format(
+                                                    country.todayDeaths
+                                                )
+                                            }}
+                                        </div>
+
+                                        <div style="clear:both;"></div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                            <div class="row m-2" v-if="customList.length > 0" >
+                                <div class="col-6 text-left">
+                                    My custom list
+                                </div>
+                                <div class="col-6 text-right">
+                                    <button class="btn btn-sm btn-info text-white" @click="manageCustomList">Manage</button>
+                                </div>
+                            </div>    
+                              
                         </div>
 
                         <div v-if="selectedCountry.name == 'South Africa'">
@@ -873,7 +995,7 @@
                                                 v-show="!worldInfoToggle"
                                                 v-on:click="toggleWorldInfo"
                                                 class="btn btn-sm btn-light"
-                                                >more stats +</a
+                                                >more stats</a
                                             >
                                             <a
                                                 v-show="!chartsWorldToggle"
@@ -1934,7 +2056,7 @@
                                     <div class="row">
                                     <div class="col-9">
                                         <h6 class="my-1 text-primary">                                    
-                                        {{ country.country.toUpperCase() }}
+                                            <u>{{ country.country }}</u>
                                         </h6>
                                     </div>
                                     <div class="col-3 text-right">                                    
@@ -2303,6 +2425,38 @@
             </div>
         </transition>
         <!-- /container  -->
+
+        <!-- Modal custom list manage -->
+        <transition name="fade">
+            <div id="overlay" :class="{'d-block':showManageModal}"></div>
+        </transition>
+        <transition name="fade">
+            <div class="modal fade" tabindex="-1" role="dialog" :class="{'d-block':showManageModal,'show':showManageModal}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title">Manage Custom Countries List</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeCustomModal()">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="height:280px; overflow-y:scroll;">
+                        <p>Select the countries you would like to add to you custom list.</p>
+                       <div class="form-check" v-for="country in countriesList" :key="country.name">
+                            <input type="checkbox"  :value="country.name" v-model="customList" class="form-check-input">
+                            <label  class="form-check-label" >{{country.name}}</label>
+                       </div>                   
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" @click="closeCustomModal()">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </transition>
+
+
         <!-- Updated -->
         <div class="container-fluid my-5 text-center" v-if="!loading">
             <div class="row">
@@ -2685,15 +2839,21 @@ export default {
             chartsWorldToggle: false,
             provincesToggle: false,
             countriesCompared: false,
+            showManageModal:false,
 
             topDropDownInt: 10,
             topViewStyle: "table",
 
-            sortBy: "deaths"
+            sortBy: "deaths",
+
+            customList: [],
         };
     },
 
-    mounted() {       
+    mounted() {     
+        if (localStorage.customList) {
+            this.customList = JSON.parse(localStorage.customList);
+        }
         this.getData(this.sortBy);
         setInterval(
             function() {
@@ -3054,6 +3214,13 @@ export default {
                 top: offsetPosition,
                 behavior: 'smooth'
             });
+        },
+        manageCustomList(){
+            this.showManageModal = true
+        },
+        closeCustomModal(){
+            this.showManageModal = false
+            localStorage.customList = JSON.stringify(this.customList);
         },
         onChangeSort(event) {
             this.getData(event.target.value);
