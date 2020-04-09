@@ -634,7 +634,7 @@
                                     <!--  Timer Component  -->
                                     <Timer
                                         starttime="Mar 26, 2020 23:59:59"
-                                        endtime="Apr 16, 2020 23:59:59"
+                                        endtime="Apr 30, 2020 23:59:59"
                                         trans='{  
                                         "day":"Day",
                                         "hours":"Hours",
