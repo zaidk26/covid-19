@@ -111,6 +111,34 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="stat-row">
+                                <div class="row">
+                                    <div class="col-auto my-auto">
+                                        <span class="">
+                                            Tests
+                                        </span>
+                                    </div>
+                                    <div class="col text-right">
+                                        <h5 class="m-0">
+                                            <small
+                                                class="text-black-50 font-percent m-0"
+                                                >({{
+                                                    (
+                                                        (countryCases /
+                                                            countryTests) *
+                                                        100
+                                                    ).toFixed(2)
+                                                }}% positive)</small
+                                            >
+                                            {{
+                                                new Intl.NumberFormat().format(
+                                                    countryTests
+                                                )
+                                            }}
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="row font-percent font-weight-bold mt-3">
                             <div class="col-4">
@@ -280,7 +308,25 @@
                                                             <h5 class="m-0">
                                                                 {{
                                                                     new Intl.NumberFormat().format(
-                                                                        countryCasesPerMil
+                                                                        countryCasesPerMil.toFixed(2)
+                                                                    )
+                                                                }}
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="stat-row">
+                                                    <div class="row">
+                                                        <div class="col-auto">
+                                                            <span>
+                                                                Tests Per Million
+                                                            </span>
+                                                        </div>
+                                                        <div class="col text-right">
+                                                            <h5 class="m-0">
+                                                                {{
+                                                                    new Intl.NumberFormat().format(
+                                                                        countryTestsPerMil.toFixed(2)
                                                                     )
                                                                 }}
                                                             </h5>
@@ -298,7 +344,7 @@
                                                             <h5 class="m-0">
                                                                 {{
                                                                     new Intl.NumberFormat().format(
-                                                                        countryDeathsPerMil
+                                                                        countryDeathsPerMil.toFixed(2)
                                                                     )
                                                                 }}
                                                             </h5>
@@ -848,6 +894,34 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="stat-row">
+                                            <div class="row">
+                                                <div class="col-auto my-auto">
+                                                    <span class="">
+                                                        Tests
+                                                    </span>
+                                                </div>
+                                                <div class="col text-right">
+                                                    <h5 class="m-0">    
+                                                         <small
+                                                            class="text-black-50 font-percent"
+                                                            >({{
+                                                                (
+                                                                    (worldCases /
+                                                                        worldTests) *
+                                                                    100
+                                                                ).toFixed(2)
+                                                            }}%)</small
+                                                        >                                                    
+                                                        {{
+                                                            new Intl.NumberFormat().format(
+                                                                worldTests
+                                                            )
+                                                        }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="row font-percent font-weight-bold mt-3">
                                         <div class="col-4">
@@ -962,7 +1036,25 @@
                                                                 <h5 class="m-0">
                                                                     {{
                                                                         new Intl.NumberFormat().format(
-                                                                            worldCasesPerMil
+                                                                            worldCasesPerMil.toFixed(0)
+                                                                        )
+                                                                    }}
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="stat-row">
+                                                        <div class="row">
+                                                            <div class="col-auto">
+                                                                <span>
+                                                                    Tests Per Million
+                                                                </span>
+                                                            </div>
+                                                            <div class="col text-right">
+                                                                <h5 class="m-0">
+                                                                    {{
+                                                                        new Intl.NumberFormat().format(
+                                                                            worldTestsPerMil.toFixed(0)
                                                                         )
                                                                     }}
                                                                 </h5>
@@ -980,7 +1072,7 @@
                                                                 <h5 class="m-0">
                                                                     {{
                                                                         new Intl.NumberFormat().format(
-                                                                            worldDeathsPerMil
+                                                                            worldDeathsPerMil.toFixed(0)
                                                                         )
                                                                     }}
                                                                 </h5>
@@ -1057,9 +1149,15 @@
                                             {{ continent.continent }}
                                         </div>
                                         <div class="col-4 text-right">
+                                            <small  class="text-black-50 font-percent m-0">
+                                                ({{ ((continent.cases / worldCases) *100).toFixed(2)}}%)
+                                            </small>
                                             {{ new Intl.NumberFormat().format(continent.cases) }}
                                         </div>
                                         <div class="col-4 text-right text-danger">
+                                             <small  class="text-black-50 font-percent m-0">
+                                                ({{ ((continent.deaths / worldDeaths) *100).toFixed(2)}}%)
+                                            </small>
                                             {{ new Intl.NumberFormat().format(continent.deaths) }}
                                         </div>
                                     </div>
@@ -1215,6 +1313,38 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                             <div class="stat-row">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <span
+                                                            class="font-compare"
+                                                        >
+                                                            Tests
+                                                        </span>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h5
+                                                            class="m-0"
+                                                        >
+                                                            {{
+                                                                new Intl.NumberFormat().format(
+                                                                    countryTests
+                                                                )
+                                                            }}
+                                                            <small
+                                                                class="text-black-50 font-percent m-0"
+                                                                >({{
+                                                                    (
+                                                                        (countryCases /
+                                                                            countryTests) *
+                                                                        100
+                                                                    ).toFixed(2)
+                                                                }}%)</small
+                                                            >
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                             <div class="stat-row">
                                                 <div class="row">
@@ -1322,6 +1452,26 @@
                                                             <span
                                                                 class="font-compare"
                                                             >
+                                                                Tests Per Million
+                                                            </span>
+                                                        </div>
+                                                        <div class="col">
+                                                            <h5 class="m-0">
+                                                                {{
+                                                                    new Intl.NumberFormat().format(
+                                                                        countryTestsPerMil
+                                                                    )
+                                                                }}
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="stat-row">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <span
+                                                                class="font-compare"
+                                                            >
                                                                 Deaths Per Million
                                                             </span>
                                                         </div>
@@ -1346,11 +1496,14 @@
                                                             </span>
                                                         </div>
                                                         <div class="col">
-                                                            <h5 class="m-0">
+                                                            <h5 class="m-0" v-if="countryFirstCase!=''">
                                                                 {{
                                                                     countryFirstCase
                                                                         | date
                                                                 }}
+                                                            </h5>
+                                                            <h5 class="m-0" v-if="countryFirstCase==''">
+                                                                NA
                                                             </h5>
                                                         </div>
                                                     </div>
@@ -1575,6 +1728,38 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="stat-row">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <span
+                                                            class="text-white font-compare"
+                                                        >
+                                                            Tests
+                                                        </span>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h5
+                                                            class="m-0"
+                                                        >
+                                                            {{
+                                                                new Intl.NumberFormat().format(
+                                                                    vsCountryTests
+                                                                )
+                                                            }}
+                                                            <small
+                                                                class="text-black-50 font-percent m-0"
+                                                                >({{
+                                                                    (
+                                                                        (vsCountryCases /
+                                                                            vsCountryTests) *
+                                                                        100
+                                                                    ).toFixed(2)
+                                                                }}%)</small
+                                                            >
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                             <div class="stat-row">
                                                 <div class="row">
@@ -1682,6 +1867,26 @@
                                                             <span
                                                                 class="font-compare text-white"
                                                             >
+                                                                Tests Per Million
+                                                            </span>
+                                                        </div>
+                                                        <div class="col">
+                                                            <h5 class="m-0">
+                                                                {{
+                                                                    new Intl.NumberFormat().format(
+                                                                        vsCountryTestsPerMil
+                                                                    )
+                                                                }}
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="stat-row">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <span
+                                                                class="font-compare text-white"
+                                                            >
                                                                 Deaths Per Million
                                                             </span>
                                                         </div>
@@ -1706,12 +1911,14 @@
                                                                 First Case
                                                             </span>
                                                         </div>
-                                                        <div class="col">
-                                                            <h5 class="m-0">
+                                                         <div class="col">
+                                                            <h5 class="m-0" v-if="vsCountryFirstCase.length!=''">
                                                                 {{
-                                                                    vsCountryFirstCase
-                                                                        | date
+                                                                    vsCountryFirstCase | date
                                                                 }}
+                                                            </h5>
+                                                            <h5 class="m-0" v-if="vsCountryFirstCase==''">
+                                                                NA
                                                             </h5>
                                                         </div>
                                                     </div>
@@ -2800,12 +3007,12 @@ export default {
             continentsTotals:[
                 
                     {continent:'Africa',deaths:0,cases:0,recovered:0},
+                    {continent:'Antarctica',deaths:0,cases:0,recovered:0},
                     {continent:'Asia',deaths:0,cases:0,recovered:0},
                     {continent:'Europe',deaths:0,cases:0,recovered:0},
-                    {continent:'Oceania',deaths:0,cases:0,recovered:0},
                     {continent:'North America',deaths:0,cases:0,recovered:0},
-                    {continent:'South America',deaths:0,cases:0,recovered:0},
-                    {continent:'Antarctica',deaths:0,cases:0,recovered:0},
+                    {continent:'Oceania',deaths:0,cases:0,recovered:0},                    
+                    {continent:'South America',deaths:0,cases:0,recovered:0},                    
                     {continent:'Ships/Other',deaths:0,cases:0,recovered:0}
                 
             ],
@@ -2821,6 +3028,8 @@ export default {
             worldRecovered: 0,
             worldCasesPerMil: 0,
             worldDeathsPerMil: 0,
+            worldTests: 0,
+            worldTestsPerMil:0,
 
             countryCases: 0,
             countryDeaths: 0,
@@ -2840,6 +3049,8 @@ export default {
             countryFirstCase: "",
             countryFirstDeath: "",
             countryFirstRecovered: "",
+            countryTests:0,
+            countryTestPerMil:0,
 
             vsCountryCases: 0,
             vsCountryDeaths: 0,
@@ -2857,6 +3068,8 @@ export default {
             vsCountryFirstCase: "",
             vsCountryFirstDeath: "",
             vsCountryFirstRecovered: "",
+            vsCountryTests:0,
+            vsCountryTestsPerMil:0,
 
             worldInfoToggle: false,
             countryInfoToggle: false,
@@ -2880,6 +3093,7 @@ export default {
     },
 
     mounted() {     
+        
         if (localStorage.customList) {
             this.customList = JSON.parse(localStorage.customList);
         }
@@ -2956,14 +3170,16 @@ export default {
                 this.worldRecovered = 0;
                 this.worldCasesPerMil = 0;
                 this.worldDeathsPerMil = 0;
+                this.worldTests = 0;
+                this.worldTestsPerMil=0;
                 this.continentsTotals= [
                     {continent:'Africa',deaths:0,cases:0,recovered:0},
+                    {continent:'Antarctica',deaths:0,cases:0,recovered:0},
                     {continent:'Asia',deaths:0,cases:0,recovered:0},
                     {continent:'Europe',deaths:0,cases:0,recovered:0},
                     {continent:'Oceania',deaths:0,cases:0,recovered:0},
                     {continent:'North America',deaths:0,cases:0,recovered:0},
-                    {continent:'South America',deaths:0,cases:0,recovered:0},
-                    {continent:'Antarctica',deaths:0,cases:0,recovered:0},
+                    {continent:'South America',deaths:0,cases:0,recovered:0},                    
                     {continent:'Ships/Other',deaths:0,cases:0,recovered:0}
                 ]
 
@@ -3015,7 +3231,12 @@ export default {
                     this.worldRecovered += element.recovered;
                     this.worldCasesPerMil += element.casesPerOneMillion/this.countriesData.length;
                     this.worldDeathsPerMil += element.deathsPerOneMillion/this.countriesData.length;
+                    this.worldTests += element.tests;
+                    this.worldTestsPerMil +=  element.testsPerOneMillion/this.countriesData.length;
+
+                  
                 });
+
 
                   
 
@@ -3280,6 +3501,8 @@ export default {
                     this.countryRecovered = element.recovered;
                     this.countryCasesPerMil = element.casesPerOneMillion;
                     this.countryDeathsPerMil = element.deathsPerOneMillion;
+                    this.countryTests = element.tests;
+                    this.countryTestsPerMil = element.testsPerOneMillion;
                     this.countryPosGlobalDeaths = this.getCountryPosGlobalDeaths(
                         element.country
                     );
@@ -3717,6 +3940,8 @@ export default {
                         this.vsCountryCritical = element.critical;
                         this.vsCountryRecovered = element.recovered;
                         this.vsCountryCasesPerMil = element.casesPerOneMillion;
+                        this.vsCountryTests = element.tests;
+                        this.vsCountryTestsPerMil = element.testsPerOneMillion;
                         this.vsCountryDeathsPerMil =
                             element.deathsPerOneMillion;
                         this.vsCountryPosGlobalDeaths = this.getCountryPosGlobalDeaths(

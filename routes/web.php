@@ -34,7 +34,7 @@ Route::get('/', function () {
 
     $historicalData = Cache::remember('historicalData', 30000, function () {
         try{
-            return Http::get('https://corona.lmao.ninja/v2/historical')->body();
+            return Http::get('https://corona.lmao.ninja/v2/historical?lastdays=all')->body();
         }catch(\Exception $e){
             return [];
         }  
