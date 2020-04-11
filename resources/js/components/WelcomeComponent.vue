@@ -385,7 +385,11 @@
                                         <transition name="fade">
                                             <div v-show="provincesToggle" class="mt-3">
                                                 <small class="text-black-50">*Data may be out of date <a href="https://sacoronavirus.co.za">sacoronavirus.co.za</a></small> 
-                                                <div class="stat-row" v-for="(val,key) in saProvinces" :key="key">
+                                                <span class="font-percent my-2" v-html="saProvinces"></span>
+
+
+
+                                                <!-- <div class="stat-row" v-for="(val,key) in saProvinces" :key="key">
                                                   <div class="row">
                                                       <div class="col-8">
                                                           {{ key.charAt(0).toUpperCase() + key.slice(1) }}
@@ -394,7 +398,8 @@
                                                           {{ val }}
                                                       </div>
                                                   </div>  
-                                                </div>
+                                                </div> -->
+
                                             </div>
                                         </transition>
                                     </div>                           

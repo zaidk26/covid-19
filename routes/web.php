@@ -40,18 +40,7 @@ Route::get('/', function () {
         }  
     });
 
-    // $saProvinces =  [
-    //         'Gauteng' => 704,
-    //         'Western Cape' => 454,
-    //         'KwaZulu Natal' => 246,
-    //         'Freestate' =>     87,
-    //         'North West' => 11,
-    //         'Mpumalanga' => 18,
-    //         'Limpopo' => 19,
-    //         'Easter Cape' => 25,
-    //         'Northern Cape' => 8,
-    //         'UnAllocated' => 77
-    //     ];
+   
 
     //Scrape provinces info of sa corona website
     $saProvinces = Cache::remember('saProvinces',30000, function () {
@@ -72,6 +61,10 @@ Route::get('/', function () {
             $pos2 = strpos($info['data'], '</table>');
 
             $tstr = substr($info['data'], $pos1, $pos2 - $pos1);
+
+            ////////////////////////////////////////////
+            //returning early data format keeps changing
+            return $tstr;
 
             $remWord = array(
                 '<table class="NormalTable">',
