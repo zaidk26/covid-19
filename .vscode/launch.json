@@ -1,0 +1,12 @@
+{
+  "configurations": [
+  
+    {
+      "name": "Launch localhost",
+      "type": "chrome",
+      "request": "launch",
+      "url": "https://localhost:9058",
+      "webRoot": "${workspaceFolder}/public"
+  },
+  ]
+}
