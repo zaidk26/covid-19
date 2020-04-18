@@ -984,8 +984,8 @@
                             <div>
                                 <div class="row mt-3">
                                     <div class="col-4"></div>
-                                    <div class="col-4 font-weight-bold text-right">Cases</div>
-                                    <div class="col-4 font-weight-bold text-right">Deaths</div>
+                                    <div class="col-4 text-right">Cases</div>
+                                    <div class="col-4 text-right">Deaths</div>
                                 </div>
                                 <div
                                     class="stat-row"
@@ -994,13 +994,13 @@
                                 >
                                     <div class="row">
                                         <div class="col-4">{{ continent.continent }}</div>
-                                        <div class="col-4 text-right">
+                                        <div class="col-4 text-right  font-weight-bold ">
                                             <small
                                                 class="text-black-50 font-percent m-0"
                                             >({{ ((continent.cases / worldCases) *100).toFixed(2)}}%)</small>
                                             {{ new Intl.NumberFormat().format(continent.cases) }}
                                         </div>
-                                        <div class="col-4 text-right text-danger">
+                                        <div class="col-4 text-right text-danger  font-weight-bold ">
                                             <small
                                                 class="text-black-50 font-percent m-0"
                                             >({{ ((continent.deaths / worldDeaths) *100).toFixed(2)}}%)</small>
@@ -1982,7 +1982,7 @@
                                                  :alt="country.country"/>
                                         </div>
                                         <div class="col-7">
-                                            <h4>{{ country.country }}</h4>
+                                            <h4><u>{{ country.country }}</u></h4>
                                         </div>
                                         <div class="col-2">
                                             <span class="badge badge-primary">#{{ i + 1 }}</span>
@@ -2103,15 +2103,34 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div class="mt-3">
-                                                <a
-                                                    v-show="!topInfoToggle"
-                                                    v-on:click="toggleTopInfo"
-                                                    class="btn btn-sm btn-light"
-                                                    >more stats +</a
-                                                >
-                      </div>-->
-                                            <!-- <div v-show="topInfoToggle">  -->
+                                            <div class="stat-row">
+                                                <div class="row">
+                                                    <div class="col-auto">
+                                                        <span>Tests</span>
+                                                    </div>
+                                                    <div class="col text-right">
+                                                        <h5 class="m-0">
+                                                            <small
+                                                                class="text-black-50 font-percent"
+                                                                
+                                                            >
+                                                                ({{
+                                                                (
+                                                                (country.cases /
+                                                                country.tests) *
+                                                                100
+                                                                ).toFixed(2)
+                                                                }}%)
+                                                            </small>
+                                                            {{
+                                                            new Intl.NumberFormat().format(
+                                                            country.tests
+                                                            )
+                                                            }}
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div>
                                                 <div class="stat-row">
                                                     <div class="row">
