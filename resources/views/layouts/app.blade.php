@@ -73,7 +73,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
         crossorigin="anonymous" />
   <link
-        href="https://fonts.googleapis.com/css?family=Nunito:700,400&display=swap"
+        href="https://fonts.googleapis.com/css?family=Nunito:700,600,400&display=swap"
         rel="stylesheet" />
 
   <link rel="stylesheet" href="{{ mix('/css/app.css')}}">

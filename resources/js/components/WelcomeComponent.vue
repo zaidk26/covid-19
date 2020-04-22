@@ -43,10 +43,16 @@
 
                             <div class="stat-row mt-4">
                                 <div class="row">
-                                    <div class="col-auto">
+                                    <div class="col-4">
                                         <span class="text-secodary">Cases</span>
                                     </div>
-                                    <div class="col text-right">
+                                    <div class="col-4 text-right">
+                                        <small class="text-black-50 font-percent m-0">
+                                            {{ ((countryCases / countryTests) * 100).toFixed(2)}}%
+                                        </small>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                       
                                         <h5 class="m-0">
                                             {{
                                             new Intl.NumberFormat().format(
@@ -59,20 +65,17 @@
                             </div>
                             <div class="stat-row">
                                 <div class="row">
-                                    <div class="col-auto">
+                                    <div class="col-4">
                                         <span class="text-danger">Deaths</span>
                                     </div>
-                                    <div class="col text-right">
-                                        <h5 class="text-danger m-0">
-                                            <small class="text-black-50 font-percent">
-                                                ({{
-                                                (
-                                                (countryDeaths /
-                                                countryCases) *
-                                                100
-                                                ).toFixed(2)
-                                                }}%)
-                                            </small>
+                                    <div class="col-4 text-right">
+                                        <small class="text-black-50 font-percent">
+                                            {{((countryDeaths / countryCases) * 100).toFixed(2) }}%
+                                        </small>
+                                    </div>
+
+                                    <div class="col-4 text-right">
+                                        <h5 class="text-danger m-0">                                            
                                             {{
                                             new Intl.NumberFormat().format(
                                             countryDeaths
@@ -84,20 +87,16 @@
                             </div>
                             <div class="stat-row">
                                 <div class="row">
-                                    <div class="col-auto my-auto">
+                                    <div class="col-4 my-auto">
                                         <span class="text-success">Recovered</span>
                                     </div>
-                                    <div class="col text-right">
-                                        <h5 class="m-0 text-success">
-                                            <small class="text-black-50 font-percent m-0">
-                                                ({{
-                                                (
-                                                (countryRecovered /
-                                                countryCases) *
-                                                100
-                                                ).toFixed(2)
-                                                }}%)
-                                            </small>
+                                    <div class="col-4  text-right">
+                                        <small class="text-black-50 font-percent m-0">
+                                          {{ ((countryRecovered / countryCases) * 100).toFixed(2) }}%
+                                        </small>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <h5 class="m-0 text-success">                                           
                                             {{
                                             new Intl.NumberFormat().format(
                                             countryRecovered
@@ -113,16 +112,7 @@
                                         <span class>Tests</span>
                                     </div>
                                     <div class="col text-right">
-                                        <h5 class="m-0">
-                                            <small class="text-black-50 font-percent m-0">
-                                                ({{
-                                                (
-                                                (countryCases /
-                                                countryTests) *
-                                                100
-                                                ).toFixed(2)
-                                                }}% positive)
-                                            </small>
+                                        <h5 class="m-0">                                            
                                             {{
                                             new Intl.NumberFormat().format(
                                             countryTests
@@ -457,7 +447,7 @@
                             <div>
                                 <div class="row">
                                     <div class="col-auto">
-                                        <span>By #Recoveries</span>
+                                        <span>By High Recovery Rate</span>
                                     </div>
                                     <div class="col text-right">
                                         <h5 class="m-0">
@@ -705,10 +695,15 @@
                                     <div class="col my-auto">
                                         <div class="stat-row">
                                             <div class="row">
-                                                <div class="col-auto">
+                                                <div class="col-4">
                                                     <span class>Cases</span>
                                                 </div>
-                                                <div class="col text-right">
+                                                <div class="col-2 text-right">
+                                                    <small class="text-black-50 font-percent">
+                                                        {{(     (worldCases /  worldTests) *  100).toFixed(2) }}%
+                                                    </small>
+                                                </div>
+                                                <div class="col-6 text-right">
                                                     <h5 class="m-0">
                                                         {{
                                                         new Intl.NumberFormat().format(
@@ -721,20 +716,16 @@
                                         </div>
                                         <div class="stat-row">
                                             <div class="row">
-                                                <div class="col-auto">
+                                                <div class="col-4">
                                                     <span class="text-danger">Deaths</span>
                                                 </div>
-                                                <div class="col text-right">
-                                                    <h5 class="text-danger m-0">
-                                                        <small class="text-black-50 font-percent">
-                                                            ({{
-                                                            (
-                                                            (worldDeaths /
-                                                            worldCases) *
-                                                            100
-                                                            ).toFixed(2)
-                                                            }}%)
-                                                        </small>
+                                                 <div class="col-2 text-right">
+                                                     <small class="text-black-50 font-percent">
+                                                        {{((worldDeaths / worldCases) *  100 ).toFixed(2) }}%
+                                                    </small>
+                                                </div>
+                                                <div class="col-6 text-right">
+                                                    <h5 class="text-danger m-0">                                                       
                                                         {{
                                                         new Intl.NumberFormat().format(
                                                         worldDeaths
@@ -746,20 +737,17 @@
                                         </div>
                                         <div class="stat-row">
                                             <div class="row">
-                                                <div class="col-auto my-auto">
+                                                <div class="col-4 my-auto">
                                                     <span class="text-success">Recovered</span>
                                                 </div>
-                                                <div class="col text-right">
+                                                <div class="col-2  text-right">
+                                                    <small class="text-black-50 font-percent m-0">
+                                                        {{ ( (worldRecovered / worldCases) * 100 ).toFixed(2) }}%
+                                                    </small>
+                                                </div>
+                                                <div class="col-6 text-right">
                                                     <h5 class="m-0 text-success">
-                                                        <small class="text-black-50 font-percent m-0">
-                                                            ({{
-                                                            (
-                                                            (worldRecovered /
-                                                            worldCases) *
-                                                            100
-                                                            ).toFixed(2)
-                                                            }}%)
-                                                        </small>
+                                                        
                                                         {{
                                                         new Intl.NumberFormat().format(
                                                         worldRecovered
@@ -776,15 +764,7 @@
                                                 </div>
                                                 <div class="col text-right">
                                                     <h5 class="m-0">
-                                                        <small class="text-black-50 font-percent">
-                                                            ({{
-                                                            (
-                                                            (worldCases /
-                                                            worldTests) *
-                                                            100
-                                                            ).toFixed(2)
-                                                            }}%)
-                                                        </small>
+                                                       
                                                         {{
                                                         new Intl.NumberFormat().format(
                                                         worldTests
@@ -994,17 +974,19 @@
                                 >
                                     <div class="row">
                                         <div class="col-4">{{ continent.continent }}</div>
-                                        <div class="col-4 text-right  font-weight-bold ">
+                                        <div class="col-4 text-right  font-weight-bold " style="line-height:1.1;">
+                                            {{ new Intl.NumberFormat().format(continent.cases) }}<br>
                                             <small
                                                 class="text-black-50 font-percent m-0"
-                                            >({{ ((continent.cases / worldCases) *100).toFixed(2)}}%)</small>
-                                            {{ new Intl.NumberFormat().format(continent.cases) }}
+                                            >{{ ((continent.cases / worldCases) *100).toFixed(2)}}%</small>
+                                            
                                         </div>
-                                        <div class="col-4 text-right text-danger  font-weight-bold ">
+                                        <div class="col-4 text-right text-danger  font-weight-bold " style="line-height:1.1;">
+                                            {{ new Intl.NumberFormat().format(continent.deaths) }}<br>
                                             <small
                                                 class="text-black-50 font-percent m-0"
-                                            >({{ ((continent.deaths / worldDeaths) *100).toFixed(2)}}%)</small>
-                                            {{ new Intl.NumberFormat().format(continent.deaths) }}
+                                            >{{ ((continent.deaths / worldDeaths) *100).toFixed(2)}}%</small>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -1078,6 +1060,17 @@
                                                             countryCases
                                                             )
                                                             }}
+                                                            <small
+                                                                class="text-black-50 font-percent m-0"
+                                                            >
+                                                                ({{
+                                                                (
+                                                                (countryCases /
+                                                                countryTests) *
+                                                                100
+                                                                ).toFixed(2)
+                                                                }}%)
+                                                            </small>
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -1148,17 +1141,7 @@
                                                             countryTests
                                                             )
                                                             }}
-                                                            <small
-                                                                class="text-black-50 font-percent m-0"
-                                                            >
-                                                                ({{
-                                                                (
-                                                                (countryCases /
-                                                                countryTests) *
-                                                                100
-                                                                ).toFixed(2)
-                                                                }}%)
-                                                            </small>
+                                                            
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -1375,7 +1358,7 @@
                                     <div>
                                         <div class="row">
                                             <div class="col-12">
-                                                <span class="font-compare">By #Recoveries</span>
+                                                <span class="font-compare">By High Recovery Rate</span>
                                             </div>
                                             <div class="col">
                                                 <h5 class="m-0">
@@ -1418,6 +1401,17 @@
                                                             vsCountryCases
                                                             )
                                                             }}
+                                                            <small
+                                                                class="text-black-50 font-percent m-0"
+                                                            >
+                                                                ({{
+                                                                (
+                                                                (vsCountryRecovered /
+                                                                vsCountryCases) *
+                                                                100
+                                                                ).toFixed(2)
+                                                                }}%)
+                                                            </small>
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -1461,17 +1455,7 @@
                                                             vsCountryRecovered
                                                             )
                                                             }}
-                                                            <small
-                                                                class="text-black-50 font-percent m-0"
-                                                            >
-                                                                ({{
-                                                                (
-                                                                (vsCountryRecovered /
-                                                                vsCountryCases) *
-                                                                100
-                                                                ).toFixed(2)
-                                                                }}%)
-                                                            </small>
+                                                            
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -3467,7 +3451,7 @@
                     let comparison = 0;
                     if (countryA < countryB) {
                         comparison = 1;
-                    } else if (countryA > countryB) {
+                    } else if (countryA >= countryB) {
                         comparison = -1;
                     }
                     return comparison;
@@ -3491,7 +3475,7 @@
                     let comparison = 0;
                     if (countryA > countryB) {
                         comparison = 1;
-                    } else if (countryA < countryB) {
+                    } else if (countryA <= countryB) {
                         comparison = -1;
                     }
                     return comparison;
@@ -3518,7 +3502,7 @@
                     let comparison = 0;
                     if (countryA < countryB) {
                         comparison = 1;
-                    } else if (countryA > countryB) {
+                    } else if (countryA >= countryB) {
                         comparison = -1;
                     }
                     return comparison;
@@ -3537,13 +3521,12 @@
             getCountryPosGlobalRecoveries(country) {
                 let dl = this.countriesList.slice(0);
                 dl.sort(function (a, b) {
-                    const countryA = a.recovered;
-                    const countryB = b.recovered;
-
+                    const countryA = (a.recovered / a.cases) * 100;
+                    const countryB = (b.recovered / b.cases) * 100;
                     let comparison = 0;
                     if (countryA < countryB) {
                         comparison = 1;
-                    } else if (countryA > countryB) {
+                    } else if (countryA >= countryB) {
                         comparison = -1;
                     }
                     return comparison;
@@ -3837,7 +3820,8 @@
     }
 
     .font-percent {
-        font-size: 10px;
+        font-size: 11px;
+        font-weight: 600;
     }
 
     .font-compare {
