@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +16,9 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
+
+    //dd(geoip());
+
 
     $newsSa = Cache::remember('newsSa', 900, function () {
         try{

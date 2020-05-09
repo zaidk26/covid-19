@@ -138,11 +138,7 @@
                                             </div>
                                             <div class="col-4 text-right">
                                                 <h5 class="m-0">
-                                                    {{
-                                                    new Intl.NumberFormat().format(
-                                                    countryCasesToday
-                                                    )
-                                                    }}
+                                                    {{ countryCasesToday }}
                                                 </h5>
                                             </div>
                                             <div class="col-4 text-right">
@@ -162,12 +158,8 @@
                                                 <span class="text-danger">Deaths</span>
                                             </div>
                                             <div class="col-4 text-right">
-                                                <h5 class="text-danger m-0">
-                                                    {{
-                                                    new Intl.NumberFormat().format(
-                                                    countryDeathsToday
-                                                    )
-                                                    }}
+                                                <h5 class="text-danger m-0">                                                    
+                                                    {{ countryDeathsToday }}
                                                 </h5>
                                             </div>
                                             <div class="col-4 text-right">
@@ -570,18 +562,18 @@
                         </div>
 
                         <div v-if="selectedCountry.name == 'South Africa'">
-                            <div class="p-3 b-12 bg-light mt-3 text-center">
+                            <!-- <div class="p-3 b-12 bg-light mt-3 text-center">
                                 <h4 class="mb-0">Lockdown Time Remaining</h4>
                                 <div id="timer" class="timer">
-                                    <!--  Timer Component  -->
+                                   
                                     <Timer
                                         starttime="Mar 26, 2020 23:59:59"
                                         endtime="Apr 30, 2020 23:59:59"
                                         :trans="trans"
                                     ></Timer>
-                                    <!--  End! Timer Component  -->
+                                
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="p-3 b-12 bg-white mt-3 con-box">
                                 <h4 class="mt-3">SA News Headlines</h4>
@@ -962,6 +954,7 @@
 
                             <!-- continents -->
                             <div>
+                                
                                 <div class="row mt-3">
                                     <div class="col-4"></div>
                                     <div class="col-4 text-right">Cases</div>
@@ -988,6 +981,11 @@
                                             >{{ ((continent.deaths / worldDeaths) *100).toFixed(2)}}%</small>
                                             
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col text-right">
+                                        <small class="font-percent">% = continent contribution</small>
                                     </div>
                                 </div>
                             </div>
@@ -3179,8 +3177,18 @@
 
                         this.countryCases = element.cases;
                         this.countryDeaths = element.deaths;
-                        this.countryCasesToday = element.todayCases;
-                        this.countryDeathsToday = element.todayDeaths;
+                        if(element.todayCases > 0){
+                            this.countryCasesToday = element.todayCases;
+                        }else{
+                            this.countryCasesToday = '-';
+                        }
+                        if(element.todayDeaths > 0){
+                            this.countryDeathsToday = element.todayDeaths;
+                        }else{
+                            this.countryDeathsToday = '-';
+                        }
+                        
+                        
                         this.countryActive = element.active;
                         this.countryCritical = element.critical;
                         this.countryRecovered = element.recovered;
