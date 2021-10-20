@@ -20,21 +20,21 @@ services:
     networks:
       - app-network
 
-  #Nginx Service For Development Only
-  webserver:
-    image: nginx:alpine
-    container_name: webserver-covid-19
-    restart: unless-stopped
-    tty: true
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./:/var/www
-      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
-      - ./docker/nginx/certs/:/etc/nginx/certs/
-    networks:
-      - app-network
+  # #Nginx Service For Development Only
+  # webserver:
+  #   image: nginx:alpine
+  #   container_name: webserver-covid-19
+  #   restart: unless-stopped
+  #   tty: true
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./:/var/www
+  #     - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+  #     - ./docker/nginx/certs/:/etc/nginx/certs/
+  #   networks:
+  #     - app-network
 
 
   #Node Service For Development Only

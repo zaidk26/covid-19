@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta
         name="viewport"
-        content="width=device-width, initial-scale=1,maximum-scale=1" , shrink-to-fit=no" />
+        content="width=device-width, initial-scale=1,maximum-scale=1" , shrink-to-fit="no" />
   <link rel="icon" href="/favicon.ico" />
 
   <title>Corona Virus Information</title>
@@ -96,26 +96,6 @@
     </div><!-- end of vue js -->
 
     @yield('content-no-vue')
-
-    @if(env('APP_ENV') == 'production')
-      <div class="container text-center my-2">
-        <div class="row">
-          <div class="col-12">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- Covid -->
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-2683239704362097"
-                data-ad-slot="4149133732"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-            <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-          </div>
-        </div>
-      </div>
-    @endif
 
 
     <div class="py-5 mt-3">

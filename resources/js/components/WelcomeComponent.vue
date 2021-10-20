@@ -2758,7 +2758,7 @@
         methods: {
             getData(sort) {
                 axios
-                .get("https://corona.lmao.ninja/v2/countries?yesterday=false")
+                .get("https://disease.sh/v3/covid-19/countries?yesterday=false")
                 .then(response => {
 
                     switch(sort) {
@@ -2862,7 +2862,7 @@
 
                     //get yesterdays total for world
                     axios
-                        .get("https://corona.lmao.ninja/v2/countries?yesterday=true")
+                        .get("https://disease.sh/v3/covid-19/countries?yesterday=true")
                         .then(response => {
                             this.countriesDataYesterday = response.data;
 

@@ -17,6 +17,6 @@ mix.js('resources/js/app.js', 'public/js')
    .version()
    .purgeCss()
    .browserSync({
-      proxy: 'https://webserver-covid-19',
+      proxy: 'http://webserver-covid-19',
       port: 9058
    });
